@@ -1,0 +1,28 @@
+.resume-bg{
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding:5%;
+    box-shadow:25px 20px 24px -28px black;
+}
+.resume-h2{
+    text-align: left !important;
+    color: rgb(82, 79, 79) !important;
+}
+.work-card-para{
+    margin-left: 5%;
+ 
+}
+.collapse-h2{
+    text-align: left !important;
+    color: rgb(82, 79, 79) !important;
+  }
+  .job-winning-div{
+    color: black;
+    padding: 5%;
+  }
+  .job-winning-div{
+    text-align: center;
+  }
+  .job-winning-img{
+    width: 25%;
+  }
