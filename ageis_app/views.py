@@ -767,7 +767,7 @@ def contact_us(request):
     if request.method == 'POST':
         print(request.POST)
         name = request.POST.get('name')
-        email = "achujoseph@a2zalphabetsolutionz.com"
+        email = "support@ageisrecruitment.online"
         email1 = request.POST.get('email')
         number = request.POST.get('number')
         subject = request.POST.get('subject')
@@ -782,8 +782,8 @@ def contact_us(request):
         send_mail(
             'Enquiry',
             email_body,
-            (email),
-            [settings.EMAIL_HOST_USER],
+            settings.EMAIL_HOST_USER,
+            [email],
             fail_silently=False,    
         )
         messages.success(request,'Form submited..')

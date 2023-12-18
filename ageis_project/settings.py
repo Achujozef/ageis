@@ -145,12 +145,12 @@ EMAIL_HOST = 'smtp.hostinger.com'
 EMAIL_PORT = 465 
 EMAIL_USE_TLS = False  # Set to False when using SSL
 EMAIL_USE_SSL = True   # Set to True when using SSL
-EMAIL_HOST_USER = 'achujoseph@a2zalphabetsolutionz.com'
-EMAIL_HOST_PASSWORD = 'Achujoseph@2000'
+EMAIL_HOST_USER = 'site@ageisrecruitment.online'
+EMAIL_HOST_PASSWORD = 'site@Ageisrecruitment2023'
 
-DEFAULT_FROM_EMAIL = 'achujozefsl0709@gmail.com'  
-SERVER_EMAIL = 'achujoseph@a2zalphabetsolutionz.com'  
-YOUR_EMAIL = 'achujoseph@a2zalphabetsolutionz.com'
+DEFAULT_FROM_EMAIL = 'support@ageisrecruitment.online'  
+SERVER_EMAIL = 'site@ageisrecruitment.online'  
+YOUR_EMAIL = 'site@ageisrecruitment.online'
 
 
 # Additional line for debugging
