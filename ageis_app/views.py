@@ -837,3 +837,19 @@ def job_search(request):
         'jobs':results
     }
     return render(request,'jobsfrontend.html',context)
+
+
+def render_template(request, template_name):
+    return render(request, template_name)
+
+def render_disclaimer(request):
+    return render(request, 'disclaimer.html')
+
+def render_terms(request):
+    return render(request, 'terms.html')
+
+def render_faq(request):
+    return render(request, 'faq.html')
+
+def render_privacy(request):
+    return render(request, 'privacy.html')

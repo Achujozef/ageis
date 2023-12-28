@@ -82,9 +82,15 @@ urlpatterns = [
 
 
     
+    # path('disclaimer/', views.render_template, {'template_name': 'disclaimer.html'}, name='disclaimer'),
+    # path('terms/', views.render_template, {'template_name': 'terms.html'}, name='terms'),
+    # path('faq/', views.render_template, {'template_name': 'faq.html'}, name='faq'),
+    # path('privacy/', views.render_template, {'template_name': 'privacy.html'}, name='privacy'),
     
-    
-    
+    path('disclaimer/', views.render_disclaimer, name='disclaimer'),
+    path('terms/', views.render_terms, name='terms'),
+    path('faq/', views.render_faq, name='faq'),
+    path('privacy/', views.render_privacy, name='privacy'),
     
 
     

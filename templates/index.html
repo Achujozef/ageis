@@ -537,17 +537,17 @@ margin-top: 5%;
 
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 4 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 0 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/business-report.png'  %}">
-                            <h3 class="">Accounting / Finance</h3>
+                            <h3 class="jobs">Accounting / Finance</h3>
                             <p>{{accounting_finance_count}} open positions</p>
                         </div>
                     </a>
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 5 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 1 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/intern.png'  %}">
                             <h3 class="jobs">Internship</h3>
@@ -557,7 +557,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 6 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 2 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/electrician.png'  %}">
                             <h3 class="jobs">Automotive Jobs</h3>
@@ -567,7 +567,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 9 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 3 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/influencer(1).png'  %}">
                             <h3 class="jobs">Marketing</h3>
@@ -577,7 +577,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 2 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 4 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/interview.png' %}">
                             <h3 class="jobs">Human Resource</h3>
@@ -587,7 +587,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 7 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 5 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/customer-service.png' %}">
                             <h3 class="jobs">Customer Service</h3>
@@ -597,7 +597,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4 ">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 10 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 6 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/self-learning.png' %}">
                             <h3 class="jobs">Development</h3>
@@ -607,7 +607,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 8 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 7 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/start-up.png' %}">
                             <h3 class="jobs">Project Management</h3>
@@ -617,7 +617,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 11 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 8 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/ui-design.png' %}">
                             <h3 class="jobs">Design</h3>
@@ -1069,7 +1069,7 @@ margin-top: 5%;
 
     <div class="copyright-text text-center">
         <div class="footer-2">
-            <div class="footer-section-2">
+            {% comment %} <div class="footer-section-2">
                 <a class="footer-sec2-a" href="disclaimer.html">Disclaimer</a>
                 <span>|</span>
                 <a class="footer-sec2-a" href="terms.html">Terms and Conditions</a>
@@ -1077,6 +1077,15 @@ margin-top: 5%;
                 <a class="footer-sec2-a" href="faq.html">FAQ</a>
                 <span>|</span>
                 <a class="footer-sec2-a" href="privacy.html">Privacy and policy</a>
+            </div> {% endcomment %}
+            <div class="footer-section-2">
+                <a class="footer-sec2-a" href="{% url 'ageis_app:disclaimer' %}">Disclaimer</a>
+                <span>|</span>
+                <a class="footer-sec2-a" href="{% url 'ageis_app:terms' %}">Terms and Conditions</a>
+                <span>|</span>
+                <a class="footer-sec2-a" href="{% url 'ageis_app:faq' %}">FAQ</a>
+                <span>|</span>
+                <a class="footer-sec2-a" href="{% url 'ageis_app:privacy' %}">Privacy and policy</a>
             </div>
         </div>
         <p>Copyright © is Proudly Owned by <a href="https://a2zalphabetsolutionz.com/" class="copyright-text-a"
