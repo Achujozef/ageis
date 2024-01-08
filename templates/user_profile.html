@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ user.user.username }}'s Profile</title>
+</head>
+<body>
+    <h1>{{ user.user.username }}'s Profile</h1>
+    
+    <h2>Add Skill:</h2>
+    <form id="addSkillForm" method="post" action="{% url 'ageis_app:add_skill' %}">
+        {% csrf_token %}
+        {{ skill_form.as_p }}
+        <button type="submit">Add Skill</button>
+    </form>
+
+    <h2>Skills:</h2>
+    <ul id="skillsList">
+        {% for skill in skills %}
+            <li>{{ skill.skill }} - <a href="{% url 'ageis_app:delete_skill' skill.id %}">Delete</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add Qualification:</h2>
+    <form id="addQualificationForm" method="post" action="{% url 'ageis_app:add_qualification' %}">
+        {% csrf_token %}
+        {{ qualification_form.as_p }}
+        <button type="submit">Add Qualification</button>
+    </form>
+
+    <h2>Qualifications:</h2>
+    <ul id="qualificationsList">
+        {% for qualification in qualifications %}
+            <li>{{ qualification.degree }} from {{ qualification.institution }} ({{ qualification.completion_year }}) - <a href="{% url 'delete_qualification' qualification.id %}">Delete</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add Experience:</h2>
+    <form id="addExperienceForm" method="post" action="{% url 'ageis_app:add_experience' %}">
+        {% csrf_token %}
+        {{ experience_form.as_p }}
+        <button type="submit">Add Experience</button>
+    </form>
+
+    <h2>Experiences:</h2>
+    <ul id="experiencesList">
+        {% for experience in experiences %}
+            <li>{{ experience.position }} at {{ experience.company }} ({{ experience.start_date }} - {% if experience.end_date %}{{ experience.end_date }}{% else %}Present{% endif %}) - <a href="{% url 'delete_experience' experience.id %}">Delete</a></li>
+            <p>{{ experience.description }}</p>
+        {% endfor %}
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to handle dynamic addition of forms
+            function addForm(formId, listId) {
+                const form = document.getElementById(formId);
+                const list = document.getElementById(listId);
+    
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+    
+                    // Create a new list item for the submitted data
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = event.target[0].value + ' - <a href="#">Delete</a>';
+                    list.appendChild(listItem);
+    
+                    // Clear the form input
+                    event.target[0].value = '';
+    
+                    // Additional logic to handle form submission using AJAX to your Django views
+                    // ...
+    
+                    // Note: This example assumes the form submission will be handled via Django views
+                });
+            }
+    
+            // Call the function for each form
+            addForm('addSkillForm', 'skillsList');
+            addForm('addQualificationForm', 'qualificationsList');
+            addForm('addExperienceForm', 'experiencesList');
+        });
+    </script>
+    
+</body>
+</html>

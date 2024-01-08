@@ -262,7 +262,9 @@ margin-top: 5%;
                        {% if user.is_authenticated and not user.is_superuser %}
                        <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
                            <li><a class="dropdown-item">{{user.username}}</a></li>
+                           {%if user.extenedusermodel.phone%}
                            <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
+                           {% endif %}
                            <li><a class="dropdown-item ">{{user.email}}</a></li>
                            <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
                        </ul>
@@ -659,7 +661,9 @@ margin-top: 5%;
                                         </h6>
                                         <ul>
                                             <li class="li-job">
+                                                {% if i.company_name %}
                                                 {{i.company_name}}
+                                                {% endif %}
                                             </li>
                                             <li class="li-job">
                                                 <i class="bx bx-briefcase"></i>

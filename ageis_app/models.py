@@ -8,18 +8,46 @@ class ExtendedUserModel(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='extenedusermodel',blank=True,null=True)
     phone = models.CharField(max_length=10,blank=True,null=True)
     cv = models.FileField(upload_to='CV',blank=True,null=True)
+    #####################################
+    location = models.CharField(max_length=255, blank=True, null=True)
 
 
+class Skills(models.Model):
+    user = models.ForeignKey(ExtendedUserModel, on_delete=models.CASCADE, related_name='skills')
+    skill = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.user.user.username} - {self.skill}"
+    
+class Qualification(models.Model):
+    user = models.ForeignKey(ExtendedUserModel, on_delete=models.CASCADE, related_name='qualifications')
+    degree = models.CharField(max_length=255)
+    institution = models.CharField(max_length=255)
+    completion_year = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.user.user.username} - {self.degree}"
+    
+
+class Experience(models.Model):
+    user = models.ForeignKey(ExtendedUserModel, on_delete=models.CASCADE, related_name='experiences')
+    company = models.CharField(max_length=255)
+    position = models.CharField(max_length=255)
+    start_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
+    description = models.TextField()
 
 class Clients(models.Model):
     def __str__(self):
-        return self.company_name
+        return f"{self.added_by.username} - {self.company_name}"
+
     class Meta:
-        verbose_name_plural = 'Cients/Company'
-    added_by = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user',blank=True,null=True)
-    company_logo = models.ImageField(upload_to='Logos',blank=True,null=True)
-    company_name = models.CharField(max_length=50,blank=True,null=True)
-    address = models.TextField(blank=True,null=True)
+        verbose_name_plural = 'Clients/Company'
+
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', blank=True, null=True)
+    company_logo = models.ImageField(upload_to='Logos', blank=True, null=True)
+    company_name = models.CharField(max_length=50, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
 
 
 
@@ -34,7 +62,7 @@ class Testimonials(models.Model):
     customer_img = models.ImageField(upload_to='customerimg',blank=True,null=True)
     company_name = models.ForeignKey(Clients,on_delete=models.CASCADE,blank=True,null=True)
     reviews = models.TextField(blank=True,null=True)
-    
+
 
 class JobCategories(models.Model):
     def __str__(self):

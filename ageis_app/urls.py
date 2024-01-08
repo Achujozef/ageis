@@ -93,9 +93,16 @@ urlpatterns = [
     path('privacy/', views.render_privacy, name='privacy'),
     
 
+    path('user/profile/', views.user_profile, name='user_profile'),
     
-    
-    
+    path('add/skill/', views.add_skill, name='add_skill'),
+    path('delete/skill/<int:skill_id>/', views.delete_skill, name='delete_skill'),
+
+    path('add/qualification/', views.add_qualification, name='add_qualification'),
+    path('delete/qualification/<int:qualification_id>/', views.delete_qualification, name='delete_qualification'),
+
+    path('add/experience/', views.add_experience, name='add_experience'),
+    path('delete/experience/<int:experience_id>/', views.delete_experience, name='delete_experience'),
     
 
 

@@ -130,3 +130,18 @@ class AboutUsAddForm(forms.ModelForm):
         }
     company = forms.ModelChoiceField(queryset=Clients.objects.all(), empty_label="Select Company",widget=forms.Select(attrs={'class':'form-control w-75','required':'required'}))
 
+class SkillForm(forms.ModelForm):
+    class Meta:
+        model = Skills
+        fields = ['skill']
+
+
+class QualificationForm(forms.ModelForm):
+    class Meta:
+        model = Qualification
+        fields = ['degree', 'institution', 'completion_year']
+
+class ExperienceForm(forms.ModelForm):
+    class Meta:
+        model = Experience
+        fields = ['company', 'position', 'start_date', 'end_date', 'description']
