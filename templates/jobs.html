@@ -255,25 +255,12 @@
                                                                 </div>
                                                                 <div class="row mt-4">
                                                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                    Company logo
-                                                                    {{form.company_logo}}
-                                                                        {% comment %} <input type="text" class=" form-control w-75" placeholder="Enter Job Title"> {% endcomment %}
+                                                                    {{ form.company_name }}
                                                                   </div>
-                                                                 
-                                                              </div>
-                                                                <div class="row mt-4">
-                                                                  
-                                                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                    {{form.company_name}}
-                                                                    {% comment %} <input type="text" class=" form-control w-75" placeholder="Enter Company Name"> {% endcomment %}
-                                                                  </div>
-                                                              </div>
+                                                                </div>
                                                               <div class="row mt-4">
                                                                   
-                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                  {{form.company_email}}
-                                                                  {% comment %} <input type="email" class=" form-control w-75" placeholder="Enter Company E-mail"> {% endcomment %}
-                                                                </div>
+
                                                             </div>
                                                             <div class="row mt-4">
                                                                   
@@ -404,9 +391,9 @@
                                           {% for i in jobs %}
                                         <tr>
                                           <td>{{i.job_title}}</td>
-                                          <td class="company-logo-td"><img src="{{i.company_logo.url}}" class="company-logo-td-img"></td>
-                                          <td>{{i.company_name}}</td>
-                                          <td>{{i.company_email}}</td>
+                                          <td class="company-logo-td"><img src="{{i.company.company_logo.url}}" class="company-logo-td-img"></td>
+                                          <td>{{i.company.company_name}}</td>
+                                          <td>{{i.company.company_email}}</td>
                                           <td>{{i.country}}</td>
                                           <td>{{i.state}}</td>
                                           <td>{{i.district}}</td>

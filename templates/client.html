@@ -368,6 +368,14 @@
                                                                   </div>
                                                                   <div class="row mt-4">
                                                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                                      {{form.company_email}}
+                                                                    </div>        
+                                                                    
+                                                                  </div>
+                                                                  <div class="row mt-4">
+                                                                    
+                                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                                      <p3>Upload Company Logo</p3>
                                                                       {{form.company_logo}}
                                                                     </div>        
                                                                     
@@ -396,6 +404,7 @@
                                         <tr>
                                           <th>Company logo</th>
                                           <th>Company Name</th>
+                                          <th>Email</th>
                                           <th>Address</th>
                                           <th>Action</th>
                                         </tr>
@@ -409,6 +418,7 @@
                                             <td>Nill</td>
                                             {% endif %}
                                             <td>{{i.company_name}}</td>
+                                            <td>{{i.company_email}}</td>
                                             <td>{{i.address}}</td>
                                             <td>
                                                 <ul class="status">
@@ -423,6 +433,7 @@
                                             <tr>
                                                 <th>Company logo</th>
                                                 <th>Company Name</th>
+                                                <th>Email</th>
                                                 <th>Address</th>
                                                 <th>Action</th>
                                               </tr>

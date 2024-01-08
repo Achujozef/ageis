@@ -8,13 +8,14 @@ from ageis_app.models import *
 class ClientAddForm(forms.ModelForm):
     class Meta:
         model = Clients
-        fields = ['company_logo','company_name','address']
+        fields = ['company_logo','company_name','address','company_email']
         exclude = ['added_by']
         widgets = {
             'company_logo' : forms.ClearableFileInput(attrs={'class':'form-control w-75'}),
             # 'company_logo' : forms.ClearableFileInput(attrs={'class':'form-control uploadProfileInput','id':'newProfilePhoto','accept':'image/*' ,'style':'opacity: 0;'}),
             'company_name' : forms.TextInput(attrs={'class':'form-control w-75' ,'placeholder':"Enter Company Name"}),
-            'address' : forms.Textarea(attrs={'class':'form-control w-75','placeholder':'Enter the comapny address','rows':3})
+            'address' : forms.Textarea(attrs={'class':'form-control w-75','placeholder':'Enter the comapny address','rows':3}),
+            'company_email': forms.EmailInput(attrs={'class': 'form-control w-75', 'placeholder': 'Enter Company Email'}),
         }
 
 class TestimonialAddForm(forms.ModelForm):
@@ -66,13 +67,16 @@ class CountryAddForm(forms.ModelForm):
 class JobsAddForm(forms.ModelForm):
     class Meta:
         model = Jobs
-        exclude = ['added_by','job_post_date']
+        fields = ['job_title', 'company_name', 'country', 'state', 'district', 'job_category', 'job_type', 'end_date', 'job_des', 'skills', 'experience', 'salary', 'languages', 'website_link']
 
         widgets = {
             'job_title': forms.TextInput(attrs={'class':'form-control w-75','placeholder':"Enter Job Title",'required':'required'}),
-            'company_logo': forms.ClearableFileInput(attrs={'class':'form-control w-75'}),
-            # 'company_name': forms.Select(attrs={'class':'form-control w-75'}),
-            'company_email': forms.EmailInput(attrs={'class':'form-control w-75','placeholder':"Enter Company E-mail",'required':'required'}),
+            'company_name': forms.ModelChoiceField(
+                queryset=Clients.objects.all(),
+                empty_label="Select Company",
+                widget=forms.Select(attrs={'class': 'form-control w-75'})),
+            # 'company_logo': forms.Select(attrs={'class':'form-control w-75'}),
+            # 'company_email': forms.EmailInput(attrs={'class':'form-control w-75','placeholder':"Enter Company E-mail",'required':'required'}),
             # 'country': forms.Select(attrs={'class':'form-control w-75','placeholder':"Enter Company Location"}),
             # 'state': forms.Select(attrs={'class':'form-control w-75'}),
             # 'district': forms.Select(attrs={'class':'form-control w-75'}),

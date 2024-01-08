@@ -427,25 +427,36 @@ def load_district(request):
 def jobs(request):
     try:
         if request.method == 'POST':
-            form = JobsAddForm(request.POST,request.FILES)
+            form = JobsAddForm(request.POST)
             if form.is_valid():
-                data = form.save(commit=False)
-                data.added_by = request.user
-                data.save()
-            
-                messages.success(request,'Added..')
-                return redirect('ageis_app:jobs')
+                data = form.cleaned_data
+                company = data.get('company_name')
+                print("Company is :",company)
+                # Ensure 'company' is not None before saving
+                if company is not None:
+                    job = form.save(commit=False)
+                    job.added_by = request.user
+                    job.company = company
+                    job.save()
+                    messages.success(request, 'Job added successfully.')
+                    return redirect('ageis_app:jobs')
+                else:
+                    messages.error(request, 'Invalid company selected.')
+            else:
+                print(form.errors)
+                messages.error(request, 'Error in the form submission. Please check the form data.')
         else:
             form = JobsAddForm()
     except Exception as e:
-        messages.error(request,str(e))
+        messages.error(request, str(e))
         return redirect('ageis_app:jobs')
+ 
     jobs = Jobs.objects.all()
     context = {
-        'form':form,
-        'jobs':jobs,
+        'form': form,
+        'jobs': jobs,
     }
-    return render(request,'jobs.html',context)
+    return render(request, 'jobs.html', context)
 
 @login_required(login_url='ageis_app:login')
 def jobs_edit(request,update_id):
