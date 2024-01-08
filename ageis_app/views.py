@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
@@ -767,7 +767,7 @@ def contact_us(request):
     if request.method == 'POST':
         print(request.POST)
         name = request.POST.get('name')
-        email = "achujoseph@a2zalphabetsolutionz.com"
+        email = "support@ageisrecruitment.online"
         email1 = request.POST.get('email')
         number = request.POST.get('number')
         subject = request.POST.get('subject')
@@ -782,8 +782,8 @@ def contact_us(request):
         send_mail(
             'Enquiry',
             email_body,
-            (email),
-            [settings.EMAIL_HOST_USER],
+            settings.EMAIL_HOST_USER,
+            [email],
             fail_silently=False,    
         )
         messages.success(request,'Form submited..')
@@ -837,3 +837,102 @@ def job_search(request):
         'jobs':results
     }
     return render(request,'jobsfrontend.html',context)
+
+
+def render_template(request, template_name):
+    return render(request, template_name)
+
+def render_disclaimer(request):
+    return render(request, 'disclaimer.html')
+
+def render_terms(request):
+    return render(request, 'terms.html')
+
+def render_faq(request):
+    return render(request, 'faq.html')
+
+def render_privacy(request):
+    return render(request, 'privacy.html')
+
+
+def user_profile(request):
+    # Assuming the user is logged in
+    if request.user.is_authenticated:
+        user = request.user.extenedusermodel  # Assuming there is a typo in your attribute name
+        skills = user.skills.all()
+        qualifications = user.qualifications.all()
+        experiences = user.experiences.all()
+        
+        context = {
+            'user': user,
+            'skills': skills,
+            'qualifications': qualifications,
+            'experiences': experiences,
+        }
+        
+        return render(request, 'user_profile.html', context)
+    else:
+        # Handle the case when the user is not authenticated, redirect or show an error message
+        return render(request, 'error.html', {'message': 'User not authenticated'})
+    
+
+def add_skill(request):
+    if request.method == 'POST':
+        form = SkillForm(request.POST)
+        if form.is_valid():
+            skill = form.save(commit=False)
+            skill.user = request.user.extenedusermodel
+            skill.save()
+            messages.success(request, 'Skill added successfully.')
+            return redirect('user_profile')
+    else:
+        form = SkillForm()
+
+    return render(request, 'add_skill.html', {'form': form})
+
+def delete_skill(request, skill_id):
+    skill = get_object_or_404(Skills, id=skill_id)
+    skill.delete()
+    messages.success(request, 'Skill deleted successfully.')
+    return redirect('ageis_app:user_profile')
+
+
+def add_qualification(request):
+    if request.method == 'POST':
+        form = QualificationForm(request.POST)
+        if form.is_valid():
+            qualification = form.save(commit=False)
+            qualification.user = request.user.extenedusermodel
+            qualification.save()
+            messages.success(request, 'Qualification added successfully.')
+            return redirect('user_profile')
+    else:
+        form = QualificationForm()
+
+    return render(request, 'add_qualification.html', {'form': form})
+
+def delete_qualification(request, qualification_id):
+    qualification = get_object_or_404(Qualification, id=qualification_id)
+    qualification.delete()
+    messages.success(request, 'Qualification deleted successfully.')
+    return redirect('user_profile')
+
+def add_experience(request):
+    if request.method == 'POST':
+        form = ExperienceForm(request.POST)
+        if form.is_valid():
+            experience = form.save(commit=False)
+            experience.user = request.user.extenedusermodel
+            experience.save()
+            messages.success(request, 'Experience added successfully.')
+            return redirect('user_profile')
+    else:
+        form = ExperienceForm()
+
+    return render(request, 'add_experience.html', {'form': form})
+
+def delete_experience(request, experience_id):
+    experience = get_object_or_404(Experience, id=experience_id)
+    experience.delete()
+    messages.success(request, 'Experience deleted successfully.')
+    return redirect('user_profile')

@@ -64,7 +64,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{% url 'ageis_app:dashboard' %}"  class="brand-link">
       <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image">
      
     </a>
@@ -97,7 +97,7 @@
                 </a>
               </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{% url 'ageis_app:dashboard' %}"  class="nav-link">
                <span><img src="{% static 'dist/img/icon/job-seeking.gif' %}" class="nav-icon"></span>
               <p>
               Jobs
