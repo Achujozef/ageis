@@ -625,10 +625,11 @@ def jobs_frontend_cat(request, cat_id=None):
     return render(request,'jobsfrontend.html',context)
 
 @login_required(login_url='ageis_app:login')
-def jobs_details(request,job_id):
-    details = Jobs.objects.get(id=job_id)
-    return render(request,'job-details.html',{'details':details})
+def jobs_details(request, job_id):
+    job = get_object_or_404(Jobs, id=job_id)
+    applied = AppliedJobs.objects.filter(applied_user=request.user.extenedusermodel, applied_job=job).exists()
 
+    return render(request, 'job-details.html', {'details': job, 'applied': applied})
 
 # product list page, product view page
 

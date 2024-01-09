@@ -345,7 +345,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-md-2">
                                             <div class="company-logo">
-                                                <img src="{{details.company_logo.url}}" alt="logo">
+                                                <img src="{{details.company.company_logo.url}}" alt="logo">
                                             </div>
                                         </div>
                                         <div class="col-md-10">
@@ -394,7 +394,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td><span class="me-2">Company: </span></td>
-                                                        <td>{{details.company_name}}</td>
+                                                        <td>{{details.company.company_name}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td><span class="me-2">Location:</span></td>
@@ -407,7 +407,7 @@
                                                     <tr>
                                                         <td><span class="me-2">Email:</span></td>
                                                         <td>
-                                                            {{details.company_email}}
+                                                            {{details.company.company_email}}
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -439,9 +439,13 @@
                                 </div>
                                 {% if user.is_authenticated and not user.is_superuser %}
                                 <div class="theme-btn">
+                                    {% if applied %}
+    <p>You have already applied for this job.</p>
+{% else %}
                                     <a href="{% url 'ageis_app:apply_job' details.id %}" class="default-btn">
                                         Apply Now
                                     </a>
+                                    {% endif %}
                                 </div>
                                 {% endif %}
                             </div>

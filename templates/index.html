@@ -539,7 +539,7 @@ margin-top: 5%;
 
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 0 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 1 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/business-report.png'  %}">
                             <h3 class="jobs">Accounting / Finance</h3>
@@ -549,7 +549,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 1 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 2 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/intern.png'  %}">
                             <h3 class="jobs">Internship</h3>
@@ -559,7 +559,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 2 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 3 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/electrician.png'  %}">
                             <h3 class="jobs">Automotive Jobs</h3>
@@ -569,7 +569,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 3 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 4 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/influencer(1).png'  %}">
                             <h3 class="jobs">Marketing</h3>
@@ -579,7 +579,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 4 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 5 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/interview.png' %}">
                             <h3 class="jobs">Human Resource</h3>
@@ -589,7 +589,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 5 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 6 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/customer-service.png' %}">
                             <h3 class="jobs">Customer Service</h3>
@@ -599,7 +599,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4 ">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 6 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 7 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/self-learning.png' %}">
                             <h3 class="jobs">Development</h3>
@@ -609,7 +609,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 7 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 8 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/start-up.png' %}">
                             <h3 class="jobs">Project Management</h3>
@@ -619,7 +619,7 @@ margin-top: 5%;
                 </div>
                 <div
                     class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
-                    <a href="{% url 'ageis_app:jobs_frontend_cat' 8 %}">
+                    <a href="{% url 'ageis_app:jobs_frontend_cat' 9 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/ui-design.png' %}">
                             <h3 class="jobs">Design</h3>
@@ -650,8 +650,10 @@ margin-top: 5%;
                                     <div>
                                         <div class="company-logo">
                                             <a href="{% url 'ageis_app:jobs_details' i.id %}">
-                                                <img class="class-company" src="{{i.company_logo.url}}"
+                                                {% if i.company %}
+                                                <img class="class-company" src="{{i.company.company_logo.url}}"
                                                     alt="logo">
+                                                    {% endif %}
                                             </a>
                                         </div>
                                     </div>
@@ -661,8 +663,8 @@ margin-top: 5%;
                                         </h6>
                                         <ul>
                                             <li class="li-job">
-                                                {% if i.company_name %}
-                                                {{i.company_name}}
+                                                {% if i.company %}
+                                                {{i.company.company_name}}
                                                 {% endif %}
                                             </li>
                                             <li class="li-job">

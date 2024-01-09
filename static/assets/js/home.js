@@ -102,7 +102,6 @@ $(document).ready(function () {
 })
 $(document).ready(function(){
     $(".file").focus(function(){
-        alert("hi")
         $(this).attr("type","file")
     })
 })
