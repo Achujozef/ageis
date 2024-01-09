@@ -348,7 +348,7 @@
                             <div class="col-lg-3">
                                 <div class="thumb-img">
                                     <a href="{% url 'ageis_app:jobs_details' i.id %}">
-                                        <img src="{{i.company_logo.url}}" alt="company logo">
+                                        <img src="{{i.company.company_logo.url}}" alt="company logo">
                                     </a>
                                 </div>
                             </div>
@@ -358,7 +358,7 @@
                                         <a href="{% url 'ageis_app:jobs_details' i.id %}">{{i.job_title}}</a>
                                     </h3>
                                     <ul>
-                                        <li><a href="#">{{i.company_name}}</a></li>
+                                        <li><a href="#">{{i.company.company_name}}</a></li>
                                         <li>
                                             <i class="bx bx-location-plus"></i>
                                             {{i.country}}, {{i.state}}, {{i.district}}

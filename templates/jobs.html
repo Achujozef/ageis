@@ -369,9 +369,9 @@
                                         <thead>
                                         <tr>
                                           <th>Job Title</th>
-                                          <th>Company Logo</th>
-                                          <th>Company Name</th>
-                                          <th>Company Email</th>
+                                      
+                                          <th>Company</th>
+                      
                                           <th>Country</th>
                                           <th>State</th>
                                           <th>District</th>
@@ -391,9 +391,9 @@
                                           {% for i in jobs %}
                                         <tr>
                                           <td>{{i.job_title}}</td>
-                                          <td class="company-logo-td"><img src="{{i.company.company_logo.url}}" class="company-logo-td-img"></td>
+
                                           <td>{{i.company.company_name}}</td>
-                                          <td>{{i.company.company_email}}</td>
+                          
                                           <td>{{i.country}}</td>
                                           <td>{{i.state}}</td>
                                           <td>{{i.district}}</td>
@@ -421,9 +421,9 @@
                                         <tfoot>
                                           <tr>
                                             <th>Job Title</th>
-                                            <th>Company Logo</th>
-                                            <th>Company Name</th>
-                                            <th>Company Email</th>
+                               
+                                            <th>Company</th>
+                                           
                                             <th>Country</th>
                                             <th>State</th>
                                             <th>District</th>

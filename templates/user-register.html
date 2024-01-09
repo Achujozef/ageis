@@ -118,13 +118,17 @@
                                                     id="formGroupExampleInput" name='email' placeholder="Email"required>
                                             </div>
                                         </div>
+
+                                        
                                         <div class="col-12 col-lg-6 col-xl-6 col-xxl-6 col-md-6 col-sm-12">
                                             <div class="col-frm">
-                                                <input type="file" class="form-control form-control-3"
+                                                <input type="text" class="form-control form-control-3 file"
                                                     id="formGroupExampleInput" name='resume' placeholder="Upload resume" required>
                                             </div>
 
                                         </div>
+
+
                                     </div>
                                 </div>
 
@@ -255,6 +259,13 @@
     {% endif %}
     {% endfor %}
     <script src="{% static 'assets/js/home.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $(".file").focus(function(){
+                $(this).attr("type","file")
+            })
+        })
+    </script>
 </body>
 
 </html>

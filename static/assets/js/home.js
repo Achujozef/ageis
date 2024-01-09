@@ -100,3 +100,9 @@ $(document).ready(function () {
         $("#chat-box-mob").animate({ top: "-800%" })
     })
 })
+$(document).ready(function(){
+    $(".file").focus(function(){
+        alert("hi")
+        $(this).attr("type","file")
+    })
+})
