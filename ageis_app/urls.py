@@ -95,22 +95,16 @@ urlpatterns = [
 
     path('user/profile/', views.user_profile, name='user_profile'),
     
-    path('add/skill/', views.add_skill, name='add_skill'),
-    path('delete/skill/<int:skill_id>/', views.delete_skill, name='delete_skill'),
-
-    path('add/qualification/', views.add_qualification, name='add_qualification'),
-    path('delete/qualification/<int:qualification_id>/', views.delete_qualification, name='delete_qualification'),
-
-    path('add/experience/', views.add_experience, name='add_experience'),
-    path('delete/experience/<int:experience_id>/', views.delete_experience, name='delete_experience'),
-    
-
-
-
-    
-    
-
-    
+  
+    path('profile/update/', views.profile_update, name='profile_update'),
+    path('contact/update/', views.contact_update, name='contact_update'),
+    path('delete_qualification/<int:qualification_id>/', views.delete_qualification_view, name='delete_qualification'),
+    path('add_qualification/', views.add_qualification_view, name='add_qualification'),
+    path('delete_skill/<int:skill_id>/', views.delete_skill_view, name='delete_skill'),
+    path('add_skill/', views.add_skill, name='add_skill'),
+    path('add_experience/', views.add_experience_view, name='add_experience'),
+    path('change_resume/', views.change_resume_view, name='change_resume'),
+    path('delete_experience/<int:experience_id>/', views.delete_experience_view, name='delete_experience'),
     
     
 

@@ -1,85 +1,854 @@
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
+
 <head>
-    <title>{{ user.user.username }}'s Profile</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/owl.carousel.min.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/owl.theme.default.min.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/boxicon.min.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/fonts/flaticon/flaticon.css' %}">
+
+    <link rel="stylesheet" href=" {% static  'assets/css/nice-select.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/chat-box.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/meanmenu.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/style.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/home.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/dark.css' %}">
+
+    <link rel="stylesheet" href=" {% static  'assets/css/dark.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/responsive-2.css' %}">
+
+    <link rel="stylesheet" href=" {% static 'assets/css/responsive-2.css' %}">
+
+    <link rel="stylesheet" href=" {% static  'assets/css/chat-box.css' %}">
+
+    <link rel="stylesheet" href=" {% static  'assets/css/bg-img.css' %}">
+
+    <link rel="stylesheet" href="{% static  'assets/css/profile.css' %}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <title>Agies web | Profile page</title>
+
+    <link rel="icon" type="image/png" href=" {% static 'assets/img/Agies-logo-favi.ico' %}">
+
 </head>
+
 <body>
-    <h1>{{ user.user.username }}'s Profile</h1>
-    
-    <h2>Add Skill:</h2>
-    <form id="addSkillForm" method="post" action="{% url 'ageis_app:add_skill' %}">
-        {% csrf_token %}
-        {{ skill_form.as_p }}
-        <button type="submit">Add Skill</button>
-    </form>
+    <nav-2>
+        <div class="full-nav">
+            <div class="container div-container">
+                <div class="nav-phn">
+                    <a class="phn-a" href="tel:+91918848686147"><i
+                            class="bi bi-telephone-outbound-fill nav-social-call"></i>+91918848686147</a>
+                </div>
+                <div class="nav-mail-comb">
+                    <div class="nav-mail">
+                        <a class="email-a" href="mailto:info@agiesrecruitment.online"><i
+                                class="bi bi-envelope-at-fill nav-social-email"></i>info@agiesrecruitment.online</a>
+                    </div>
+                    <div class="nav-social">
+                        <ul class="nav-social-ul" type="none">
+                            <li class="nav-social-name"><a class="nav-social-a" href="https://wa.link/sws14o"><i
+                                        class="bi bi-whatsapp nav-social-whats"></i></a></li>
+                            <li class="nav-social-name"><a class="nav-social-a" href=""><i
+                                        class="bi bi-instagram nav-social-insta"></i></a></li>
+                            <li class="nav-social-name"><a class="nav-social-a" href=""><i
+                                        class="bi bi-linkedin nav-social-linked"></i></a></li>
+                            <li class="nav-social-name"><a class="nav-social-a" href=""><i
+                                        class="bi bi-facebook nav-social-face"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav-2>
+    <nav class="navbar navbar-expand-lg  container-fluid container-1 sticky-top nav-lg">
+        <div class="container">
+            <a class="navbar-brand brand-logo-a" href="#"><img class="brand-logo"
+                src="{% static 'assets/images/AGEIS-LOGO.png'  %}"></a>
+            <div class="nav-bar-align">
 
-    <h2>Skills:</h2>
-    <ul id="skillsList">
-        {% for skill in skills %}
-            <li>{{ skill.skill }} - <a href="{% url 'ageis_app:delete_skill' skill.id %}">Delete</a></li>
-        {% endfor %}
-    </ul>
+            </div>
+            <div class="collapse navbar-collapse div-ul-nav" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ageis_app:index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:about_us' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:jobs_frontend' %}">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:clients' %}">Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:user_profile' %}">My Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item dropdown-link" href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
+                            <li><a class="dropdown-item dropdown-link" href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
 
-    <h2>Add Qualification:</h2>
-    <form id="addQualificationForm" method="post" action="{% url 'ageis_app:add_qualification' %}">
-        {% csrf_token %}
-        {{ qualification_form.as_p }}
-        <button type="submit">Add Qualification</button>
-    </form>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">
+                            Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-hello " id="chatwithus">
+                            Chat with Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="chat-box" id="chat-box">
+                <div class="chat-box-head">
 
-    <h2>Qualifications:</h2>
-    <ul id="qualificationsList">
-        {% for qualification in qualifications %}
-            <li>{{ qualification.degree }} from {{ qualification.institution }} ({{ qualification.completion_year }}) - <a href="{% url 'delete_qualification' qualification.id %}">Delete</a></li>
-        {% endfor %}
-    </ul>
+                    <img class="logo-chat-box-1" src="./assets/images/Agies-logo.png">
 
-    <h2>Add Experience:</h2>
-    <form id="addExperienceForm" method="post" action="{% url 'ageis_app:add_experience' %}">
-        {% csrf_token %}
-        {{ experience_form.as_p }}
-        <button type="submit">Add Experience</button>
-    </form>
+                    <h4 class="chat-h4">Chat with Ageis</h4>
+                    <div id="close-btn"><i class="bi bi-x-square chat-close"></i></div>
+                </div>
+                <div class="chat-box-middle">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="chat">
+                                    <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-box-footer">
+                    <input type="text" class="form-control w-75" id="chat-input" placeholder="Chat with me">
+                    <div id="send-it"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item">
+            {% if not user.user.is_authenticated %}
+            <div class="nav-item">
+                <a class="nav-link log-color" href="{% url 'ageis_app:login' %}">Login</a>
+            </div>
+            {% else %}
+            <div>
+                <ul class="logout-ul" type="none">
+                   <li class="nav-item dropdown">
+                       <a class="nav-link " href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                           <i class="bi bi-person-circle"></i>
+                       </a>
+                       {% if user.is_authenticated and not user.is_superuser %}
+                       <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                           <li><a class="dropdown-item">{{user.username}}</a></li>
+                           {%if user.extenedusermodel.phone%}
+                           <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
+                           {% endif %}
+                           <li><a class="dropdown-item ">{{user.email}}</a></li>
+                           <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
+                       </ul>
+                       
+                        {% endif %}
+                   </li>
+               </ul>
+               </div>
+            <div>
+                {% endif %}
+        </div>
+        {% comment %} <div>
+            <ul class="logout-ul" type="none">
+                <li class="nav-item dropdown">
+                    <a class="nav-link " href="./profilepage.html" id="navbarDropdown">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+                </li>
+            </ul>
+        </div> {% endcomment %}
+        <div>
 
-    <h2>Experiences:</h2>
-    <ul id="experiencesList">
-        {% for experience in experiences %}
-            <li>{{ experience.position }} at {{ experience.company }} ({{ experience.start_date }} - {% if experience.end_date %}{{ experience.end_date }}{% else %}Present{% endif %}) - <a href="{% url 'delete_experience' experience.id %}">Delete</a></li>
-            <p>{{ experience.description }}</p>
-        {% endfor %}
-    </ul>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg  container-fluid container-1 sticky-top nav-mob">
+        <div class="container">
+            <a class="navbar-brand brand-logo-a" href="#"><img class="brand-logo"
+                    src="./assets/images/AGEIS-LOGO.png"></a>
+            <div class="nav-width">
+                <ul class="navbar-nav navbar-nav-1">
+                    <li class="nav-item">
+                        <a class="nav-link btn-hello " id="chat-with-us">
+                            Chat with Us</a>
+                    </li>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Function to handle dynamic addition of forms
-            function addForm(formId, listId) {
-                const form = document.getElementById(formId);
-                const list = document.getElementById(listId);
-    
-                form.addEventListener('submit', function (event) {
-                    event.preventDefault();
-    
-                    // Create a new list item for the submitted data
-                    const listItem = document.createElement('li');
-                    listItem.innerHTML = event.target[0].value + ' - <a href="#">Delete</a>';
-                    list.appendChild(listItem);
-    
-                    // Clear the form input
-                    event.target[0].value = '';
-    
-                    // Additional logic to handle form submission using AJAX to your Django views
-                    // ...
-    
-                    // Note: This example assumes the form submission will be handled via Django views
-                });
-            }
-    
-            // Call the function for each form
-            addForm('addSkillForm', 'skillsList');
-            addForm('addQualificationForm', 'qualificationsList');
-            addForm('addExperienceForm', 'experiencesList');
-        });
-    </script>
-    
+                    <li class="nav-item">
+                        <a class="nav-link log-color" href="{% url 'ageis_app:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item toogle-icon-div">
+                        <a href="#" class="toogle-icon-a"><i class="bi bi-card-text toogle-icon"></i></a>
+                    </li>
+                </ul>
+                <div class="chat-box" id="chat-box-mob">
+                    <div class="chat-box-head">
+
+                        <img class="logo-chat-box-1" src="./assets/images/Agies-logo.png">
+
+                        <h4 class="chat-h4">Chat with Ageis</h4>
+                        <div id="close-btn-mob"><i class="bi bi-x-square chat-close"></i></div>
+                    </div>
+                    <div class="chat-box-middle">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="chat">
+                                        <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-box-footer">
+                        <input type="text" class="form-control w-75" id="chat-input-mob" placeholder="Chat with me">
+                        <div id="send-it-mob"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="toogle-div">
+                <div class="close-icon-div">
+                    <a href="#" class="close-icon-a"><i class="bi bi-x-circle close-icon"></i></a>
+                </div>
+                <div>
+                    <ul type="none">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="jobs.html">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="clients.html">Clients</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item dropdown-link" href="resumewriting.html">Resume Writing</a>
+                                </li>
+                                <li><a class="dropdown-item dropdown-link" href="interviewtips.html">Interview Tips</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">
+                                Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="profile-page container mt-5">
+        <div class="section-1">
+            <div class="prfl-detail">
+                <div class="profile-img-div">
+                    {% if user.profile_photo %}
+                     <img src="{{ user.profile_photo.url }}" class="profile-img" id="prfl-pic">
+                    {% else %}
+                    <img src="{% static 'images/default_profile.jpg' %}" class="profile-img" id="prfl-pic">
+                    {% endif %}
+                </div>
+                <div class="prfl-name-detail">
+                    <h3 class="prfl-detail-h3"><span class="first-name-class me-3" id="prfl-firstname">{{user.user.first_name}} {{user.user.last_name}}</span><span
+
+                    <div class="experience-key">
+                        <h4 class="prfl-detail-h4" id="prfl-position">{{user.position}}</h4>
+                        <h5 class="prfl-detail-h5"><a href="#" class="text-dark"
+                                id="prfl-company">{{user.comapany_univercity}}</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-btn-div">
+                <a class="btn btn-danger edit-prfl-btn" id="edit-prfl-btn"><i
+                        class="bi bi-pencil-square me-2"></i>Edit</a>
+            </div>
+
+            <div class="form-div" id="name-update">
+                <div class="close-btn" id="close-btn">
+                    <a href="" class="btn btn-danger"><i class="bi bi-x"></i></a>
+                </div>
+                <div class="input-elements">
+                    <form method="post" action="{% url 'ageis_app:profile_update' %}" id="user-edit-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-pic">Please upload new profile pic</span>
+                        <input type="text" name="pic" class="form-control form-control-update" id="pic"
+                            placeholder="Upload your new profile pic"value="Click to change your profile photo">
+                    </div>
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-frst-name">Please enter your first name</span>
+                        <input type="text"  name="firstname" class="form-control form-control-update" id="firstname"
+                            placeholder="Enter your first name" value="{{ users.first_name}}">
+                    </div>
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-last-name">Please enter your last name</span>
+                        <input type="text" name="lastname" class="form-control form-control-update" id="lastname"
+                            placeholder="Enter your last name" value="{{ users.last_name}}">
+                    </div>
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-position">Please enter your position</span>
+                        <input type="text"  name="position" class="form-control form-control-update" id="current-position"
+                            placeholder="Current position" value="{{ user.position}}">
+                    </div>
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-company">Please enter your
+                            comapany/univercity</span>
+                        <input type="text" name="company" class="form-control form-control-update" id="current-company"
+                            placeholder="Current company/university" value="{{ user.comapany_univercity}}">
+                    </div>
+                    <div class="update-btn-div">
+                        <button type="submit" class="update-btn btn btn-danger" id="update-btn-name">Update</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="prfl-contact-info mt-5">
+            <div class="prfl-edit-btn">
+                <h3 class="prfl-contact-h3">Contact info</h3>
+                <div class="edit-btn-div">
+                    <a class="btn btn-danger edit-prfl-btn" id="edit-contact-btn"><i
+                            class="bi bi-pencil-square me-2"></i>Edit</a>
+                </div>
+            </div>
+            <div class="prfl-contact-mob-email">
+                
+                <div class="prfl-contact-mob">
+                    <h6><span class="contact-email"><i
+                                class="bi bi-telephone-outbound me-2 text-danger"></i></span><span
+                            class="contact-mob-num" id="prfl-number">{{user.phone}}</span></h6>
+                </div>
+                <div class="prfl-contact-mob">
+                    <h6><span class="contact-email"><i class="bi bi-geo-alt me-2 text-danger"></i></span><span
+                            class="contact-mob-num" id="prfl-location">{{user.location}}</span></h6>
+                </div>
+                <div class="prfl-contact-email">
+                    <h6><span class="contact-email "><i class="bi bi-envelope me-2 text-danger"></i></span><span
+                            class="contact-mob-email" id="prfl-email">{{user.user.email}}</span></h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-div" id="contact-update">
+
+            <div class="close-btn" id="contact-close-btn">
+                <a href="" class="btn btn-danger"><i class="bi bi-x"></i></a>
+            </div>
+            <div class="input-elements">
+                <form method="post" action="{% url 'ageis_app:contact_update' %}" id="user-edit-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="input-div">
+                    <span class="error-text" id="error-notification-number">please enter your phnone number</span>
+                    <input type="number" name="number" class="form-control form-control-update" id="number"
+                        placeholder="Enter your number" required value="{{ user.phone}}">
+                </div>
+                <div class="input-div">
+                    <span class="error-text" id="error-notification-location">Please enter your location</span>
+                    <input type="text"  name="location" class="form-control form-control-update" id="location"
+                        placeholder="Enter your location" required value="{{ user.location}}">
+                </div>
+                <div class="input-div">
+                    <span class="error-text" id="error-notification-email">Please enter your Email</span>
+                    <input type="email" name="email"class="form-control form-control-update" id="email"
+                        placeholder="Enter your email" required value="{{ user.user.email}}">
+                </div>
+                <div class="update-btn-div">
+                    <button type="submit" class="update-btn btn btn-danger" id="update-btn-name">Update</button>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <div class="prfl-contact-info mt-5">
+            <div class="prfl-edit-btn">
+                <h3 class="prfl-contact-h3">Education</h3>
+                <div class="edit-btn-div" id="prfl-add-btn">
+                    <a class="btn btn-danger edit-prfl-btn"><i class="bi bi-pencil-square me-2"></i>Add</a>
+                </div>
+            </div>
+            <div class="prfl-education container" id="append">
+                {% for qualification in qualifications %}
+                <div class="row row-edu eachrow">
+                    <h2 class="education-header"12 col-xl-3 col-lg-3 col-md-12 col-sm-12id="prfl-header">{{ qualification.degree }}</h2>
+                    <div class="col-12 col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                        <div class="post-graduation">
+                            <h5 class="univercity-h5" id="prfl-univercity">{{ qualification.institution }}</h5>
+                        </div>
+                    </div>
+                    {% comment %} <div class="col-12 col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                        <div class="post-graduation">
+                            <h5 class="branch-h5" id="prfl-branch">Material Testing</h5>
+                        </div>
+                    </div> {% endcomment %}
+                    <div class="col-12 col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                        <div class="post-graduation">
+                            <h5 class="cgpa-h5" id="prfl-year">{{ qualification.completion_year }}</h5></h5>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                        {% comment %} <div class="post-graduation education-edit-btn">
+                            <h5 class="cgpa-h5"><i class="bi bi-pencil-square me-2"></i></h5>
+                        </div> {% endcomment %}
+                        <div class="post-graduation">
+                            <h5 class="cgpa-h5 education-delete-btn" id=""><a href="{% url 'ageis_app:delete_qualification' qualification.id %}">
+                                <i class="bi bi-trash me-2"></i>
+                            </a></h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="form-div" id="education-update">
+            <div class="close-btn" id="education-close-btn">
+                <a href="" class="btn btn-danger"><i class="bi bi-x"></i></a>
+            </div>
+            <div class="input-elements">
+                <form method="post" action="{% url 'ageis_app:add_qualification' %}" id="user-edit-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="input-div">
+                    <span class="error-text" id="error-notification-qualification">please enter your
+                        Qualifiaction</span>
+                    <input type="text" name="qulification" class="form-control form-control-update"  id="qulification"
+                        placeholder="Enter your Qualification" required>
+                </div>
+                <div class="input-div">
+                    <span class="error-text" id="error-notification-university">Please enter your University</span>
+                    <input type="text" name="university" class="form-control form-control-update" id="university"
+                        placeholder="Enter your University" required>
+                </div>
+                <div class="input-div">
+                    <span class="error-text" id="error-notification-percentage">Please enter Passout Yea</span>
+                    <input type="text" name="year" class="form-control form-control-update" id="year"
+                        placeholder="Enter Passout Year" required>
+                </div>
+                <div class="update-btn-div">
+                    <button type="submit" class="update-btn btn btn-danger" id="update-btn-name">Submit</button>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <div class="prfl-contact-info mt-5">
+            <div class="prfl-edit-btn">
+                <h3 class="prfl-contact-h3">Skills</h3>
+                <div class="edit-btn-div" id="skill-edit-btn">
+                    <a class="btn btn-danger edit-prfl-btn"><i class="bi bi-pencil-square me-2"></i>Add</a>
+                </div>
+            </div>
+            {% if skills %}
+            <div class="prfl-education container">
+                <ul id="linkList">
+                    {% for skill in skills%}
+                    <li class="link" id="skill-list">{{skill.skill}}<a href="{% url 'ageis_app:delete_skill' skill.id %}" class="delete"><i
+                                class="bi bi-trash3 ms-3"></i></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="form-div" id="skill-update">
+                <div class="close-btn" id="skill-close-btn">
+                    <a href="" class="btn btn-danger"><i class="bi bi-x"></i></a>
+                </div>
+                <div class="input-elements">
+                    <form method="post" action="{% url 'ageis_app:add_skill' %}" id="user-edit-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-skill">please add your Skills</span>
+                        <input type="text" name='skill' class="form-control form-control-update skill-input" id="skill"
+                            placeholder="Enter your Skills" required>
+                    </div>
+                    <div class="update-btn-div">
+                        <button type="submit" class="update-btn btn btn-danger" id="update-btn-name">Update</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+
+            <div class="prfl-contact-info mt-5">
+                <div class="prfl-edit-btn">
+                    <h3 class="prfl-contact-h3">Experience</h3>
+                    <div class="edit-btn-div" id="experience-add">
+                        <a class="btn btn-danger edit-prfl-btn"><i class="bi bi-pencil-square me-2"></i>Add</a>
+                    </div>
+                </div>
+                <div class="prfl-education container">
+                    {% for experience in experiences %}
+                    <div class="row row-edu">
+                        <div class="col-12 col-xl-2 col-md-12 col-sm-12 col-lg-2">
+                            <div class="post-graduation">
+                                <h5 class="univercity-h5">{{experience.company}}</h5>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-2 col-md-12 col-sm-12 col-lg-2">
+                            <div class="post-graduation">
+                                <h5 class="branch-h5">{{experience.position}}</h5>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-3 col-sm-12 col-lg-3 col-md-12">
+                            <div class="post-graduation">
+                                <h5 class="cgpa-h5"><span class="strt-date">{{experience.start_date}}</span><span
+                                        class="strt-date">-<span class="strt-date">{{experience.end_date}}</span></span></h5>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-3 col-sm-12 col-lg-3 col-md-12">
+                            <div class="post-graduation">
+                                <p class="cgpa-p">{{experience.description}}</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-2 col-md-12 col-sm-12 col-lg-2">
+                            <div class="post-edit-btn">
+                                <p class="cgpa-p">
+                                    <a href="{% url 'ageis_app:delete_experience' experience.id %}"><i class="bi bi-trash3"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-div" id="experience-update">
+                <div class="close-btn" id="experience-close-btn">
+                    <a href="" class="btn btn-danger"><i class="bi bi-x"></i></a>
+                </div>
+                <div class="input-elements">
+                    <form method="post" action="{% url 'ageis_app:add_experience' %}" id="user-edit-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-com-name">Please enter Compnay name </span>
+                        <input type="text" name = 'experience-com'class="form-control form-control-update" id="experience-com"
+                            placeholder="Enter experienced company name" required>
+                    </div>
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-position">Please enter your position</span>
+                        <input type="text" name = 'experience-position' class="form-control form-control-update" id="experience-position"
+                            placeholder="Enter your position" required>
+                    </div>
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-start-date">Please enter your start date</span>
+                        <input type="text" name = 'experience-start-date' class="form-control form-control-update" id="experience-start-date"
+                            placeholder="Enter your experience start date" required>
+                    </div>
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-end-date">Please enter your end date</span>
+                        <input type="text" name = 'experience-end-date' class="form-control form-control-update" id="experience-end-date"
+                            placeholder="Enter your end date" required>
+                    </div>
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-com-detail">Please enter your experience
+                            details</span>
+                        <input type="text" name = 'experience-details' class="form-control form-control-update" id="experience-details"
+                            placeholder="Enter your details" required>
+                    </div>
+                    <div class="update-btn-div">
+                        <button type="submit" class="update-btn btn btn-danger" id="update-btn-name">Update</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+
+            <div class="prfl-contact-info mt-5">
+                <div class="prfl-edit-btn">
+                    <h3 class="prfl-contact-h3">Resume</h3>
+                    <div class="edit-btn-div" id="resume-add">
+                        <a class="btn btn-danger edit-prfl-btn"><i class="bi bi-pencil-square me-2"></i>Change</a>
+                    </div>
+                </div>
+                <div class="prfl-education container">
+                    <div class="resume-img-div">
+                        <embed src="{{user.cv.url}}" type="application/pdf" class="resume-img"/>
+                        
+                        <p>It appears you don't have a PDF plugin for this browser. You can <a href="{{ user.cv.url }}">download the PDF file</a>.</p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+            <div class="form-div" id="resume-update">
+                <div class="close-btn" id="resume-close-btn">
+                    <a href="" class="btn btn-danger"><i class="bi bi-x"></i></a>
+                </div>
+                <div class="input-elements">
+                    <form method="post" action="{% url 'ageis_app:change_resume' %}" id="user-edit-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <div class="input-div">
+                        <span class="error-text" id="error-notification-resume">Please add resume</span>
+                        <input type="text" name ="resume" class="form-control form-control-update skill-input" id="resume"
+                            placeholder="upload your resume" required>
+                    </div>
+                    <div class="update-btn-div">
+                        <button type="submit" class="update-btn btn btn-danger" id="update-btn-name">Update</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+
+            {% comment %} <div class="edit-btn-div logout mb-5">
+                <a class="btn btn-danger edit-prfl-btn" href="./change-password.html" ><i class="bi bi-pencil-square me-2"></i>Change password</a>
+            </div> {% endcomment %}
+            <div class="edit-btn-div logout">
+                <a class="btn btn-danger edit-prfl-btn" href="{% url 'ageis_app:logout' %}" ><i class="bi bi-pencil-square me-2"></i>log out</a>
+            </div>
+        </div>
+        </div>
+        <footer class="footer-area pt-100 pb-70 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a  href="{% url 'ageis_app:index' %}">
+                                    <img class="logo-footer" src="{% static 'assets/images/AGEIS-LOGO.png'  %}"></a> []
+                                </a>
+                            </div>
+                            <p class="text-dark brand-quoete text-center"><i>We make Recruitment enjoyable,
+                                    efficient,enagaging! Let’s create
+                                    “Success Together"</i></p>
+                            <div class="footer-social">
+                                <a href="#" target="_blank"><i class="bx bxl-facebook footer-social-icon-face"></i></a>
+                                <a href="#" target="_blank"><i
+                                        class="bx bxl-instagram footer-social-icon-insta "></i></a>
+                                <a href="#" target="_blank"><i
+                                        class="bx bxl-linkedin footer-social-icon-linked"></i></a>
+                                <a href="https://wa.link/sws14o" target="_blank"><i
+                                        class="bx bxl-whatsapp footer-social-icon-whatsapp "></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
+                        <div class="footer-widget pl-60">
+                            <h3 class="text-dark">For Candidate</h3>
+                            <ul>
+                                <li>
+                                    <a href="job-grid.html">
+                                        <a class="text-dark" href="{% url 'ageis_app:resume_writing' %}">
+                                            <i class="bx bx-chevrons-right bx-tada"></i>
+                                            Resume writing
+                                        </a>
+                                </li>
+
+
+                                <li>
+                                    <a class="text-dark" href="{% url 'ageis_app:interviewtips' %}">
+                                        <i class="bx bx-chevrons-right bx-tada"></i>
+                                        Interview Tips
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
+                        <div class="footer-widget pl-60">
+                            <h3 class="text-dark">Quick Links</h3>
+                            <ul>
+                                <li>
+                                    <a class="text-dark" href="{% url 'ageis_app:index' %}">
+                                        <i class="bx bx-chevrons-right bx-tada"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="text-dark" href="{% url 'ageis_app:about_us' %}">
+                                        <i class="bx bx-chevrons-right bx-tada"></i>
+                                        About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="text-dark" href="{% url 'ageis_app:jobs_frontend' %}">
+                                        <i class="bx bx-chevrons-right bx-tada"></i>
+                                        Jobs
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="text-dark" href="{% url 'ageis_app:clients' %}">
+                                        <i class="bx bx-chevrons-right bx-tada"></i>
+                                        Clients
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="text-dark" href="{% url 'ageis_app:contact_us' %}">
+                                        <i class="bx bx-chevrons-right bx-tada"></i>
+                                        Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
+                        <div class="footer-widget footer-info">
+                            <h3 class="text-dark">Information</h3>
+                            <ul>
+                                <li>
+                                    <span class="text-dark contact-detail"><i class="bx bxs-phone"></i>Phone:</span><a
+                                        class="text-dark contact-detail" href="tel:+91918848686147">+91 88 48 68 61
+                                        47</a><br>
+                                    <a class="text-dark contact-detail" href="tel:+919346738016">+91 93 46 73 80 16</a>
+                                </li>
+                                <li>
+                                    <span class="text-dark contact-detail"><i
+                                            class='bx bxs-envelope'></i>Email:</span><a class="text-dark contact-detail"
+                                        href="mailto:info@agiesrecruitment.online">info@agiesrecruitment.online</a>
+                                </li>
+
+                                <li>
+                                    <span class="text-dark contact-detail">
+                                        <i class="bx bx-location-plus"></i>
+                                        Address:
+                                    </span>
+                                    <ul>
+                                        <li class="text-dark contact-detail">
+                                            23/351,West Fort
+                                        </li>
+                                        <li class="text-dark contact-detail">
+                                            Mavelikara, Alapuzha
+                                        </li>
+                                        <li class="ps-0 text-dark contact-detail">
+                                            Kerala, India- 690101
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="copyright-text text-center">
+            <div class="footer-2">
+                <div class="footer-section-2">
+                    <a class="footer-sec2-a" href="{% url 'ageis_app:disclaimer' %}">Disclaimer</a>
+                    <span>|</span>
+                    <a class="footer-sec2-a" href="{% url 'ageis_app:terms' %}">Terms and Conditions</a>
+                    <span>|</span>
+                    <a class="footer-sec2-a" href="{% url 'ageis_app:faq' %}">FAQ</a>
+                    <span>|</span>
+                    <a class="footer-sec2-a" href="{% url 'ageis_app:privacy' %}">Privacy and policy</a>
+                </div>
+            </div>
+            <p>Copyright © is Proudly Owned by <a href="https://a2zalphabetsolutionz.com/" class="copyright-text-a"
+                    target="_blank">A2Z Alphabet Solutionz PVT.LTD</a></p>
+        </div>
+        <div class="top-btn">
+            <i class="bx bx-chevrons-up bx-fade-up"></i>
+        </div>
+
+        <script data-cfasync="false"
+            src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+        <script src=" {% static 'assets/js/jquery.min.js' %}"></script>
+        <script src=" {% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+        <script src=" {% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+        <script src=" {% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+        <script src=" {% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+        <script src=" {% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+
+        <script src=" {% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+        <script src=" {% static 'assets/js/form-validator.min.js' %}"></script>
+
+        <script src=" {% static 'assets/js/contact-form-script.js' %}"></script>
+
+        <script src=" {% static 'assets/js/meanmenu.js' %}"></script>
+        <script src=" {% static 'assets/js/custom.js' %}"></script>
+        <script src=" {% static 'assets/js/home.js' %}"></script>
+        <script src=" {% static 'assets/js/profile.js' %}"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".close-btn").click(function () {
+                    $("#chat-box").hide();
+                    // $(".btn-whatsapp").show();
+                })
+                $(".btn-hello").click(function () {
+                    // $(".btn-whatsapp").hide();
+                    $("#chat-box").show();
+                })
+            })
+        </script>
+        <script>
+            $(document).ready(function () {
+                // Select all the link elements
+                var allLinks = $('#linkList li');
+
+                // Create rows by wrapping each set of five links in a new <ul>
+                for (var i = 0; i < allLinks.length; i += 6) {
+                    allLinks.slice(i, i + 6).wrapAll('<ul class="link-row"></ul>');
+                }
+            });
+
+
+
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".toogle-icon-a").click(function () {
+                    $(".toogle-icon").hide();
+                    $(".toogle-div").animate({ right: "0px" });
+                })
+                $(".close-icon-a").click(function () {
+                    $(".toogle-icon").show();
+                    $(".toogle-div").animate({ right: "-300px" });
+                })
+            })
+        </script>
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from ageis_app.models import *
@@ -868,15 +868,17 @@ def render_privacy(request):
 
 
 def user_profile(request):
-    # Assuming the user is logged in
+
     if request.user.is_authenticated:
-        user = request.user.extenedusermodel  # Assuming there is a typo in your attribute name
+        users = request.user
+        user = request.user.extenedusermodel  
         skills = user.skills.all()
         qualifications = user.qualifications.all()
         experiences = user.experiences.all()
         
         context = {
-            'user': user,
+            'users': users,
+            'user':user,
             'skills': skills,
             'qualifications': qualifications,
             'experiences': experiences,
@@ -884,7 +886,7 @@ def user_profile(request):
         
         return render(request, 'user_profile.html', context)
     else:
-        # Handle the case when the user is not authenticated, redirect or show an error message
+      
         return render(request, 'error.html', {'message': 'User not authenticated'})
     
 
@@ -941,10 +943,174 @@ def add_experience(request):
     else:
         form = ExperienceForm()
 
-    return render(request, 'add_experience.html', {'form': form})
+    return redirect('ageis_app:user_profile')
 
 def delete_experience(request, experience_id):
     experience = get_object_or_404(Experience, id=experience_id)
     experience.delete()
     messages.success(request, 'Experience deleted successfully.')
     return redirect('user_profile')
+
+
+@login_required
+def profile_update(request):
+    user_profile = ExtendedUserModel.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        # Extract data from the POST request
+        new_first_name = request.POST.get('firstname', '')
+        new_last_name = request.POST.get('lastname', '')
+        new_position = request.POST.get('position', '')
+        new_company_university = request.POST.get('company', '')
+
+        #Update the user details in the ExtendedUserModel instance
+        user_profile.user.first_name = new_first_name
+        user_profile.user.last_name = new_last_name
+        user_profile.position = new_position
+        user_profile.comapany_univercity = new_company_university
+
+        profile_photo = request.FILES.get('pic')
+        if profile_photo:
+            user_profile.profile_photo = profile_photo
+
+        # Save the changes
+        user_profile.user.save()
+        user_profile.save()
+        return redirect('ageis_app:user_profile')
+    else:
+        form = ExtendedUserModelForm(instance=user_profile)
+
+    return render(request, 'user_profile.html', {'form': form})
+
+@login_required
+def contact_update(request):
+    user_profile = ExtendedUserModel.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        # Extract data from the POST request
+        new_phone = request.POST.get('number', '')
+        new_email = request.POST.get('email', '')
+        new_location = request.POST.get('location', '')
+        
+
+        #Update the user details in the ExtendedUserModel instance
+        user_profile.user.email = new_email
+        user_profile.phone = new_phone
+        user_profile.location = new_location
+
+        # Save the changes
+        user_profile.user.save()
+        user_profile.save()
+
+        return redirect('ageis_app:user_profile')
+    else:
+        form = ExtendedUserModelForm(instance=user_profile)
+
+    return render(request, 'user_profile.html', {'form': form})
+
+
+def delete_qualification_view(request, qualification_id):
+    qualification = get_object_or_404(Qualification, id=qualification_id)
+
+    # Check if the qualification belongs to the current user (for security)
+    if qualification.user.user == request.user:
+        qualification.delete()
+
+    return redirect('ageis_app:user_profile')
+
+def add_qualification_view(request):
+    user_profile = ExtendedUserModel.objects.get(user=request.user) 
+          
+    if request.method == 'POST':
+        completion_year = request.POST.get('year', '')
+        institution = request.POST.get('university', '')
+        degree = request.POST.get('qulification', '')
+
+
+        if not all([degree, institution, completion_year]):
+                return HttpResponseBadRequest("Invalid data submitted.")
+        
+        new_qualification = Qualification.objects.create(
+                    user=request.user.extenedusermodel,
+                    degree=degree,
+                    institution=institution,
+                    completion_year=completion_year
+                )
+    else:
+        form = ExtendedUserModelForm(instance=user_profile)
+
+    return redirect('ageis_app:user_profile')
+
+def delete_skill_view(request, skill_id):
+    skill = get_object_or_404(Skills, id=skill_id)
+    if skill.user.user == request.user:
+        skill.delete()
+    return redirect('ageis_app:user_profile')
+
+def add_skill(request):
+    user_profile = ExtendedUserModel.objects.get(user=request.user) 
+          
+    if request.method == 'POST':
+        skill = request.POST.get('skill', '')
+
+
+
+        if not skill:
+                return HttpResponseBadRequest("Invalid data submitted.")
+        
+        new_qualification = Skills.objects.create(
+                    user=request.user.extenedusermodel,
+                    skill=skill,
+                )
+    else:
+        form = ExtendedUserModelForm(instance=user_profile)
+
+    return redirect('ageis_app:user_profile')
+
+from datetime import datetime  # Import the datetime module
+
+def add_experience_view(request):
+    if request.method == 'POST':
+        # Extract data from the POST request
+        company = request.POST.get('experience-com')
+        position = request.POST.get('experience-position')
+        start_date_str = request.POST.get('experience-start-date')
+        end_date_str = request.POST.get('experience-end-date')
+        details = request.POST.get('experience-details')
+
+        # Validate the data (add your own validation logic as needed)
+        if not all([company, position, start_date_str, details]):
+            # Handle validation error as needed
+            return render(request, 'error_template.html', {'error_message': 'Invalid data submitted'})
+
+        # Convert date strings to datetime objects
+        start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+        end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date() if end_date_str else None
+
+        # Create a new experience and associate it with the current user
+        new_experience = Experience.objects.create(
+            user=request.user.extenedusermodel,
+            company=company,
+            position=position,
+            start_date=start_date,
+            end_date=end_date,
+            description=details
+        )
+        return redirect('ageis_app:user_profile')
+
+    return redirect('ageis_app:user_profile')
+
+def change_resume_view(request):
+    if request.method == 'POST' and 'resume' in request.FILES:
+        user_profile = ExtendedUserModel.objects.get(user=request.user)
+        user_profile.cv = request.FILES['resume']
+        user_profile.save()
+        return redirect('ageis_app:user_profile')
+    return render(request, 'change_resume.html')
+
+
+def delete_experience_view(request, experience_id):
+    experience = get_object_or_404(Experience, id=experience_id)
+    if experience.user.user == request.user:
+        experience.delete()
+    return redirect('ageis_app:user_profile')

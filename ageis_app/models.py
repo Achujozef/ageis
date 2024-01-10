@@ -10,7 +10,9 @@ class ExtendedUserModel(models.Model):
     cv = models.FileField(upload_to='CV',blank=True,null=True)
     #####################################
     location = models.CharField(max_length=255, blank=True, null=True)
-
+    position = models.CharField(max_length=255, blank=True, null=True)
+    comapany_univercity = models.CharField(max_length=255, blank=True, null=True)
+    profile_photo = models.ImageField(upload_to='profile_photos', blank=True, null=True)
 
 class Skills(models.Model):
     user = models.ForeignKey(ExtendedUserModel, on_delete=models.CASCADE, related_name='skills')

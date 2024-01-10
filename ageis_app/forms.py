@@ -149,3 +149,8 @@ class ExperienceForm(forms.ModelForm):
     class Meta:
         model = Experience
         fields = ['company', 'position', 'start_date', 'end_date', 'description']
+
+class ExtendedUserModelForm(forms.ModelForm):
+    class Meta:
+        model = ExtendedUserModel
+        fields = ['location', 'position', 'comapany_univercity', 'profile_photo']
