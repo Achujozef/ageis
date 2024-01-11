@@ -207,7 +207,7 @@
                       <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                     <div class="card-header">
                                       <div class="container">
                                            <div class="row">
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -374,6 +374,7 @@
                                           <th>last name</th>
                                           <th>Email</th>
                                           <th>Phone</th>
+                                          <th>Location</th>
                                           <th>Resume</th>
                                         </tr>
                                         </thead>
@@ -385,6 +386,7 @@
                                           <td>{{i.user.last_name}}</td>
                                           <td>{{i.user.email}}</td>
                                           <td>{{i.phone}}</td>
+                                          <td>{{i.location}}</td>
                                           <td><a href="{{i.cv.url}}" download>Download Resume</a></td>
                                         </tr>
                                         {% endfor%}
@@ -398,6 +400,7 @@
                                                 <th>last name</th>
                                                 <th>Email</th>
                                                 <th>Phone</th>
+                                                <th>Location</th>
                                                 <th>Resume</th>
                                               </tr>                                       </tfoot>
                                       </table>
