@@ -770,9 +770,9 @@ margin-top: 5%;
                     {% for i in testimonial %}
                   <div class=" carousel-item {% if forloop.first %} active {% endif %}" >
                    <div class="testimonial-img-div">
-                    {{if i.customer_img}}
+                    {%if i.customer_img.url%}
                     <img src="{{i.customer_img.url}}" class="testimonial-img">
-                    {{ endif }}
+                    {% endif %%}
                    </div>
                    <div class="text-center">
                     <h3>{{i.customer_name}}</h3>

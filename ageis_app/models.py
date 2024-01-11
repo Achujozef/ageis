@@ -81,7 +81,9 @@ class Country(models.Model):
         return self.name
 
     name = models.CharField(max_length=100,blank=True,null=True)
-
+    
+    class Meta:
+            db_table = 'ageis_app_country'
     
     
 class State(models.Model):

@@ -374,6 +374,7 @@
                                           <th>Phone</th>
                                           <th>Applied job</th>
                                           <th>Resume</th>
+                                          <th>Location</th>
                                           <th>Action</th>
                                         </tr>
                                         </thead>
@@ -385,6 +386,7 @@
                                           <td>{{i.applied_user.phone}}</td>
                                           <td>{{i.applied_job.job_title}}</td>
                                           <td><a href="{{i.applied_user.cv.url}}" download>Download Resume</a></td>
+                                          <td>{{i.location}}</td>
                                           <td><a href="{% url 'ageis_app:applied_jobs_delete' i.id %}">Delete</a></td>
 
                                           
@@ -400,6 +402,7 @@
                                                 <th>Phone</th>
                                                 <th>Applied job</th>
                                                 <th>Resume</th>
+                                                <th>Location</th>
                                                 <th>Action</th>
                                               </tr>                                      </tfoot>
                                       </table>
