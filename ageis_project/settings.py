@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3ea1=h^%g&zr1wp*q9nc+lgx*yjiu=zu!vd!)w6s)249&#y+yt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','192.168.29.247']
+ALLOWED_HOSTS = ['*','ageisrecruitment.online','45.130.229.250','localhost','agies.a2zserver.in']
 
 # Application definition
 
@@ -74,22 +74,17 @@ WSGI_APPLICATION = 'ageis_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME':'agies_crm_db',
-#         'USER':'root',
-#         'PASSWORD':'',
-#         'HOST':'localhost'
-#     }
-# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME':'agies_db_crm',
+        'USER':'agiesroot',
+        'PASSWORD':'123',
+        'HOST':'localhost',
+        'PORT': '',
     }
 }
-
 
 
 
@@ -131,7 +126,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/Agies/ageis/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

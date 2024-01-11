@@ -17,15 +17,15 @@ def index(request):
     jobs = Jobs.objects.all().order_by('job_post_date')[:4]
     job_category  = JobCategories.objects.all()
     testimonial = Testimonials.objects.all()
-    development_count = Jobs.objects.filter(job_category__id = 10).count()
-    accounting_finance_count = Jobs.objects.filter(job_category__id = 4).count()
-    internship_count = Jobs.objects.filter(job_category__id = 5).count()
-    automotive_count = Jobs.objects.filter(job_category__id = 6).count()
-    marketing_count = Jobs.objects.filter(job_category__id = 9).count()
-    human_resource_count = Jobs.objects.filter(job_category__id = 2).count()
-    customer_service_count = Jobs.objects.filter(job_category__id = 7).count()
+    development_count = Jobs.objects.filter(job_category__id = 7).count()
+    accounting_finance_count = Jobs.objects.filter(job_category__id = 1).count()
+    internship_count = Jobs.objects.filter(job_category__id = 2).count()
+    automotive_count = Jobs.objects.filter(job_category__id = 3).count()
+    marketing_count = Jobs.objects.filter(job_category__id = 4).count()
+    human_resource_count = Jobs.objects.filter(job_category__id = 5).count()
+    customer_service_count = Jobs.objects.filter(job_category__id = 6).count()
     project_management_count = Jobs.objects.filter(job_category__id = 8).count()
-    design_count = Jobs.objects.filter(job_category__id = 11).count()
+    design_count = Jobs.objects.filter(job_category__id = 9).count()
 
 
 
