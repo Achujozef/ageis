@@ -52,6 +52,7 @@
 
 </head>
 <body>
+    <div class="bg-div">
     {% comment %} <div class="full-div">
         <div class="container">
             <div class="frm-login">
@@ -80,7 +81,7 @@
                     {% csrf_token %}
                     <input type="text" name="username_or_email" class="form-control form-control-1 w-50" id="formGroupExampleInput" placeholder="Enter your email">
                     <div class="password-icon-div">
-                        <input type="password" name="password" class="form-control form-control-1 w-50 form-pass-icon" id="password" placeholder="Enter your password">
+                        <input type="password" name="password" class="form-control form-control-1 w-50 form-passed-icon" id="password" placeholder="Enter your password">
                         <div  class="password-icon">
                             <i class="bi bi-eye-fill " id="open-eye"></i>
                             <i class="bi bi-eye-slash-fill" id="close-eye"></i>
@@ -141,6 +142,6 @@ swal("{{message}}",'','error')
     </script>
 
     <script src="{% static 'assets/js/home.js' %}"></script>
-
+</div>
 </body>
 </html>

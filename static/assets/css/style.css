@@ -1,10 +1,11 @@
 @import "https://fonts.googleapis.com/css?family=Catamaran:400,600|IBM+Plex+Sans:400,500,500i,600,700&amp;display=swap";
 body {
   font-size:17px;
-  font-family:ibm plex sans,
-  sans-serif;
   color:#707070;
   line-height:1.6
+}
+.back-video{
+  filter:brightness(70%) ;
 }
 img {
   max-width:100%
@@ -21,9 +22,10 @@ a:focus {
   text-decoration:none
 }
 p {
-  font-size:17px;
+  font-size:medium;
   color:#707070;
-  line-height:1.8
+  line-height:1.8;
+  font-family: 'Poppins',sans-serif !important;
 }
 button {
   -webkit-box-shadow:none;
@@ -360,13 +362,15 @@ h3 {
 }
 .category-card {
   text-align:center;
-  padding:2px 5px;
-  -webkit-box-shadow:0 10px 30px rgba(0,0,0,.07);
-  box-shadow:0 1px 5px 10px rgba(0,0,0,.07);
+  padding:8px 5px;
+  /* -webkit-box-shadow:0 10px 30px rgba(0,0,0,.07);
+  box-shadow:0 1px 5px 10px rgba(0,0,0,.07); */
   margin-bottom:10px;
-  border:1px solid transparent;
+  margin-top: 10px;
+  border:1px solid #00000015;
   -webkit-transition:.5s;
-  transition:.5s
+  transition:.5s;
+  border-radius: 10px;
 }
 .category-card i {
   font-size:50px;
@@ -376,21 +380,24 @@ h3 {
   line-height:1
 }
 .category-card h3 {
+  margin-top: 4px;
   margin-bottom:10px
 }
 .category- {
   margin-bottom:0
 }
 .category-card:hover {
-  margin-top:-5px
+  background-color: #f4de1a62;
+  
 }
 .job-card {
- box-shadow: 0px 5px 3px 2px rgba(0, 0, 0, 0.096);
   padding:20px;
   -webkit-transition:.5s;
   transition:.5s;
   margin-bottom:30px;
-  background:#f89aab70;
+  background-color:#fff !important;
+  border: 1px solid #00000015 !important;
+  border-radius: 10px;
  width: 90%;
 }
 .job-card .thumb-img {
@@ -484,9 +491,7 @@ h3 {
   font-size:18px
 }
 .job-card:hover {
-  -webkit-box-shadow:0 10px 30px rgba(0,0,0,.07);
-  box-shadow:none;
-
+  box-shadow: #00000028 2px 8px 6px 0px;
 }
 .use-section {
   background-image:url(../img/section-bg/1.jpg);
@@ -659,7 +664,7 @@ h3 {
   font-weight:700
 }
 .counter-area .counter-text p {
-  color:#b41a37;
+  color:#C20606;
   font-weight:500;
   font-size:15px
 }
@@ -1306,7 +1311,8 @@ h3 {
 .find-form .form-group ::-webkit-input-placeholder {
   font-size:14px;
   font-weight:500;
-  color:#8e8d8d
+  color:#8e8d8d;
+  font-family: 'Poppins',sans-serif;
 }
 .find-form .form-group :-ms-input-placeholder {
   font-size:14px;
@@ -1328,14 +1334,15 @@ h3 {
   top:18px;
   right:15px;
   font-size:22px;
-  color:#9b9b9b
+  color:#9b9b9b;
 }
 .find-form .nice-select {
   height:60px;
   border-radius:10px;
   padding:5px 20px 10px;
   border:1px solid #ced4da;
-  width:100%
+  width:100%; 
+  font-family: 'Poppins',sans-serif !important;
 }
 .find-form .nice-select::after {
   right:20px;
@@ -1508,7 +1515,7 @@ h3 {
   background: rgba(253, 248, 201, 0.8);
 }
 .counter-section .counter-text i {
-  color:#c10101;
+  color:#C20606;
   font-size:60px
 }
 .counter-section .counter-text h2 {
@@ -2127,7 +2134,7 @@ h3 {
   left:50%;
   top:0
 }
-.page-title .lines .line::after {
+/* .page-title .lines .line::after {
   position:absolute;
   content:'';
   width:100%;
@@ -2139,7 +2146,7 @@ h3 {
   margin:auto;
   -webkit-animation:line 6s infinite cubic-bezier(0,1.11,1,1);
   animation:line 6s infinite cubic-bezier(0,1.11,1,1)
-}
+} */
 .page-title .lines :nth-child(1) {
   margin-left:25%
 }
@@ -3513,10 +3520,11 @@ h3 {
   padding:12px 30px;
   -webkit-transition:.8s;
   transition:.8s;
-  border-radius:5px
+  border-radius:5px;
+  outline: none ;
 }
 .contact-area form .contact-btn:hover {
-  background:#c10101
+  background:#B51B39;
 }
 .contact-area form .list-unstyled {
   font-size:16px;

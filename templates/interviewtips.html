@@ -49,6 +49,17 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
         integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+
+     <!-- Google Fonts Questral -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+     <!-- Google Fonts Poppins -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+         rel="stylesheet">
+     <!-- Google Fonts Kumbh Sans -->
+     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -73,7 +84,262 @@
             </div>
         </div>
     </div>
+
     <nav-2>
+        <div class="full-nav">
+            <div class="container div-container">
+                <!-- <div class="nav-phn"> -->
+                <!-- <a class="phn-a" href="tel:+91918848686147"><i class="bi bi-telephone-outbound-fill nav-social-call"></i>+91918848686147</a> -->
+                <!-- </div> -->
+                <div class="nav-mail-comb">
+                    <div class="nav-mail">
+                        <!-- <a class="email-a" href="mailto:info@agiesrecruitment.online"><i class="bi bi-envelope-at-fill nav-social-email"></i>info@agiesrecruitment.online</a> -->
+                        <p class="nav-welcome-text">Welcome to Ageis: Empowering Talent, Enhancing Companies. Step into
+                            excellence with us.</p>
+
+                    </div>
+                    <!-- <div class="nav-social">
+                    <ul class="nav-social-ul" type="none">
+                        <li class="nav-social-name"><a  class="nav-social-a" href="https://wa.link/sws14o"><i class="bi bi-whatsapp nav-social-whats"></i></a></li>
+                        <li class="nav-social-name"><a  class="nav-social-a" href=""><i class="bi bi-instagram nav-social-insta"></i></a></li>
+                        <li class="nav-social-name"><a  class="nav-social-a" href=""><i class="bi bi-linkedin nav-social-linked"></i></a></li>
+                        <li class="nav-social-name"><a  class="nav-social-a" href=""><i class="bi bi-facebook nav-social-face"></i></a></li>
+                    </ul>
+                </div> -->
+                </div>
+            </div>
+        </div>
+    </nav-2>
+    <nav class="navbar navbar-expand-lg  container-fluid container-1 sticky-top nav-lg">
+        <div class="container">
+            <a class="navbar-brand brand-logo-a" href="#"><img class="brand-logo"
+                    src="{% static 'assets/images/AGEIS-LOGO.png'  %}"></a>
+            <div class="nav-bar-align">
+
+            </div>
+            <div class="collapse navbar-collapse div-ul-nav" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ageis_app:index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:about_us' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:jobs_frontend' %}">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:clients' %}">Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:user_profile' %}">My Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        {% comment %} <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a> {% endcomment %}
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
+                            Contact Us</a>
+                    </li>
+                </ul>
+                <div class="chat-box" id="chat-box">
+                    <div class="chat-box-head">
+
+                        <img class="logo-chat-box-1" src="{% static 'assets/images/Agies-logo.png' %}">
+
+                        <h4 class="chat-h4">Chat with Ageis</h4>
+                        <div id="close-btn"><i class="bi bi-x-square chat-close"></i></div>
+                    </div>
+                    <div class="chat-box-middle">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="chat">
+                                        <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-box-footer">
+                        <input type="text" class="form-control w-75" id="chat-input" placeholder="Chat with me">
+                        <div id="send-it"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
+                    </div>
+                    <div>
+                    </div>
+
+
+                </div>
+                <a class=" btn-hello " id="chatwithus">
+                    <div class="chat-toggle-container">
+                        <img class="chat toggle-icon" src="../static/assets/images/chatboxred.png" alt="">
+                    </div>
+                </a>
+                {% if not user.is_authenticated %}
+                <div class="nav-item">
+                    <a class="nav-link log-color" href="{% url 'ageis_app:login' %}">Login</a>
+                </div>
+                {% else %}
+                <div>
+                    <ul class="logout-ul" type="none">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                            {% if user.is_authenticated and not user.is_superuser %}
+                            <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item">{{user.username}}</a></li>
+                                {%if user.extenedusermodel.phone%}
+                                <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item ">{{user.email}}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
+                            </ul>
+                            {% else %}
+                            <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
+                            </ul>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    {% endif %}
+
+                </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg  container-fluid container-1 sticky-top nav-mob">
+        <div class="container">
+            <a class="navbar-brand brand-logo-a" href="#"><img class="brand-logo"
+                    src="{% static 'assets/images/AGEIS-LOGO.png'  %}"></a>
+            <div class="nav-width">
+                <ul class="navbar-nav navbar-nav-1">
+                    <li class="nav-item">
+                        <a class="nav-link btn-hello " id="chat-with-us">
+                            Chat with Us</a>
+                    </li>
+                    <li class="nav-item">
+                        {% if not user.is_authenticated %}
+                        <div class="nav-item">
+                            <a class="nav-link log-color" href="{% url 'ageis_app:login' %}">Login</a>
+                        </div>
+                        {% else %}
+                        <div>
+                            <ul class="logout-ul" type="none">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link " href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-circle"></i>
+                                    </a>
+                                    {% if user.is_authenticated and not user.is_superuser %}
+                                    <ul class="dropdown-menu dropdown-bg drop-log-bg" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item">{{user.username}}</a></li>
+                                        <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
+                                        <li><a class="dropdown-item ">{{user.email}}</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a>
+                                        </li>
+                                    </ul>
+                                    {% else %}
+                                    <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a>
+                                        </li>
+                                    </ul>
+                                    {% endif %}
+                                </li>
+
+
+
+                            </ul>
+                        </div>
+                        <div>
+                            {% endif %}
+                    </li>
+                    <li class="nav-item toogle-icon-div">
+                        <a href="#" class="toogle-icon-a"><i class="bi bi-card-text toogle-icon"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="chat-box" id="chat-box-mob">
+                <div class="chat-box-head">
+
+                    <img class="logo-chat-box-1" src="{% static 'assets/images/Agies-logo.png' %}">
+
+                    <h4 class="chat-h4">Chat with Ageis</h4>
+                    <div id="close-btn-mob"><i class="bi bi-x-square chat-close"></i></div>
+                </div>
+                <div class="chat-box-middle">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="chat">
+                                    <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-box-footer">
+                    <input type="text" class="form-control w-75" id="chat-input-mob" placeholder="Chat with me">
+                    <div id="send-it-mob"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="toogle-div">
+            <div class="close-icon-div">
+                <a href="#" class="close-icon-a"><i class="bi bi-x-circle close-icon"></i></a>
+            </div>
+            <div>
+                <ul type="none">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ageis_app:index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:about_us' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:jobs_frontend' %}">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:clients' %}">Clients</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
+                        </ul>
+                    </li>
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
+                            Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <!-- <nav-2>
         <div class="full-nav">
           <div class="container div-container">
             <div class="nav-phn">
@@ -316,9 +582,14 @@
                 </div>
               </div>
         </div>
-    </nav>
+    </nav> -->
 
-    <section class="page-title title-bg18 banner-bg-9">
+    <section class="page-title title-bg18">
+        <div class="home-video-bg">
+            <video autoplay loop muted plays-inline class="back-video">
+                <source src="{% static 'assets/bg-video/InterviewTips.mp4' %}" type="video/mp4">
+            </video>
+        </div>
         <div class="d-table">
             <div class="d-table-cell">
                 <h2 class="img-h2">Interview Tips, Personality Development & Grooming</h2>
@@ -362,8 +633,9 @@
             </div>
         </div>
         <div class="container">
+            <div class="about-interview">
             <h2 class="text-center mt-5">What is an Interview?</h2>
-            <p class="text-justify">An interview is typically a conversation between a job applicant and a representative of the employer.
+            <p class="text-justify" id="paragraph">An interview is typically a conversation between a job applicant and a representative of the employer.
                 This is generally conducted to assess the qualities of the applicant to make sure that he/she is
                 suitable for that particular job role.
                 Here it is very important to note that an interview doesn’t only help the employer find a suitable
@@ -371,7 +643,9 @@
                 qualifications. Therefore, every organization makes a crucial decision of hiring a candidate by the way
                 of an interview.
             </p>
-            <h5 class="text-center mt-4">Types of Interviews</h5>
+        </div>
+        <div>
+            <h5 class="text-center mt-4" id="interview-types">Types of Interviews</h5>
             <div class="row interview-row">
                 <div class="col-md-3 col-lg-3 col-xl-3 col-xxl-3 col-sm-3">
                     <div class="ft-modal" id="interview-type-1">
@@ -449,6 +723,7 @@
                 
 
             </div>
+        </div>
             <div class="row interview-row">
                 <div class="col-md-3 col-lg-3 col-xl-3 col-xxl-3 col-sm-3">
                     <div class="ft-modal" id="interview-type-5">

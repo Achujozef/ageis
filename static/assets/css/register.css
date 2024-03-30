@@ -3,12 +3,20 @@
     border-radius: 10px;
     width: 41%;
     text-align: center;
-    background-color: rgba(88, 85, 85, 0.192);
-}
+    background-color: transparent;
+    }
+    body{
+        background-color: #FFFBFC;
+       }
 .frm-logo{
     width: 27%;
     text-align: center;
     margin-top: 10%;
+}
+.bg-div {
+    background-image: url('../images/bgone.jpg');
+    background-size: cover;
+    margin-top: -50px;
 }
 .form-control-1{
     margin-top: 5%;
