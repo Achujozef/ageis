@@ -89,7 +89,7 @@
     <nav class="navbar navbar-expand-lg  container-fluid container-1 sticky-top nav-lg">
         <div class="container">
             <a class="navbar-brand brand-logo-a" href="#"><img class="brand-logo"
-                src="{% static 'assets/images/AGEIS-LOGO.png'  %}"></a>
+                    src="{% static 'assets/images/AGEIS-LOGO.png'  %}"></a>
             <div class="nav-bar-align">
 
             </div>
@@ -116,91 +116,86 @@
                             Services
                         </a>
                         <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item dropdown-link" href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
-                            <li><a class="dropdown-item dropdown-link" href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
                         </ul>
                     </li>
+                    <!-- <li class="nav-item">
+                        {% comment %} <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a> {% endcomment %}
+                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">
+                        <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
                             Contact Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-hello " id="chatwithus">
-                            Chat with Us</a>
-                    </li>
                 </ul>
-            </div>
-            <div class="chat-box" id="chat-box">
-                <div class="chat-box-head">
+                <div class="chat-box" id="chat-box">
+                    <div class="chat-box-head">
 
-                    <img class="logo-chat-box-1" src="./assets/images/Agies-logo.png">
+                        <img class="logo-chat-box-1" src="{% static 'assets/images/Agies-logo.png' %}">
 
-                    <h4 class="chat-h4">Chat with Ageis</h4>
-                    <div id="close-btn"><i class="bi bi-x-square chat-close"></i></div>
-                </div>
-                <div class="chat-box-middle">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="chat">
-                                    <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
+                        <h4 class="chat-h4">Chat with Ageis</h4>
+                        <div id="close-btn"><i class="bi bi-x-square chat-close"></i></div>
+                    </div>
+                    <div class="chat-box-middle">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="chat">
+                                        <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="chat-box-footer">
-                    <input type="text" class="form-control w-75" id="chat-input" placeholder="Chat with me">
-                    <div id="send-it"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="nav-item">
-            {% if not user.user.is_authenticated %}
-            <div class="nav-item">
-                <a class="nav-link log-color" href="{% url 'ageis_app:login' %}">Login</a>
-            </div>
-            {% else %}
-            <div>
-                <ul class="logout-ul" type="none">
-                   <li class="nav-item dropdown">
-                       <a class="nav-link " href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                           <i class="bi bi-person-circle"></i>
-                       </a>
-                       {% if user.is_authenticated and not user.is_superuser %}
-                       <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
-                           <li><a class="dropdown-item">{{user.username}}</a></li>
-                           {%if user.extenedusermodel.phone%}
-                           <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
-                           {% endif %}
-                           <li><a class="dropdown-item ">{{user.email}}</a></li>
-                           <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
-                       </ul>
-                       
-                        {% endif %}
-                   </li>
-               </ul>
-               </div>
-            <div>
-                {% endif %}
-        </div>
-        {% comment %} <div>
-            <ul class="logout-ul" type="none">
-                <li class="nav-item dropdown">
-                    <a class="nav-link " href="./profilepage.html" id="navbarDropdown">
-                        <i class="bi bi-person-circle"></i>
-                    </a>
-                </li>
-            </ul>
-        </div> {% endcomment %}
-        <div>
+                    <div class="chat-box-footer">
+                        <input type="text" class="form-control w-75" id="chat-input" placeholder="Chat with me">
+                        <div id="send-it"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
+                    </div>
+                    <div>
+                    </div>
 
-        </div>
+
+                </div>
+                <a class=" btn-hello " id="chatwithus">
+                    <div class="chat-toggle-container">
+                        <img class="chat toggle-icon" src="../static/assets/images/chatboxred.png" alt="">
+                    </div>
+                </a>
+                {% if not user.is_authenticated %}
+                <div class="nav-item">
+                    <a class="nav-link log-color" href="{% url 'ageis_app:login' %}">Login</a>
+                </div>
+                {% else %}
+                <div>
+                    <ul class="logout-ul" type="none">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                            {% if user.is_authenticated and not user.is_superuser %}
+                            <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item">{{user.username}}</a></li>
+                                {%if user.extenedusermodel.phone%}
+                                <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item ">{{user.email}}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
+                            </ul>
+                            {% else %}
+                            <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
+                            </ul>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    {% endif %}
+
+                </div>
     </nav>
     <nav class="navbar navbar-expand-lg  container-fluid container-1 sticky-top nav-mob">
         <div class="container">

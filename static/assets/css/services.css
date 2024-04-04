@@ -56,6 +56,7 @@ margin-bottom: 20px;
  .collapse-link:hover{
   color: #b51b3a !important;
   font-weight: 700;
+  letter-spacing: 2px;
  }
  #paragraph{
   margin-top: 25px;
@@ -74,8 +75,9 @@ margin-bottom: 20px;
     
  }
  .resume-collapse-a:hover{
-   color: white;
-   background-color: rgb(192, 39, 39); 
+   color: #C10101;
+   letter-spacing: 2px;
+   font-weight: 700;
  }
  .resume-collapse-p{
     margin-top: 3%;

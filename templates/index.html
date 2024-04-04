@@ -41,6 +41,10 @@
 
     <link rel="stylesheet" href="{% static 'assets/css/bg-img.css' %}">
 
+    <link rel="stylesheet" href="{% static 'assets/css/swiper/swiper-bundle.min.css' %}"> 
+
+   
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
@@ -166,7 +170,7 @@
         </div>
     </div>
     <div class="home-video-bg">
-        <video autoplay loop muted plays-inline class="back-video">
+        <video autoplay loop muted plays-inline class="back-video" id="bg-home-video">
             <source src="{% static 'assets/bg-video/home-page.mp4' %}" type="video/mp4">
         </video>
     </div>
@@ -234,9 +238,9 @@
                                     href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         {% comment %} <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a> {% endcomment %}
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
                             Contact Us</a>
@@ -536,7 +540,7 @@
             </div>
         </div>
     </div>
-    <section class="why-choose-two pb-70">
+    <section class="why-choose-two pb-70" id="wct">
         <div class="container">
             <div class="section-title text-center">
                 <h2 class="find-job">Find Jobs with 3 easy steps</h2>
@@ -738,25 +742,47 @@
             </div>
         </div>
     </section>
+
     <section class="company-section pt-100 pb-70">
         <div class="container ">
             <div class="section-title text-center">
                 <h2 class="top-com-h2">Top Companies</h2>
                 <p>"A Proven Track Record of Placement in Reputed Companies"</p>
             </div>
-            <div class="carousel-container-testimonial">
-                <div class="carousel" id="carousel1">
-                    {% for i in companies %}
-                    <div class="carousel-item-testimonial">
-                        <div class="text-center">
-                            <div class="carosel-img-div">
-                                <img src="{{i.company_logo.url}}" class="carosel-img">
+            <div>
+                <div id="myCarousel" class="carousel slide " data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+
+                            <div class="row">
+                                {% for i in companies %}
+                                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                                    <div class="card card-com" id="companycard">
+                                        <div class="company-img-div">
+                                            <img class=" companies-img" src="{{i.company_logo.url}}">
+                                        </div>
+                                        <div class="company-detail-div">
+                                            <h5 class="companies-h5">{{i.company_name}}</h5>
+                                            <p class="companies-p"><i class="bi bi-geo-alt"></i>{{i.address}}</p>
+                                            <!-- <a class="companies-a" href="">click me</a> -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div>
-                            <h3 class="companies-h5">{{i.company_name}}</h3>
-                            <p class="companies-p">{{i.address}}</p>
+
                         </div>
                     </div>
-                    {% endfor %}
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only text-dark"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only text-dark"></span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -796,107 +822,43 @@
             </div>
         </div>
     </div>
-    <div class="testimonial-style-two ptb-100">
-        <div class="container">
-            <h2 class="article-h2 mt-5">Testimonials</h2>
-            <p class="article-p1">Fresh job related news content posted each day.</p>
-            <div id="carouselExampleFade" class="carousel slide carousel-fade">
-                <div class="carousel-inner">
-                    {% for i in testimonial %}
-                    <div class=" carousel-item {% if forloop.first %} active {% endif %}">
-                        <div class="testimonial-img-div">
-                            {%if i.customer_img.url%}
-                            <img src="{{i.customer_img.url}}" class="testimonial-img">
-                            {% endif %}
-                        </div>
-                        <div class="text-center">
-                            <h3>{{i.customer_name}}</h3>
-                            <h4>{{i.company_name}}</h4>
-                            <div class="testimonial-review-div">
-                                <p class="testimonial-review">
-                                    {{i.reviews}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
 
-                    {% comment %} <div class="carousel-item">
-                        <div class="testimonial-img-div">
-                            <img src="./img/mision1.jpeg" class="testimonial-img">
-                        </div>
-                        <div class="text-center">
-                            <h3>Name 2</h3>
-                            <h4>Company name 2</h4>
-                            <div class="testimonial-review-div">
-                                <p class="testimonial-review">In publishing and graphic design, Lorem ipsum is a
-                                    placeholder text commonly used to demonstrate the visual form of a document or a
-                                    typeface without relying on meaningful content. Lorem ipsum may be used as a
-                                    placeholder before final copy is available.
-                                    In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
-                                    demonstrate the visual form of a document or a typeface without relying on
-                                    meaningful content. Lorem ipsum may be used as a placeholder before final copy is
-                                    available.
-                                    In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
-                                    demonstrate the visual form of a document or a typeface without relying on
-                                    meaningful content. Lorem ipsum may be used as a placeholder before final copy is
-                                    available.
-                                    In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
-                                    demonstrate the visual form of a document or a typeface without relying on
-                                    meaningful content. Lorem ipsum may be used as a placeholder before final copy is
-                                    available.
-                                </p>
-                            </div>
-                        </div>
-                    </div> {% endcomment %}
-                    {% comment %} <div class="carousel-item">
-                        <div class="testimonial-img-div">
-                            <img src="./img/Internship-certificate.jpg" class="testimonial-img">
-                        </div>
-                        <div class="text-center">
-                            <h3>Name 3</h3>
-                            <h4>Company name 3</h4>
-                            <div class="testimonial-review-div">
-                                <p class="testimonial-review">In publishing and graphic design, Lorem ipsum is a
-                                    placeholder text commonly used to demonstrate the visual form of a document or a
-                                    typeface without relying on meaningful content. Lorem ipsum may be used as a
-                                    placeholder before final copy is available.
-                                    In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
-                                    demonstrate the visual form of a document or a typeface without relying on
-                                    meaningful content. Lorem ipsum may be used as a placeholder before final copy is
-                                    available.
-                                    In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
-                                    demonstrate the visual form of a document or a typeface without relying on
-                                    meaningful content. Lorem ipsum may be used as a placeholder before final copy is
-                                    available.
-                                    In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
-                                    demonstrate the visual form of a document or a typeface without relying on
-                                    meaningful content. Lorem ipsum may be used as a placeholder before final copy is
-                                    available.
-                                </p>
-                            </div>
-                        </div>
-                    </div> {% endcomment %}
 
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true">
-                        <div class="icon-div"><i class="bi bi-caret-left-fill arrow-icon"></i></div>
-                    </span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true">
-                        <div class="icon-div"><i class="bi bi-caret-right-fill arrow-icon"></i></div>
-                    </span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+<section class="company-section pt-100 pb-70">
+        <div class="section-title text-center">
+            <h2 class="top-com-h2">What Clients Say About Us</h2>
+            <p>"Our Satisfied Customers."</p>
         </div>
-    </div>
-
+        <div>
+            <div class="slide-container swiper">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                                          
+                        {% for i in testimonial %}
+                        <div class="card swiper-slide">
+                            <div class="profile-img">
+                                {%if i.customer_img.url%}
+                              <img class="client-image" src="{{i.customer_img.url}}" alt="Client 1">
+                              {% endif %}
+                            </div>
+                            <div class="testimonial-text">
+                              <h3>{{i.customer_name}}</h3>
+                              <p class="company-title">{{i.company_name}}</p>
+                              <p>- {{i.reviews}}</p>
+                            </div>
+                          </div>
+                        {% endfor %}          
+                       
+                    </div>
+                </div>
+            
+                <div class="swiper-button-next swiper-navBtn"></div>
+                <div class="swiper-button-prev swiper-navBtn"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+        </div>
+</section>
     <section>
         <div class="mb-5">
             <h2 class="text-center mt-5 mb-3">Jobs in city</h2>
@@ -1311,5 +1273,9 @@
         });
     </script>
 </body>
+ <!-- Swiper JS -->
+ <script src="/static/assets/js/swiper-bundle.min.js"></script>
 
+ <!-- JavaScript -->
+ <script src="/static/assets/js/scriptss.js"></script>
 </html>

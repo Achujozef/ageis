@@ -389,9 +389,9 @@
                                     href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         {% comment %} <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a> {% endcomment %}
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
                             Contact Us</a>
@@ -665,18 +665,19 @@
             <img src="{% static 'images/gst-png.png' %}" class="contact-img">
             <img src="{% static 'assets/images/ministry-logo.jpg' %}" class="contact-img">
         </div>
-        <div class="contact-img-div-2" id="letconnectus">
-            <a href="#" class="contact-social-icon-fa"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="contact-social-icon-in"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="contact-social-icon-lin"><i class="bi bi-linkedin"></i></a>
-            <a href="https://wa.link/sws14o" class="contact-social-icon-what"><i class="bi bi-whatsapp"></i></a>
-        </div>
+       
     </section>
 
     <section class="contact-form-section pb-100" >
         <div class="container">
             <div class="contact-area">
                 <h3 class="connect-h3">Let's Connect With Us</h3>
+                <div class="contact-img-div-2" id="letconnectus">
+                    <a href="#" class="contact-social-icon-fa"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="contact-social-icon-in"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="contact-social-icon-lin"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://wa.link/sws14o" class="contact-social-icon-what"><i class="bi bi-whatsapp"></i></a>
+                </div>
                 <form action="{% url 'ageis_app:contact_us' %}" id="contactForm" method = 'post'>
                     {% csrf_token %}
                     <div class="row">

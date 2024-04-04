@@ -52,8 +52,8 @@
     <link rel="icon" type="image/png" href="{% static 'assets/img/Agies-logo-favi.ico' %}">
 </head>
 
-<body>
-    <div class="bg-div">
+<body class="bg-div">
+    <div>
     <div class="full-div reg-div">
         <div class="container">
             <div class="back-home"><a class="back-home-a" href="{% url 'ageis_app:index' %}"><i
@@ -160,7 +160,7 @@
                                     <button type="submit" class="btn btn-danger form-control-btn w-50">Register</button>
                                 </div>
                            
-                        
+                         <div class="register-div">Already have an Account?<a class="reg-a" href="{% url 'ageis_app:login' %}"> Login </a></div>
 
 
                     </form>

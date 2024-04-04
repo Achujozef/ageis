@@ -68,6 +68,10 @@
       padding-bottom: 7px;
       margin-left: -15%;
       margin-top: 1px;
+      position: relative;
+      bottom: 30px;
+      left: 110px;
+
     }
     .form-pass-icon-reset{
       display: inline;
@@ -422,8 +426,9 @@
   @media screen and (max-width: 450px) and (min-width: 400px) {
     .password-icon{
         font-size: small;
-        margin-left: -8%;
-      
+        margin-left: -17%;
+        padding-top: 10px;
+        top: -25px;  
     }
     .form-control-1{
       font-size: x-small;
@@ -455,7 +460,7 @@
         }
         .password-icon-reg{
           font-size: smaller;
-          margin-left: -11%;
+          margin-left: 10%;
         }
   }
   @media screen and (max-width: 400px) and (min-width: 350px) {

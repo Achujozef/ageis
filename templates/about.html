@@ -164,9 +164,9 @@
                                     href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         {% comment %} <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a> {% endcomment %}
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
                             Contact Us</a>
@@ -518,163 +518,178 @@
     </div>
 
 
-    <div class="testimonial-style-two ptb-100">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>What Client’s Say About Us</h2>
-                <p>"Get the job of your dreams today so that you live your dream tomorrow"</p>
-            </div>
-            <div class="row">
-                <div class="testimonial-slider-two owl-carousel owl-theme">
-                    {% for i in about_us %}
-                    <div class="testimonial-items">
-                        <div class="testimonial-text">
-                            <i class="flaticon-left-quotes-sign"></i>
-                            <p>
-                                {{i.review}}
-                            </p>
-                        </div>
-                        <div class="testimonial-info-text">
-                            <h3>{{i.company}}</h3>
-                        </div>
+    <section class="company-section pt-100 pb-70">
+        <div class="section-title text-center">
+            <h2 class="top-com-h2">What Clients Say About Us</h2>
+            <p>"Our Satisfied Customers."</p>
+        </div>
+        <div>
+            <div class="slide-container swiper">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                                          
+                        {% for i in testimonial %}
+                        <div class="card swiper-slide">
+                            <div class="profile-img">
+                                {%if i.customer_img.url%}
+                              <img class="client-image" src="{{i.customer_img.url}}" alt="Client 1">
+                              {% endif %}
+                            </div>
+                            <div class="testimonial-text">
+                              <h3>{{i.customer_name}}</h3>
+                              <p class="company-title">{{i.company_name}}</p>
+                              <p>- {{i.reviews}}</p>
+                            </div>
+                          </div>
+                        {% endfor %}          
+                       
                     </div>
-                    {% endfor %}
+                </div>
+            
+                <div class="swiper-button-next swiper-navBtn"></div>
+                <div class="swiper-button-prev swiper-navBtn"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+        </div>
+</section>
+
+<footer class="footer-area pt-100 pb-70 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
+                <div class="footer-widget">
+                    <div class="footer-logo">
+                        <a href="{% url 'ageis_app:index' %}">
+                            <img class="logo-footer" src="{% static 'assets/images/Agies-logo.png' %}" alt="logo">
+                        </a>
+                    </div>
+                    <p class="text-dark brand-quoete text-center"><i>We make Recruitment enjoyable,
+                            efficient,enagaging! Let’s create
+                            “Success Together"</i></p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="bx bxl-facebook footer-social-icon-face"></i></a>
+                        <a href="#" target="_blank"><i class="bx bxl-instagram footer-social-icon-insta "></i></a>
+                        <a href="#" target="_blank"><i class="bx bxl-linkedin footer-social-icon-linked"></i></a>
+                        <a href="https://wa.link/sws14o" target="_blank"><i
+                                class="bx bxl-whatsapp footer-social-icon-whatsapp "></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
+                <div class="footer-widget pl-60">
+                    <h3 class="text-dark">For Candidate</h3>
+                    <ul>
+                        <li>
+                            <a href="job-grid.html">
+                                <a class="text-dark" href="{% url 'ageis_app:resume_writing' %}">
+                                    <i class="bx bx-chevrons-right bx-tada"></i>
+                                    Resume writing
+                                </a>
+                        </li>
+                        <!-- <li>
+                            <a class="text-dark" href="internship.html">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                Internship
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="Aboardstudy.html">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                Aboard study
+                            </a>
+                        </li> -->
+                        <li>
+                            <a class="text-dark" href="{% url 'ageis_app:interviewtips' %}">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                Interview Tips
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
+                <div class="footer-widget pl-60">
+                    <h3 class="text-dark">Quick Links</h3>
+                    <ul>
+                        <li>
+                            <a class="text-dark" href="{% url 'ageis_app:index' %}">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{% url 'ageis_app:about_us' %}">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{% url 'ageis_app:jobs_frontend' %}">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                Jobs
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{% url 'ageis_app:clients' %}">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                Clients
+                            </a>
+                        </li>
+                        {% comment %} <li>
+                            <a class="text-dark" href="{% url 'ageis_app:blogs' %}">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                Blog
+                            </a>
+                        </li> {% endcomment %}
+                        <li>
+                            <a class="text-dark" href="{% url 'ageis_app:contact_us' %}">
+                                <i class="bx bx-chevrons-right bx-tada"></i>
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
+                <div class="footer-widget footer-info">
+                    <h3 class="text-dark">Information</h3>
+                    <ul>
+                        <li>
+                            <span class="text-dark contact-detail"><i class="bx bxs-phone"></i>Phone:</span><a
+                                class="text-dark contact-detail" href="tel:+91918848686147">+91 88 48 68 61
+                                47</a><br>
+                            <a class="text-dark contact-detail" href="tel:+919346738016">+91 93 46 73 80 16</a>
+                        </li>
+                        <li>
+                            <span class="text-dark contact-detail"><i class='bx bxs-envelope'></i>Email:</span><a
+                                class="text-dark contact-detail"
+                                href="mailto:info@agiesrecruitment.online">info@agiesrecruitment.online</a>
+                        </li>
+
+                        <li>
+                            <span class="text-dark contact-detail">
+                                <i class="bx bx-location-plus"></i>
+                                Address:
+                            </span>
+                            <ul>
+                                <li class="text-dark contact-detail">
+                                    23/351,West Fort
+                                </li>
+                                <li class="text-dark contact-detail">
+                                    Mavelikara, Alapuzha
+                                </li>
+                                <li class="ps-0 text-dark contact-detail">
+                                    Kerala, India- 690101
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <footer class="footer-area pt-100 pb-70 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
-                    <div class="footer-widget">
-                        <div class="footer-logo">
-                            <a href="{% url 'ageis_app:index' %}">
-                                <img class="logo-footer" src="{% static 'assets/images/Agies-logo.png' %}" alt="logo">
-                            </a>
-                        </div>
-                        <p class="text-dark brand-quoete text-center"><i>We make Recruitment enjoyable, efficient,enagaging! Let’s create
-                            “Success Together"</i></p>
-                            <div class="footer-social">
-                                <a href="#" target="_blank"><i class="bx bxl-facebook footer-social-icon-face"></i></a>
-                                <a href="#" target="_blank"><i class="bx bxl-instagram footer-social-icon-insta "></i></a>
-                                <a href="#" target="_blank"><i class="bx bxl-linkedin footer-social-icon-linked"></i></a>
-                                <a href="https://wa.link/sws14o" target="_blank"><i
-                                        class="bx bxl-whatsapp footer-social-icon-whatsapp "></i></a>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
-                    <div class="footer-widget pl-60">
-                        <h3 class="text-dark">For Candidate</h3>
-                        <ul>
-                            <li>
-                                <a href="job-grid.html">
-                                    <a class="text-dark" href="{% url 'ageis_app:resume_writing' %}">
-                                        <i class="bx bx-chevrons-right bx-tada"></i>
-                                        Resume writing
-                                    </a>
-                            </li>
-                            <!-- <li>
-                                <a class="text-dark" href="internship.html">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    Internship
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-dark" href="Aboardstudy.html">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    Aboard study
-                                </a>
-                            </li> -->
-                            <li>
-                                <a class="text-dark" href="{% url 'ageis_app:interviewtips' %}">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    Interview Tips
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
-                    <div class="footer-widget pl-60">
-                        <h3 class="text-dark">Quick Links</h3>
-                        <ul>
-                            <li>
-                                <a class="text-dark" href="{% url 'ageis_app:index' %}">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-dark" href="{% url 'ageis_app:about_us' %}">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    About Us
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-dark" href="{% url 'ageis_app:jobs_frontend' %}">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    Jobs
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-dark" href="{% url 'ageis_app:clients' %}">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    Clients
-                                </a>
-                            </li>
-                            {% comment %} <li>
-                                <a class="text-dark" href="{% url 'ageis_app:blogs' %}">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    Blog
-                                </a>
-                            </li> {% endcomment %}
-                            <li>
-                                <a class="text-dark" href="{% url 'ageis_app:contact_us' %}">
-                                    <i class="bx bx-chevrons-right bx-tada"></i>
-                                    Contact Us
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
-                    <div class="footer-widget footer-info">
-                        <h3 class="text-dark">Information</h3>
-                        <ul>
-                            <li>
-                                <span class="text-dark contact-detail"><i class="bx bxs-phone"></i>Phone:</span><a class="text-dark contact-detail" href="tel:+91918848686147">+91  88 48 68 61 47</a><br>
-                                <a class="text-dark contact-detail" href="tel:+919346738016">+91 93 46 73 80 16</a>
-                            </li>
-                            <li>
-                                <span class="text-dark contact-detail"><i class='bx bxs-envelope'></i>Email:</span><a class="text-dark contact-detail" href="mailto:info@agiesrecruitment.online">info@agiesrecruitment.online</a>
-                            </li>
-                            
-                            <li>
-                                <span class="text-dark contact-detail">
-                                    <i class="bx bx-location-plus"></i>
-                                    Address:
-                                </span>
-                                <ul>
-                                    <li class="text-dark contact-detail">
-                                        23/351,West Fort
-                                    </li>
-                                    <li class="text-dark contact-detail">
-                                        Mavelikara, Alapuzha
-                                    </li>
-                                    <li class="ps-0 text-dark contact-detail">
-                                        Kerala, India- 690101
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+</footer>
     <div class="copyright-text text-center">
         <div class="footer-2">
             <div class="footer-section-2">

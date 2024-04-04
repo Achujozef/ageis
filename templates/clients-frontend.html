@@ -204,9 +204,9 @@ margin: auto;
                                     href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         {% comment %} <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a> {% endcomment %}
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
                             Contact Us</a>
@@ -648,27 +648,36 @@ margin: auto;
     <section class="company-section pt-100 pb-70">
         <div class="container">
             <div class="section-title text-center">
-                <h2>Our clients</h2>
+                <h2 class="top-com-h2">Our clients</h2>
                 <p>We trust in your ability because it is faith that moves mountains and not reason.</p>
             </div>
-            <div class="carousel-container-testimonial">
-                <div class="carousel" id="carousel1">
-                    {% for i in companies %}
-                    <div class="carousel-item-testimonial ">
-                      <div class="text-center">
-                        <div class="carosel-img-div">
-                          <img src="{{i.company_logo.url}}" class="carosel-img">
-                         </div>
-                         <h3 class="companies-h5">{{i.company_name}}</h3>
-                         <p class="companies-p">{{i.address}}</p>
-                      </div>
-                    </div>
-                    {% endfor %}
+            <div id="myCarousel" class="carousel slide " data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            {% for i in companies %}
+                            <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                                <div class="card card-com" id="companycard">
+                                    <div class="company-img-div">
+                                        <img class=" companies-img" src="{{i.company_logo.url}}">
+                                    </div>
+                                    <div class="company-detail-div">
+                                        <h5 class="companies-h5">{{i.company_name}}</h5>
+                                        <p class="companies-p"><i class="bi bi-geo-alt"></i>{{i.address}}</p>
+                                        <!-- <a class="companies-a" href="">click me</a> -->
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endfor %}
+                </div>
+            </div>
                 </div>
             </div>
         </div>
     </section>
 
+    
     <footer class="footer-area pt-100 pb-70 bg-light">
         <div class="container">
             <div class="row">
