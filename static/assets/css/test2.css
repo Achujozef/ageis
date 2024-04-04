@@ -1,8 +1,11 @@
 .resume-bg{
-    border: 1px solid grey;
+    border: 1px solid #00000015 !important;
     border-radius: 10px;
     padding:5%;
-    box-shadow:25px 20px 24px -28px black;
+}
+.resume-tips{
+  margin-top: 5px;
+  margin-bottom: 25px;
 }
 .resume-h2{
     text-align: left !important;
@@ -25,4 +28,9 @@
   }
   .job-winning-img{
     width: 25%;
+  }
+  .resume-built-tips{
+    background-color: #f4de1a50;
+    border-radius: 10px;
+    padding-top: 10px;
   }

@@ -41,6 +41,10 @@
 
     <link rel="stylesheet" href="{% static 'assets/css/bg-img.css' %}">
 
+    <link rel="stylesheet" href="{% static 'assets/css/swiper/swiper-bundle.min.css' %}"> 
+
+   
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
@@ -55,73 +59,92 @@
 
     <link rel="icon" type="image/png" href="{% static 'assets/img/Agies-logo-favi.ico' %}">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
-<style>
-    
-    /* Add your custom styles here */
-    .carousel-container-testimonial {
-        max-width: 800px;
-        margin: auto;
-    }
+    <!-- Google Fonts Questral -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <!-- Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Google Fonts Kumbh Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Google Fonts Suranna -->
+    <link href="https://fonts.googleapis.com/css2?family=Suranna&display=swap" rel="stylesheet">
+    <style>
+        /* Add your custom styles here */
+        .carousel-container-testimonial {
+            max-width: 800px;
+            margin: auto;
+        }
 
-    .carousel-item-testimonial {
-        text-align: center;
-        padding: 20px;
-        border: 1px solid #ddd;
-        margin-left: 1%;
-        height:60vh;
-    }
-    .carosel-img-div{
-    width: 100%;
-height: 100%;
-object-fit: cover;
-text-align: center;
-margin-bottom: 2%;
-margin-top: 5%;
+        .carousel-item-testimonial {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin-left: 1%;
+            height: 60vh;
+        }
 
-  }
-  .carosel-img{
-    width: 100px;
-    aspect-ratio: 2/1;
-margin: auto;
-  }
-  .testimonial-img-div{
-    width: 100%;
-height: 100%;
-object-fit: cover;
-text-align: center;
-margin-bottom: 2%;
-margin-top: 5%;
+        .carosel-img-div {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            text-align: center;
+            margin-bottom: 2%;
+            margin-top: 5%;
 
-  }
-  .testimonial-img{
-    width: 150px;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-  }
-  .testimonial-review-div{
-   background-color: rgb(212, 208, 208);
-   border-radius: 10px;
-   padding: 5%;
-   width: 50%;
-   margin: auto;
-   margin-bottom: 5%;
-  }
-  .testimonial-review{
-    font-size: smaller;
-  }
-  .arrow-icon{
-    font-size: 180%;
-  }
-  .icon-div{
-    background-color:grey;
-    border-radius: 50%;
-    height: 100%;
-    width: 200%;
-  }
-</style>
+        }
+
+        .carosel-img {
+            width: 100px;
+            aspect-ratio: 2/1;
+            margin: auto;
+        }
+
+        .testimonial-img-div {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            text-align: center;
+            margin-bottom: 2%;
+            margin-top: 5%;
+
+        }
+
+        .testimonial-img {
+            width: 150px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+        }
+
+        .testimonial-review-div {
+            background-color: rgb(212, 208, 208);
+            border-radius: 10px;
+            padding: 5%;
+            width: 50%;
+            margin: auto;
+            margin-bottom: 5%;
+        }
+
+        .testimonial-review {
+            font-size: smaller;
+        }
+
+        .arrow-icon {
+            font-size: 180%;
+        }
+
+        .icon-div {
+            background-color: grey;
+            border-radius: 50%;
+            height: 100%;
+            width: 200%;
+        }
+    </style>
 </head>
 
 <body>
@@ -147,35 +170,38 @@ margin-top: 5%;
         </div>
     </div>
     <div class="home-video-bg">
-        <video autoplay loop muted plays-inline class="back-video">
-            <source src="{% static 'assets/bg-video/home-bg(1).mp4' %}" type="video/mp4">
-         </video>
+        <video autoplay loop muted plays-inline class="back-video" id="bg-home-video">
+            <source src="{% static 'assets/bg-video/home-page.mp4' %}" type="video/mp4">
+        </video>
     </div>
 
-     
-    
+
+
     <nav-2>
         <div class="full-nav">
-          <div class="container div-container">
-            <div class="nav-phn">
-              <a class="phn-a" href="tel:+91918848686147"><i class="bi bi-telephone-outbound-fill nav-social-call"></i>+91918848686147</a>
-            </div>
-            <div class="nav-mail-comb">
-                <div class="nav-mail">
-                 <a class="email-a" href="mailto:info@agiesrecruitment.online"><i class="bi bi-envelope-at-fill nav-social-email"></i>info@agiesrecruitment.online</a>
-                </div>
-                <div class="nav-social">
+            <div class="container div-container">
+                <!-- <div class="nav-phn"> -->
+                <!-- <a class="phn-a" href="tel:+91918848686147"><i class="bi bi-telephone-outbound-fill nav-social-call"></i>+91918848686147</a> -->
+                <!-- </div> -->
+                <div class="nav-mail-comb">
+                    <div class="nav-mail">
+                        <!-- <a class="email-a" href="mailto:info@agiesrecruitment.online"><i class="bi bi-envelope-at-fill nav-social-email"></i>info@agiesrecruitment.online</a> -->
+                        <p class="nav-welcome-text">Welcome to Ageis: Empowering Talent, Enhancing Companies. Step into
+                            excellence with us.</p>
+
+                    </div>
+                    <!-- <div class="nav-social">
                     <ul class="nav-social-ul" type="none">
                         <li class="nav-social-name"><a  class="nav-social-a" href="https://wa.link/sws14o"><i class="bi bi-whatsapp nav-social-whats"></i></a></li>
                         <li class="nav-social-name"><a  class="nav-social-a" href=""><i class="bi bi-instagram nav-social-insta"></i></a></li>
                         <li class="nav-social-name"><a  class="nav-social-a" href=""><i class="bi bi-linkedin nav-social-linked"></i></a></li>
                         <li class="nav-social-name"><a  class="nav-social-a" href=""><i class="bi bi-facebook nav-social-face"></i></a></li>
                     </ul>
+                </div> -->
                 </div>
             </div>
-          </div>
         </div>
-     </nav-2>
+    </nav-2>
     <nav class="navbar navbar-expand-lg  container-fluid container-1 sticky-top nav-lg">
         <div class="container">
             <a class="navbar-brand brand-logo-a" href="#"><img class="brand-logo"
@@ -206,83 +232,86 @@ margin-top: 5%;
                             Services
                         </a>
                         <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item dropdown-link" href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
-                            <li><a class="dropdown-item dropdown-link" href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         {% comment %} <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a> {% endcomment %}
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
                             Contact Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a  class="nav-link btn-hello " id="chatwithus">
-                            Chat with Us</a>
-                    </li>
                 </ul>
                 <div class="chat-box" id="chat-box">
                     <div class="chat-box-head">
-                         
-                           <img  class="logo-chat-box-1" src="{% static 'assets/images/Agies-logo.png' %}">
-                       
-                         <h4 class="chat-h4">Chat with Ageis</h4>
-                         <div id="close-btn"><i class="bi bi-x-square chat-close"></i></div>
+
+                        <img class="logo-chat-box-1" src="{% static 'assets/images/Agies-logo.png' %}">
+
+                        <h4 class="chat-h4">Chat with Ageis</h4>
+                        <div id="close-btn"><i class="bi bi-x-square chat-close"></i></div>
                     </div>
                     <div class="chat-box-middle">
-                       <div class="container">
-                           <div class="row">
-                               <div class="col-6">
-                                   <div class="chat">
-                                       <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
-                                   </div>
-                               </div>
-                             </div>
-                       </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="chat">
+                                        <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="chat-box-footer">
-                       <input type="text" class="form-control w-75" id="chat-input" placeholder="Chat with me">
-                       <div id="send-it"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
-                   </div>
+                        <input type="text" class="form-control w-75" id="chat-input" placeholder="Chat with me">
+                        <div id="send-it"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
+                    </div>
+                    <div>
+                    </div>
+
+
+                </div>
+                <a class=" btn-hello " id="chatwithus">
+                    <div class="chat-toggle-container">
+                        <img class="chat toggle-icon" src="../static/assets/images/chatboxred.png" alt="">
+                    </div>
+                </a>
+                {% if not user.is_authenticated %}
+                <div class="nav-item">
+                    <a class="nav-link log-color" href="{% url 'ageis_app:login' %}">Login</a>
+                </div>
+                {% else %}
                 <div>
-            </div>
-            
-                
-            </div>
-            {% if not user.is_authenticated %}
-            <div class="nav-item">
-                <a class="nav-link log-color" href="{% url 'ageis_app:login' %}">Login</a>
-            </div>
-            {% else %}
-            <div>
-                <ul class="logout-ul" type="none">
-                   <li class="nav-item dropdown">
-                       <a class="nav-link " href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                           <i class="bi bi-person-circle"></i>
-                       </a>
-                       {% if user.is_authenticated and not user.is_superuser %}
-                       <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
-                           <li><a class="dropdown-item">{{user.username}}</a></li>
-                           {%if user.extenedusermodel.phone%}
-                           <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
-                           {% endif %}
-                           <li><a class="dropdown-item ">{{user.email}}</a></li>
-                           <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
-                       </ul>
-                       {% else %}
-                       <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
-                       </ul>
-                        {% endif %}
-                   </li>
-               </ul>
-               </div>
-            <div>
-                {% endif %}
-                
-            </div>
+                    <ul class="logout-ul" type="none">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                            {% if user.is_authenticated and not user.is_superuser %}
+                            <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item">{{user.username}}</a></li>
+                                {%if user.extenedusermodel.phone%}
+                                <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item ">{{user.email}}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
+                            </ul>
+                            {% else %}
+                            <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
+                            </ul>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    {% endif %}
+
+                </div>
     </nav>
     <nav class="navbar navbar-expand-lg  container-fluid container-1 sticky-top nav-mob">
         <div class="container">
@@ -291,7 +320,7 @@ margin-top: 5%;
             <div class="nav-width">
                 <ul class="navbar-nav navbar-nav-1">
                     <li class="nav-item">
-                        <a  class="nav-link btn-hello " id="chat-with-us">
+                        <a class="nav-link btn-hello " id="chat-with-us">
                             Chat with Us</a>
                     </li>
                     <li class="nav-item">
@@ -302,29 +331,31 @@ margin-top: 5%;
                         {% else %}
                         <div>
                             <ul class="logout-ul" type="none">
-                               <li class="nav-item dropdown">
-                                   <a class="nav-link " href="#" id="navbarDropdown" role="button"
-                                       data-bs-toggle="dropdown" aria-expanded="false">
-                                       <i class="bi bi-person-circle"></i>
-                                   </a>
-                                   {% if user.is_authenticated and not user.is_superuser %}
-                                   <ul class="dropdown-menu dropdown-bg drop-log-bg" aria-labelledby="navbarDropdown">
-                                       <li><a class="dropdown-item">{{user.username}}</a></li>
-                                       <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
-                                       <li><a class="dropdown-item ">{{user.email}}</a></li>
-                                       <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
-                                   </ul>
-                                   {% else %} 
-                                   <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a></li>
-                                   </ul>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link " href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-circle"></i>
+                                    </a>
+                                    {% if user.is_authenticated and not user.is_superuser %}
+                                    <ul class="dropdown-menu dropdown-bg drop-log-bg" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item">{{user.username}}</a></li>
+                                        <li><a class="dropdown-item ">{{user.extenedusermodel.phone}}</a></li>
+                                        <li><a class="dropdown-item ">{{user.email}}</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a>
+                                        </li>
+                                    </ul>
+                                    {% else %}
+                                    <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{% url 'ageis_app:logout' %}">Log out</a>
+                                        </li>
+                                    </ul>
                                     {% endif %}
-                               </li>
-            
-            
-            
-                           </ul>
-                           </div>
+                                </li>
+
+
+
+                            </ul>
+                        </div>
                         <div>
                             {% endif %}
                     </li>
@@ -335,130 +366,141 @@ margin-top: 5%;
             </div>
             <div class="chat-box" id="chat-box-mob">
                 <div class="chat-box-head">
-                     
-                       <img  class="logo-chat-box-1" src="{% static 'assets/images/Agies-logo.png' %}">
-                   
-                     <h4 class="chat-h4">Chat with Ageis</h4>
-                     <div id="close-btn-mob"><i class="bi bi-x-square chat-close"></i></div>
+
+                    <img class="logo-chat-box-1" src="{% static 'assets/images/Agies-logo.png' %}">
+
+                    <h4 class="chat-h4">Chat with Ageis</h4>
+                    <div id="close-btn-mob"><i class="bi bi-x-square chat-close"></i></div>
                 </div>
                 <div class="chat-box-middle">
-                   <div class="container">
-                       <div class="row">
-                           <div class="col-6">
-                               <div class="chat">
-                                   <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
-                               </div>
-                           </div>
-                         </div>
-                   </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="chat">
+                                    <p class="chat-para">You can talk to me about our platform,Let's chat!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="chat-box-footer">
-                   <input type="text" class="form-control w-75" id="chat-input-mob" placeholder="Chat with me">
-                   <div id="send-it-mob"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
-               </div>
+                    <input type="text" class="form-control w-75" id="chat-input-mob" placeholder="Chat with me">
+                    <div id="send-it-mob"><i class="bi bi-arrow-right-circle-fill chat-send"></i></div>
                 </div>
+            </div>
         </div>
-            <div class="toogle-div">
-                <div class="close-icon-div">
-                  <a href="#" class="close-icon-a"><i class="bi bi-x-circle close-icon"></i></a>
-                </div>
-                <div>
-                    <ul type="none">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'ageis_app:index' %}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ageis_app:about_us' %}">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ageis_app:jobs_frontend' %}">Jobs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ageis_app:clients' %}">Clients</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Services
-                            </a>
-                            <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item dropdown-link" href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
-                                <li><a class="dropdown-item dropdown-link" href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
-                            </ul>
-                        </li>
-                        {% comment %} <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a>
-                        </li> {% endcomment %}
-                        <li class="nav-item">
-                            <a href="{% url 'ageis_app:contact_us' %}"class="nav-link">
-                                Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
-              </div>
+        <div class="toogle-div">
+            <div class="close-icon-div">
+                <a href="#" class="close-icon-a"><i class="bi bi-x-circle close-icon"></i></a>
+            </div>
+            <div>
+                <ul type="none">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ageis_app:index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:about_us' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:jobs_frontend' %}">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:clients' %}">Clients</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:resume_writing' %}">Resume Writing</a></li>
+                            <li><a class="dropdown-item dropdown-link"
+                                    href="{% url 'ageis_app:interviewtips' %}">Interview Tips</a></li>
+                        </ul>
+                    </li>
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ageis_app:blogs' %}">Blog</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a href="{% url 'ageis_app:contact_us' %}" class="nav-link">
+                            Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         </div>
     </nav>
     <div id="carouselExampleSlidesOnly" class="carousel slide carosel-main" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
-                        <div class="col-div">
-                            <h1 class="carosel-head"><span class="font-big">G</span>et <span class="font-color">Recruited </span>to the Professional Companies and make your dream come| true</h1>
+            <div class="carousel-item active">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
+                            <div class="col-div">
+                                <h1 class="carosel-head"><span class="font-big">G</span>et <span
+                                        class="font-color">Recruited </span>to the Professional Companies and make your
+                                    dream come true</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
-                        <div class="col-div">
-                            <h1 class="carosel-head"><span class="font-big">'S</span>ourcing & finding <span class="font-color">relevant & talented </span> people for your organisation is one of the most important things these days.”</h1>
+            <div class="carousel-item">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
+                            <div class="col-div">
+                                <h1 class="carosel-head"><span class="font-big">'S</span>ourcing & finding <span
+                                        class="font-color">relevant & talented </span> people for your organisation is
+                                    one of the most important things these days.”</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-           
-          </div>
-          <div class="carousel-item">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
-                        <div class="col-div">
-                            <h1 class="carosel-head"><span class="font-big">W</span>e're Your <span class="font-color">HR Partner</span> for a Brighter Tomorrow</h1>
+            <div class="carousel-item">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
+                            <div class="col-div">
+                                <h1 class="carosel-head"><span class="font-big">W</span>e're Your <span
+                                        class="font-color">HR Partner</span> for a Brighter Tomorrow</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-            
-          </div>
-          <div class="carousel-item">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
-                        <div class="col-div">
-                            <h1 class="carosel-head"><span class="font-big">B</span>elieve that there are <span class="font-color">no limitations,</span> no barriers to your success –you will be empowered and you will achieve.</h1>
+            <div class="carousel-item">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
+                            <div class="col-div">
+                                <h1 class="carosel-head"><span class="font-big">B</span>elieve that there are <span
+                                        class="font-color">no limitations,</span> no barriers to your success –you will
+                                    be empowered and you will achieve.</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-            
-          </div>
-          <div class="carousel-item">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
-                        <div class="col-div">
-                            <h1 class="carosel-head"><span class="font-big">C</span>hoose a job you <span class="font-color">love,</span>and you will never have to work a  day in your life.</h1>
+            <div class="carousel-item">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 col-xl-10 col-lg-10 col-xxl-10">
+                            <div class="col-div">
+                                <h1 class="carosel-head"><span class="font-big">C</span>hoose a job you <span
+                                        class="font-color">love,</span>and you will never have to work a day in your
+                                    life.</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-            
-          </div>
         </div>
         <div class="find-section pb-100">
             <div class="container">
@@ -474,7 +516,8 @@ margin-top: 5%;
                         </div>
                         <div class="col-lg-3 search-form">
                             <div class="form-group search-form">
-                                <input type="text" name='place' class="form-control formcontrol-1" id="exampleInputEmail2" placeholder="Country,State,District">
+                                <input type="text" name='place' class="form-control formcontrol-1"
+                                    id="exampleInputEmail2" placeholder="Country,State,District">
                                 <i class="bx bx-location-plus"></i>
                             </div>
                         </div>
@@ -496,8 +539,8 @@ margin-top: 5%;
                 </form>
             </div>
         </div>
-      </div>
-<section class="why-choose-two pb-70">
+    </div>
+    <section class="why-choose-two pb-70" id="wct">
         <div class="container">
             <div class="section-title text-center">
                 <h2 class="find-job">Find Jobs with 3 easy steps</h2>
@@ -540,18 +583,17 @@ margin-top: 5%;
             </div>
             <div class="row">
 
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 1 %}">
                         <div class="category-card">
-                            <img class="popular-icon" src="{% static 'assets/images/popular-jobs/business-report.png'  %}">
+                            <img class="popular-icon"
+                                src="{% static 'assets/images/popular-jobs/business-report.png'  %}">
                             <h3 class="jobs">Accounting / Finance</h3>
                             <p>{{accounting_finance_count}} open positions</p>
                         </div>
                     </a>
                 </div>
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 2 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/intern.png'  %}">
@@ -560,8 +602,7 @@ margin-top: 5%;
                         </div>
                     </a>
                 </div>
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 3 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/electrician.png'  %}">
@@ -570,18 +611,17 @@ margin-top: 5%;
                         </div>
                     </a>
                 </div>
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 4 %}">
                         <div class="category-card">
-                            <img class="popular-icon" src="{% static 'assets/images/popular-jobs/influencer(1).png'  %}">
+                            <img class="popular-icon"
+                                src="{% static 'assets/images/popular-jobs/influencer(1).png'  %}">
                             <h3 class="jobs">Marketing</h3>
                             <p>{{marketing_count}} open positions</p>
                         </div>
                     </a>
                 </div>
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 5 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/interview.png' %}">
@@ -590,18 +630,17 @@ margin-top: 5%;
                         </div>
                     </a>
                 </div>
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 6 %}">
                         <div class="category-card">
-                            <img class="popular-icon" src="{% static 'assets/images/popular-jobs/customer-service.png' %}">
+                            <img class="popular-icon"
+                                src="{% static 'assets/images/popular-jobs/customer-service.png' %}">
                             <h3 class="jobs">Customer Service</h3>
                             <p>{{customer_service_count}} open positions</p>
                         </div>
                     </a>
                 </div>
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4 ">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4 ">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 7 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/self-learning.png' %}">
@@ -610,8 +649,7 @@ margin-top: 5%;
                         </div>
                     </a>
                 </div>
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 8 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/start-up.png' %}">
@@ -620,8 +658,7 @@ margin-top: 5%;
                         </div>
                     </a>
                 </div>
-                <div
-                    class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                     <a href="{% url 'ageis_app:jobs_frontend_cat' 9 %}">
                         <div class="category-card">
                             <img class="popular-icon" src="{% static 'assets/images/popular-jobs/ui-design.png' %}">
@@ -638,7 +675,7 @@ margin-top: 5%;
         <div class="container">
             <div class="section-title text-center">
                 <h2 class="interest-job-h2">Jobs You May Be Interested In</h2>
-<p class="mt-3">Recent Jobs</p>
+                <p class="mt-3">Recent Jobs</p>
                 <!-- <p class="interest-job-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et
                     dolore magna aliqua. Quis ipsum suspendisse ultrices gravida</p> -->
@@ -656,33 +693,34 @@ margin-top: 5%;
                                                 {% if i.company %}
                                                 <img class="class-company" src="{{i.company.company_logo.url}}"
                                                     alt="logo">
-                                                    {% endif %}
+                                                {% endif %}
                                             </a>
                                         </div>
                                     </div>
-                                    
-                                        <h6 class="job-h3-cls">
-                                            <a class="job-h3 text-center" href="{% url 'ageis_app:jobs_details' i.id %}">{{i.job_title}}</a>
-                                        </h6>
-                                        <ul>
-                                            <li class="li-job">
-                                                {% if i.company %}
-                                                {{i.company.company_name}}
-                                                {% endif %}
-                                            </li>
-                                            <li class="li-job">
-                                                <i class="bx bx-briefcase"></i>
-                                                {{i.experience}} Years experience
-                                            </li>
-                                            <li class="li-job">
-                                                <i class="bx bx-location-plus"></i>
-                                                {{i.country}}, {{i.state}}, {{i.district}}
-                                            </li>
-                                            <li class="li-job">
-                                                <i class="bx bx-calendar"></i>
-                                                {{i.job_post_date}}
-                                            </li>
-                                        </ul>
+
+                                    <h6 class="job-h3-cls">
+                                        <a class="job-h3 text-center"
+                                            href="{% url 'ageis_app:jobs_details' i.id %}">{{i.job_title}}</a>
+                                    </h6>
+                                    <ul>
+                                        <li class="li-job">
+                                            {% if i.company %}
+                                            {{i.company.company_name}}
+                                            {% endif %}
+                                        </li>
+                                        <li class="li-job">
+                                            <i class="bx bx-briefcase"></i>
+                                            {{i.experience}} Years experience
+                                        </li>
+                                        <li class="li-job">
+                                            <i class="bx bx-location-plus"></i>
+                                            {{i.country}}, {{i.state}}, {{i.district}}
+                                        </li>
+                                        <li class="li-job">
+                                            <i class="bx bx-calendar"></i>
+                                            {{i.job_post_date}}
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                             <!-- <div>
@@ -697,31 +735,54 @@ margin-top: 5%;
                 </div>
                 {% endfor %}
             </div>
-            
+
             <div class="text-center">
-                <a href="{% url 'ageis_app:jobs_frontend' %}" class="btn btn-danger resume-img-a resume-img-a-win ">More Jobs</a>
+                <a href="{% url 'ageis_app:jobs_frontend' %}" class="btn btn-danger resume-img-a resume-img-a-win ">More
+                    Jobs</a>
             </div>
         </div>
     </section>
+
     <section class="company-section pt-100 pb-70">
         <div class="container ">
             <div class="section-title text-center">
                 <h2 class="top-com-h2">Top Companies</h2>
                 <p>"A Proven Track Record of Placement in Reputed Companies"</p>
             </div>
-            <div class="carousel-container-testimonial">
-                <div class="carousel" id="carousel1">
-                    {% for i in companies %}
-                    <div class="carousel-item-testimonial">
-                      <div class="text-center">
-                        <div class="carosel-img-div">
-                          <img src="{{i.company_logo.url}}" class="carosel-img">
-                         </div>
-                         <h3 class="companies-h5">{{i.company_name}}</h3>
-                         <p class="companies-p">{{i.address}}</p>
-                      </div>
+            <div>
+                <div id="myCarousel" class="carousel slide " data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+
+                            <div class="row">
+                                {% for i in companies %}
+                                <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
+                                    <div class="card card-com" id="companycard">
+                                        <div class="company-img-div">
+                                            <img class=" companies-img" src="{{i.company_logo.url}}">
+                                        </div>
+                                        <div class="company-detail-div">
+                                            <h5 class="companies-h5">{{i.company_name}}</h5>
+                                            <p class="companies-p"><i class="bi bi-geo-alt"></i>{{i.address}}</p>
+                                            <!-- <a class="companies-a" href="">click me</a> -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
                     </div>
-                    {% endfor %}
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only text-dark"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only text-dark"></span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -761,77 +822,43 @@ margin-top: 5%;
             </div>
         </div>
     </div>
-    <div class="testimonial-style-two ptb-100">
-        <div class="container">
-            <h2 class="article-h2 mt-5">Testimonials</h2>
-            <p class="article-p1">Fresh job related news content posted each day.</p>
-            <div id="carouselExampleFade" class="carousel slide carousel-fade">
-                <div class="carousel-inner">
-                    {% for i in testimonial %}
-                  <div class=" carousel-item {% if forloop.first %} active {% endif %}" >
-                   <div class="testimonial-img-div">
-                    {%if i.customer_img.url%}
-                    <img src="{{i.customer_img.url}}" class="testimonial-img">
-                    {% endif %%}
-                   </div>
-                   <div class="text-center">
-                    <h3>{{i.customer_name}}</h3>
-                    <h4>{{i.company_name}}</h4>
-                <div class="testimonial-review-div">
-                    <p class="testimonial-review">
-                        {{i.reviews}}
-                    </p>
-                </div>
-                   </div>
-                  </div>
-                  {% endfor %}
 
-                  {% comment %} <div class="carousel-item">
-                    <div class="testimonial-img-div">
-                        <img src="./img/mision1.jpeg" class="testimonial-img">
-                       </div>
-                       <div class="text-center">
-                        <h3>Name 2</h3>
-                        <h4>Company name 2</h4>
-                    <div class="testimonial-review-div">
-                        <p class="testimonial-review">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-                            In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-                            In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-                            In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-                        </p>
+
+<section class="company-section pt-100 pb-70">
+        <div class="section-title text-center">
+            <h2 class="top-com-h2">What Clients Say About Us</h2>
+            <p>"Our Satisfied Customers."</p>
+        </div>
+        <div>
+            <div class="slide-container swiper">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                                          
+                        {% for i in testimonial %}
+                        <div class="card swiper-slide">
+                            <div class="profile-img">
+                                {%if i.customer_img.url%}
+                              <img class="client-image" src="{{i.customer_img.url}}" alt="Client 1">
+                              {% endif %}
+                            </div>
+                            <div class="testimonial-text">
+                              <h3>{{i.customer_name}}</h3>
+                              <p class="company-title">{{i.company_name}}</p>
+                              <p>- {{i.reviews}}</p>
+                            </div>
+                          </div>
+                        {% endfor %}          
+                       
                     </div>
-                       </div>
-                  </div> {% endcomment %}
-                  {% comment %} <div class="carousel-item">
-                    <div class="testimonial-img-div">
-                        <img src="./img/Internship-certificate.jpg" class="testimonial-img">
-                       </div>
-                       <div class="text-center">
-                        <h3>Name 3</h3>
-                        <h4>Company name 3</h4>
-                    <div class="testimonial-review-div">
-                        <p class="testimonial-review">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-                            In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-                            In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-                            In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-                        </p>
-                    </div>
-                       </div>
-                  </div> {% endcomment %}
-
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"><div class="icon-div"><i class="bi bi-caret-left-fill arrow-icon"></i></div></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"><div class="icon-div"><i class="bi bi-caret-right-fill arrow-icon"></i></div></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-    </div>
-    </div>
-
+            
+                <div class="swiper-button-next swiper-navBtn"></div>
+                <div class="swiper-button-prev swiper-navBtn"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+        </div>
+</section>
     <section>
         <div class="mb-5">
             <h2 class="text-center mt-5 mb-3">Jobs in city</h2>
@@ -1140,7 +1167,8 @@ margin-top: 5%;
                         </div>
                         <div class="footer-chat-box">
                             <div class="footer-div-chat-box">
-                                <input class="footer-input-chat-box" type="text" placeholder="Chat with me" id="chat-input">
+                                <input class="footer-input-chat-box" type="text" placeholder="Chat with me"
+                                    id="chat-input">
                                 <a href="#" id="send-it"><i class="material-icons footer-send-chat-box">send</i></a>
                             </div>
                         </div>
@@ -1150,7 +1178,8 @@ margin-top: 5%;
         </div>
         <!-- <a class="btn btn-whatsapp text-dark" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false"
             aria-controls="collapseExample"><i class="bi bi-whatsapp chat-box-whtasapp "></i> Chat with us</a> -->
-            {% comment %} <a  class="connect-btn" href="{% url 'ageis_app:contact_us' %}" ><i class="bi bi-telephone-outbound me-3 call-connect"></i>Let connect us</a> {% endcomment %}
+        {% comment %} <a class="connect-btn" href="{% url 'ageis_app:contact_us' %}"><i
+                class="bi bi-telephone-outbound me-3 call-connect"></i>Let connect us</a> {% endcomment %}
     </section>
 
     <div class="top-btn">
@@ -1158,7 +1187,9 @@ margin-top: 5%;
     </div>
 
 
-    {% comment %} <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script> {% endcomment %}
+    {% comment %}
+    <script data-cfasync="false"
+        src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script> {% endcomment %}
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
 
@@ -1215,31 +1246,36 @@ margin-top: 5%;
         setTextWithDelay(messages[i], 0); // Start the loop with the first message
     </script>
     <script>
-        $(document).ready(function(){
-            $(".toogle-icon-a").click(function(){
+        $(document).ready(function () {
+            $(".toogle-icon-a").click(function () {
                 $(".toogle-icon").hide();
-                $(".toogle-div").animate({right:"0px"});
+                $(".toogle-div").animate({ right: "0px" });
             })
-            $(".close-icon-a").click(function(){
+            $(".close-icon-a").click(function () {
                 $(".toogle-icon").show();
-                $(".toogle-div").animate({right:"-300px"});
+                $(".toogle-div").animate({ right: "-300px" });
             })
         })
-      </script>
+    </script>
 
-      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-<script>
-    $(document).ready(function(){
-        $('#carousel1').slick({
-            slidesToShow: 3,
-            autoplay: true,
-            autoplaySpeed: 1000,
-            // Add more options as needed
+    <script>
+        $(document).ready(function () {
+            $('#carousel1').slick({
+                slidesToShow: 3,
+                autoplay: true,
+                autoplaySpeed: 1000,
+                // Add more options as needed
+            });
+            // Add more carousel initializations as needed
         });
-        // Add more carousel initializations as needed
-    });
-</script>
+    </script>
 </body>
+ <!-- Swiper JS -->
+ <script src="/static/assets/js/swiper-bundle.min.js"></script>
+
+ <!-- JavaScript -->
+ <script src="/static/assets/js/scriptss.js"></script>
 </html>
