@@ -106,15 +106,15 @@ urlpatterns = [
     path('change_resume/', views.change_resume_view, name='change_resume'),
     path('delete_experience/<int:experience_id>/', views.delete_experience_view, name='delete_experience'),
     
-    
+    path('shortlist-candidate/<int:job_id>/', views.shortlist_candidate, name='shortlist_candidate'),
+    path('remove-from-shortlist/<int:job_id>/', views.remove_from_shortlist, name='remove_from_shortlist'),
+    path('shortlisted-jobs/', views.shortlisted_jobs, name='shortlisted_jobs'),
+    path('schedule-interview/', views.schedule_interview, name='schedule_interview'),
+    path('update-interview-result/<int:job_id>/', views.update_interview_result, name='update_interview_result'),
+    path('send-offer-letter/', views.send_offer_letter, name='send_offer_letter'),
+    path('filter-results/', views.filter_results, name='filter_results'),
 
-    
-    
 
-    
-    
-    
-    
     
     
 ]

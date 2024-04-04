@@ -384,10 +384,26 @@
                                           <td>{{i.applied_user.user.first_name}} {{i.applied_user.user.last_name}}</td>
                                           <td>{{i.applied_user.user.email}}</td>
                                           <td>{{i.applied_user.phone}}</td>
-                                          <td>{{i.applied_job.job_title}}</td>
+                                          <td>{{i.applied_job.job_title}}
+
+                                            <a href="{% url 'ageis_app:shortlisted_jobs'%}">Shortlist</a>
+                                            <br/>
+                                            <p>Job Number {{i.applied_job.id}}</p>
+                                 
+                                            <p>Handeled by :<h5>{{i.handeled_by}}</h5></p>
+                                          </td>
                                           <td><a href="{{i.applied_user.cv.url}}" download>Download Resume</a></td>
                                           <td>{{i.location}}</td>
-                                          <td><a href="{% url 'ageis_app:applied_jobs_delete' i.id %}">Delete</a></td>
+                                          <td>
+                                            {% if i.is_shortlisted %}
+                                                <a href="{% url 'ageis_app:remove_from_shortlist' i.id %}">Remove from Shortlist</a>
+                                            {% else %}
+                                                <a href="{% url 'ageis_app:shortlist_candidate' i.id %}">Shortlist</a>
+                                            {% endif %}
+                                            <br/><br/>
+                                            <a href="{% url 'ageis_app:applied_jobs_delete' i.id %}">Delete</a>
+                                        </td>
+                                         
 
                                           
                                         </tr>

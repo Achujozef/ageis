@@ -673,7 +673,205 @@ def applied_jobs(request):
     applied_jobs = AppliedJobs.objects.all()
     return render(request,'applied-jobs-lists.html',{'applied_jobs':applied_jobs})
 
+def shortlist_candidate(request, job_id):
+    applied_job = get_object_or_404(AppliedJobs, id=job_id)
+    applied_job.is_shortlisted = True
+    applied_job.request.user.username
+    applied_job.save()
 
+    # Get the candidate's email address from the User model
+    candidate_email = applied_job.applied_user.user.email
+    print (request.user.username)
+    # Retrieve the details of the job
+    job = applied_job.applied_job
+    job_title = job.job_title
+    job_company = job.company.company_name  # Assuming 'company_name' is the attribute for the company name
+    job_description = job.job_des
+
+    # Compose the email
+    email_subject = 'Congratulations! You have been shortlisted for a job'
+    email_body = (
+        f'Dear candidate,\n\n'
+        f'We are pleased to inform you that you have been shortlisted for the following job:\n\n'
+        f'Job Title: {job_title}\n'
+        f'Company: {job_company}\n'
+        f'Description: {job_description}\n\n'
+        f'Please contact us for further instructions.\n\n'
+        f'Best regards,\n'
+        f'The Recruitment Team'
+    )
+
+    # Send the email
+    send_mail(
+        email_subject,
+        email_body,
+        settings.EMAIL_HOST_USER,  # Sender's email address
+        [candidate_email],  # Recipient's email address
+        fail_silently=False,
+    )
+
+    return redirect('ageis_app:applied_jobs')
+def schedule_interview(request):
+    if request.method == 'POST':
+        applied_job_id = request.POST.get('applied_job_id')
+        applied_job = AppliedJobs.objects.get(pk=applied_job_id)
+        candidate_email = applied_job.applied_user.user.email
+        job = applied_job.applied_job
+
+        # Retrieve the subject from the form
+        subject = request.POST.get('subject')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        if not subject:
+            subject = 'Interview Invitation'
+
+        # Compose the email
+        email_body = (
+            f'Dear candidate,\n\n'
+            f'We are pleased to invite you for an interview for the position of {job.job_title} '
+            f'at {job.company.company_name}.\n\n'
+            f'Your application stood out to us, and we would like to learn more about your qualifications.\n'
+            f'Please find the details below:\n\n'
+            f'Date: {date}\n'
+            f'Time: {time}\n'
+           f'\n\n{subject}\n\n'
+            f'\n\nWe look forward to meeting you and discussing your potential role at {job.company.company_name}\n\n'
+            f'Best regards,\n'
+            f'The Recruitment Team'
+        )
+
+        # Send the email
+        send_mail(
+            subject,
+            email_body,
+            settings.EMAIL_HOST_USER,  # Sender's email address
+            [candidate_email],  # Recipient's email address
+            fail_silently=False,
+        )
+
+        # Update the is_invited field
+        applied_job.is_invited = True
+        applied_job.save()
+
+        return redirect('ageis_app:shortlisted_jobs')
+    else:
+        # Handle GET request
+        return redirect('ageis_app:shortlisted_jobs')
+    
+
+from django.core.mail import EmailMessage
+def send_offer_letter(request):
+    if request.method == 'POST':
+        applied_job_id = request.POST.get('applied_job_id')
+        print("Sending offer letter")
+        print("applied_job_id:",applied_job_id)
+        if applied_job_id:
+            try:
+                applied_job = AppliedJobs.objects.get(pk=applied_job_id)
+            except AppliedJobs.DoesNotExist:
+                return JsonResponse({'success': False, 'error': 'Applied job does not exist'})
+            candidate_email = applied_job.applied_user.user.email
+
+            # Retrieve offer letter file and other details from the form
+            offer_letter_file = request.FILES.get('offer_letter_file')
+            email_subject = request.POST.get('email_subject')
+            email_body = request.POST.get('email_body')
+
+            # Save offer letter file if provided
+            if offer_letter_file:
+                applied_job.offer_letter = offer_letter_file
+                applied_job.save()
+
+            # Compose and send the email with offer letter attachment
+            email = EmailMessage(
+                email_subject,
+                email_body,
+                settings.EMAIL_HOST_USER,
+                [candidate_email],
+                reply_to=[settings.EMAIL_HOST_USER],  # Optionally set a reply-to address
+            )
+            if offer_letter_file:
+                email.attach(offer_letter_file.name, offer_letter_file.read(), offer_letter_file.content_type)
+            
+            try:
+                email.send(fail_silently=False)
+            except Exception as e:
+                # Handle any exceptions that occur during email sending
+                print("Error sending email:", e)
+                return JsonResponse({'success': False, 'error': str(e)})
+            else:
+                # Update the result field
+                applied_job.result = 'offerletter_sent'
+                applied_job.save()
+                return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'success': False, 'error': 'Applied job ID is empty'})
+
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+
+
+
+from django.http import JsonResponse
+def update_interview_result(request, job_id):
+    applied_job = AppliedJobs.objects.get(pk=job_id)
+    result = request.POST.get('result')  # Assuming 'result' is passed in the AJAX request
+    if result == 'selected':
+        applied_job.result = 'selected'
+    elif result == 'rejected':
+        applied_job.result = 'rejected'
+    elif result == 'on_hold':
+        applied_job.result = 'on_hold'
+    applied_job.save()
+    return JsonResponse({'status': 'success'})
+
+
+def shortlisted_jobs(request):
+    clients = Clients.objects.all()  # Retrieve all clients
+    jobs = Jobs.objects.all()  # Retrieve all jobs
+
+    # If a client is selected from the dropdown
+    selected_client_id = request.GET.get('client')
+    if selected_client_id:
+        selected_client = get_object_or_404(Clients, pk=selected_client_id)
+        jobs = jobs.filter(company=selected_client)
+        applied_jobs = AppliedJobs.objects.filter(
+            applied_job__company=selected_client,
+            is_shortlisted=True
+        )
+    else:
+        applied_jobs = AppliedJobs.objects.filter(is_shortlisted=True)
+
+    # If a job is selected from the dropdown
+    selected_job_id = request.GET.get('job')
+    if selected_job_id:
+        selected_job = get_object_or_404(Jobs, pk=selected_job_id)
+        applied_jobs = applied_jobs.filter(applied_job=selected_job)
+
+    return render(request, 'shortlisted_jobs.html', {
+        'clients': clients,
+        'jobs': jobs,
+        'applied_jobs': applied_jobs,
+        'selected_client_id': int(selected_client_id) if selected_client_id else None,
+        'selected_job_id': int(selected_job_id) if selected_job_id else None,
+    })
+def remove_from_shortlist(request, job_id):
+
+    applied_job = get_object_or_404(AppliedJobs, id=job_id)
+    applied_job.is_shortlisted = False
+    applied_job.save()
+
+    return redirect('ageis_app:applied_jobs')
+
+def filter_results(request):
+    selected_result = request.GET.get('result')
+
+    if selected_result:
+        applied_jobs = AppliedJobs.objects.filter(result=selected_result)
+    else:
+        applied_jobs = AppliedJobs.objects.filter(result__in=['placed', 'on_hold', 'rejected'])
+
+    return render(request, 'filtered_results.html', {'applied_jobs': applied_jobs})
 def applied_jobs_delete(request,job_id):
     job = AppliedJobs.objects.get(id = job_id)
     job.delete()
@@ -1114,3 +1312,5 @@ def delete_experience_view(request, experience_id):
     if experience.user.user == request.user:
         experience.delete()
     return redirect('ageis_app:user_profile')
+
+
