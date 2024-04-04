@@ -47,7 +47,21 @@
  .card-2{
    margin-top: 5%;
  }
- h1,h2,h3,h4,h5,h6,p{
+ .about-interview{
+  padding: 10px;
+ }
+ #interview-types{
+margin-bottom: 20px;
+ }
+ .collapse-link:hover{
+  color: #b51b3a !important;
+  font-weight: 700;
+  letter-spacing: 2px;
+ }
+ #paragraph{
+  margin-top: 25px;
+ }
+ h1,h2,h3,h4,h5,h6{
     color: black !important;
  }
  .collapse-3-li,.div-para,.div-para-1,.colapse-p{
@@ -61,8 +75,9 @@
     
  }
  .resume-collapse-a:hover{
-   color: white;
-   background-color: rgb(192, 39, 39); 
+   color: #C10101;
+   letter-spacing: 2px;
+   font-weight: 700;
  }
  .resume-collapse-p{
     margin-top: 3%;
@@ -71,7 +86,7 @@
   border: 1px solid grey;
   border-radius: 10px;
   padding:5%;
-  box-shadow:25px 20px 24px -28px black;
+  /* box-shadow:25px 20px 24px -28px black; */
 }
 .resume-h2{
   text-align: left !important;
@@ -236,34 +251,37 @@
   font-size:177% !important;
  }
  .card{
-  border: 1px solid #ee3e0c;
+  background-color: #f4de1a50;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
  }
  .collapse-link{
   text-decoration: none;
   color: #000;
  }
- .collapse-link:hover{
-  background-color: #b51b3a;
-  color: white !important;
- }
+
  .interview-tips-bg{
   margin-top: 5%;
   background-position-y:25%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #000;
- background-image: linear-gradient(rgba(253, 248, 201, 0.8),rgba(253, 248, 201, 0.8)),url(../images/interview-tips-bg.jpg);
+ background-color: #f4de1a50 !important;
  }
  .interview-content-div{
   padding-top: 5%;
   padding-bottom: 5%;
  }
  .collapse-basic{
-  background-color: #b51b3a;
-  color: white !important;
+  color: #DC3545 !important;
+  padding: 10px;
+  margin-top: 20px;
+  border:2px solid #DC3545;
+  border-radius: 10px;
  }
  .collapse-basic:hover{
-  background-color: #ee3e0c;
+  background-color: #DC3545;
+  color: #fff !important;
  }
  .call-centre-bg{
   margin-top: 5%;

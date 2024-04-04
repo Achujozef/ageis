@@ -1,11 +1,29 @@
 .div-row{
     text-align: center;
     margin-top: 2%;
-    background-color: rgba(0, 0, 0, 0.178);
+    background-color: transparent;
     border-radius: 10px;
     padding: 3%;
     padding-bottom: 10%;
+    
  }
+ /* body{
+  background-color: #FFFBFC;
+ } */
+ .bg-div {
+  background-image: url('../images/bgonea.jpg');
+  background-size: cover;
+}
+.reg-a{
+  color: #f03f0c;
+}
+.reg-a:hover{
+  color: #f3de19;
+}
+.register-div{
+  margin-top: 5%;
+  color: black;
+}
  .frm-logo{
     width: 42%;
  }
@@ -17,7 +35,6 @@
 }
 .form-control-3,.form-control-2{
     margin-top: 7%;
-    text-align: center;
 }
 .form-control-btn{
     margin-top: 7%;
@@ -28,6 +45,15 @@
     opacity: 50%;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+.back-home-icon{
+  font-size: x-large;
+  border: 1px solid #00000015;
+  padding: 10px;
+  border-radius: 20%;
+}
+.back-home-icon:hover{
+  box-shadow:1px 2px 3px 2px #0000003f;
 }
 input:focus{
     outline: none;
@@ -52,9 +78,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-.back-home{
-    margin-top: 10%;
-}
+
 .back-home-icon{
     font-size: x-large;
 }

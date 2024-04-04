@@ -3,16 +3,36 @@
     border-radius: 10px;
     width: 41%;
     text-align: center;
-    background-color: rgba(88, 85, 85, 0.192);
-}
+    background-color: transparent;
+    }
+    body{
+        background-color: #FFFBFC;
+       }
+.reg-h2{
+        text-align: center;
+        opacity: 50%;
+        margin-top: 8%;
+        margin-bottom: 8%;
+        font-family:'Poppins',sans-serif;
+        font-weight: 500;
+    }
+    .password-icon{
+        position: relative;
+        bottom: 32px;
+        left: 110px;
+    }
 .frm-logo{
     width: 27%;
     text-align: center;
     margin-top: 10%;
 }
+.bg-div {
+    background-image: url('../images/bgone.jpg');
+    background-size: cover;
+    margin-top: -50px;
+}
 .form-control-1{
     margin-top: 5%;
-    text-align: center;
     margin-right: auto;
     margin-left: auto;
 }
@@ -54,10 +74,15 @@ input:focus{
 }
 .back-home-icon{
     font-size: x-large;
+    border: 1px solid #00000015;
+    padding: 10px;
+    border-radius: 20%;
+
 }
-.back-home{
-    margin-top: 8%;
+.back-home-icon:hover{
+    box-shadow:1px 2px 3px 2px #0000003f;
 }
+
 /* responsive */
 @media screen and (max-width: 800px) and (min-width:  700px) {
     .frm-login {
