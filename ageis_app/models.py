@@ -131,14 +131,27 @@ class Jobs(models.Model):
     
 
 class AppliedJobs(models.Model):
+    RESULT_CHOICES = [
+        ('default', 'Default'),
+        ('selected', 'Selected'),
+        ('rejected', 'Rejected'),
+        ('offerletter_sent', 'Offer letter sent'),
+        ('placed', 'Placed'),
+        ('on_hold', 'On Hold'),
+
+    ]
     def __str__(self):
         return self.applied_user.user.first_name
     applied_user = models.ForeignKey(ExtendedUserModel,on_delete=models.CASCADE)
     applied_job = models.ForeignKey(Jobs,on_delete=models.CASCADE)
     applied_date = models.DateField(auto_now_add=True)
-
-
-
+    is_shortlisted = models.BooleanField(default=False)
+    is_invited = models.BooleanField(default=False)
+    is_invited = models.BooleanField(default=False)
+    result = models.CharField(max_length=20, choices=RESULT_CHOICES, default='default')
+    offer_letter = models.FileField(upload_to='offer_letters', blank=True, null=True)
+    handeled_by = models.CharField(max_length=50,default='default')
+    
 class AboutUs(models.Model):
     company = models.ForeignKey(Clients,on_delete=models.CASCADE)
     review = models.TextField()

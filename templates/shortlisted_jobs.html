@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Styled Template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    /* Add your custom styles here */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .popup-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-4">
+  <form method="get" action="{% url 'ageis_app:shortlisted_jobs' %}" class="mb-4">
+    <div class="form-group row">
+      <div class="col-md-6">
+        <select name="client" class="form-control">
+          <option value="">Select Client</option>
+          {% for client in clients %}
+            <option value="{{ client.id }}" {% if client.id == selected_client_id %}selected{% endif %}>
+              {{ client.company_name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-6">
+        <select name="job" class="form-control">
+          <option value="">Select Job</option>
+          {% for job in jobs %}
+            <option value="{{ job.id }}" {% if job.id == selected_job_id %}selected{% endif %}>
+              {{ job.job_title }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+  </form>
+  <a href="{% url 'ageis_app:filter_results'%}">Completed</a>
+  <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search by name...">
+  <ul id="searchList" class="list-group">
+    {% for applied_job in applied_jobs %}
+      <li class="list-group-item">
+        <p>{{ applied_job.applied_user.user.first_name }} {{ applied_job.applied_user.user.last_name }}</p>
+        <p>{{ applied_job.applied_user.user.email }}</p>
+        <p>{{ applied_job.applied_user.phone }}</p>
+        <p>{{ applied_job.applied_job.job_title }}</p>
+        <p>Job Number {{ applied_job.applied_job.id }}</p>
+        <p><a href="{{ applied_job.applied_user.cv.url }}" download class="btn btn-primary">Download Resume</a></p>
+        <p>{{ applied_job.applied_job.company.company_name }}</p>
+        {% if not applied_job.is_invited %}
+          <button onclick="openPopup('{{ applied_job.id }}')" class="btn btn-success">Schedule Interview</button>
+        {% else %}
+          <button disabled class="btn btn-secondary">Invitation Sent</button>
+          {% if applied_job.result == 'default' %}
+          <button onclick="updateResult('{{ applied_job.id }}', 'selected')" class="btn btn-success">Interview is over and Selected</button>
+          <button onclick="updateResult('{{ applied_job.id }}', 'rejected')" class="btn btn-danger">Interview is over and Rejected</button>
+          <button onclick="updateResult('{{ applied_job.id }}', 'on_hold')" class="btn btn-warning">Hold</button>
+        {% elif applied_job.result == 'selected' %}
+          <button disabled class="btn btn-success">Selected</button>
+          <button type="button" class="btn btn-primary" id="sendOfferLetterBtn_{{ applied_job.id }}">Send Offer Letter</button>
+        {% elif applied_job.result == 'rejected' %}
+          <button disabled class="btn btn-danger">Rejected</button>
+          {% elif applied_job.result == 'on_hold' %}
+          <button disabled class="btn btn-success">Interview is Over </button>
+          <button disabled class="btn btn-danger">On Hold</button>
+        {% endif %}
+        {% endif %}
+      </li>
+    {% empty %}
+      <li class="list-group-item">No shortlisted jobs found.</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <h2 class="mb-4">Schedule Interview</h2>
+    <form id="scheduleForm" method="post" action="{% url 'ageis_app:schedule_interview' %}" class="mb-4">
+      {% csrf_token %}
+      <input type="hidden" id="applied_job_id" name="applied_job_id">
+      <div class="form-group">
+        <label for="subject">Body:</label>
+        <input type="text" id="subject" name="subject" value="Please confirm your availability for this interview by replying to this email. If the provided time slot is not suitable, let us know, and we will do our best to accommodate you." class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" value="01-01-2024" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="time">Time:</label>
+        <input type="text" id="time" name="time" value="12:00 pm" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+  </div>
+</div>
+
+<div id="offerLetterPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closeOfferLetterPopup()">&times;</span>
+    <h2 class="mb-4">Send Offer Letter</h2>
+    <form id="offerLetterForm" onsubmit="sendOfferLetter(); return false;" class="mb-4" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="hidden" id="applied_job_id" name="applied_job_id">
+      <div class="form-group">
+        <label for="offer_letter_file">Offer Letter PDF:</label>
+        <input type="file" id="offer_letter_file" name="offer_letter_file" class="form-control-file">
+      </div>
+      <div class="form-group">
+        <label for="email_subject">Email Subject:</label>
+        <input type="text" id="email_subject" name="email_subject" value="Offer Letter" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email_body">Email Body:</label>
+        <textarea id="email_body" name="email_body" class="form-control" rows="5">Dear Candidate,\n\nWe are pleased to offer you the position...\n\nSincerely,\nThe Recruitment Team</textarea>
+      </div>
+      <button type="submit" onclick="sendOfferLetter('{{ applied_job_id }}')" class="btn btn-primary" id="sendOfferLetterBtn">Send Offer Letter</button>
+    </form>
+  </div>
+</div>
+
+<script>
+    function updateResult(jobId, result) {
+      $.ajax({
+        url: `/update-interview-result/${jobId}/`,
+        type: 'POST',
+        data: {
+          'result': result,
+          'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        success: function(response) {
+          // Reload the page or update UI as needed
+          location.reload();
+        },
+        error: function(xhr, status, error) {
+          console.error(error);
+        }
+      });
+    }
+
+    function openPopup(jobId) {
+      document.getElementById('applied_job_id').value = jobId;
+      document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+let x= 0
+    function openOfferLetterPopup(jobId) {
+      console.log(jobId)
+      x=jobId
+      document.getElementById('applied_job_id').value = jobId;
+      document.getElementById('offerLetterPopup').style.display = 'block';
+    }
+
+    function closeOfferLetterPopup() {
+      document.getElementById('offerLetterPopup').style.display = 'none';
+    }
+
+    $(document).ready(function() {
+      // Attach event listener to all "Send Offer Letter" buttons
+      $('[id^=sendOfferLetterBtn]').click(function() {
+        var jobId = $(this).attr('id').split('_')[1];
+        openOfferLetterPopup(jobId);
+      });
+    });
+
+    function sendOfferLetter(jobId) {
+      jobId = document.getElementById('applied_job_id').value 
+      var form = $('#offerLetterForm')[0];
+      var formData = new FormData(form);
+      // Append the jobId to the formData
+      formData.append('applied_job_id', jobId);
+
+      $.ajax({
+        url: `/send-offer-letter/`,
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+          if (response.success) {
+            alert('Offer letter sent successfully.');
+            location.reload();
+          } else {
+            alert('Failed to send offer letter.');
+          }
+        },
+
+      });
+    }
+
+</script>
+
+</body>
+</html>
