@@ -189,117 +189,114 @@
      
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class=" mt-3 pb-3 mb-3 d-flex">
-        <!-- <div class="image">
-          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div> -->
-      </div>
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+             <li class="nav-item">
+              <a href="{% url 'ageis_app:user_management' %}" class="nav-link">
+                  <span><img src="{% static 'dist/img/icon/user.gif' %}" class="nav-icon"></span>
+                <p>
+                  User Management
+                </p>
+              </a>
+            </li>
+        <li class="nav-item">
+          <a href="{% url 'ageis_app:dashboard' %}"  class="nav-link">
+             <span><img src="{% static 'dist/img/icon/job-seeking.gif' %}" class="nav-icon"></span>
+            <p>
+            Jobs
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'ageis_app:applied_jobs' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Applied Jobs</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'ageis_app:jobs' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Job Add</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'ageis_app:job_categories' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Job categories</p>
+                </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'ageis_app:job_types' %}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Job Types</p>
+                </a>
+            </li>
+            
+           
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'ageis_app:place_management' %}" class="nav-link ">
+            <span><img src="{% static 'dist/img/icon/earth.gif' %}" class="nav-icon"></span>
+            <p>
+              Place Management
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'ageis_app:client' %}" class="nav-link ">
+            <span><img src="{% static 'dist/img/icon/social-care.gif' %}" class="nav-icon"></span>
+            <p>
+              Client
+            </p>
+          </a>
+          
+        </li>
 
+        <li class="nav-item">
+          <a href="{% url 'ageis_app:testimonial' %}" class="nav-link">
+            <span><img src="{% static 'dist/img/icon/stars.gif' %}" class="nav-icon"></span>
+            <p>
+              Testimonial
+            </p>
+          </a>
+          
+        </li>
+
+        <li class="nav-item">
+          <a href="{% url 'ageis_app:about_us_backend' %}" class="nav-link">
+            <span><img src="{% static 'dist/img/icon/share.gif' %}" class="nav-icon"></span>
+            <p>
+              Aboutus Add
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'ageis_app:shortlisted_jobs'%}" class="nav-link">
+            <span><img src="{% static 'dist/img/icon/absence.gif' %}" class="nav-icon"></span>
+            <p>
+              Shortlist
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'ageis_app:filter_results'%}" class="nav-link">
+            <span><img src="{% static 'dist/img/icon/complete.gif' %}" class="nav-icon"></span>
+            <p>Completed</p>
+            </a>
+        </li>
+        
     
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                <a href="{% url 'ageis_app:user_management' %}" class="nav-link">
-                    <span><img src="{% static 'dist/img/icon/user.gif' %}" class="nav-icon"></span>
-                  <p>
-                    User Management
-                  </p>
-                </a>
-              </li>
-          <li class="nav-item">
-            <a href="{% url 'ageis_app:dashboard' %}"  class="nav-link">
-               <span><img src="{% static 'dist/img/icon/job-seeking.gif' %}" class="nav-icon"></span>
-              <p>
-              Jobs
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'ageis_app:applied_jobs' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Applied Jobs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{% url 'ageis_app:jobs' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Job Add</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{% url 'ageis_app:job_categories' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Job categories</p>
-                  </a>
-              </li>
-              <li class="nav-item">
-                <a href="{% url 'ageis_app:job_types' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Job Types</p>
-                  </a>
-              </li>
-             
-             
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'ageis_app:place_management' %}" class="nav-link ">
-              <span><img src="{% static 'dist/img/icon/earth.gif' %}" class="nav-icon"></span>
-              <p>
-                Place Management
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'ageis_app:client' %}" class="nav-link ">
-              <span><img src="{% static 'dist/img/icon/social-care.gif' %}" class="nav-icon"></span>
-              <p>
-                Client
-              </p>
-            </a>
             
-          </li>
-
-          <li class="nav-item">
-            <a href="{% url 'ageis_app:testimonial' %}" class="nav-link">
-              <span><img src="{% static 'dist/img/icon/stars.gif' %}" class="nav-icon"></span>
-              <p>
-                Testimonial
-              </p>
-            </a>
-            
-          </li>
-
-          <li class="nav-item">
-            <a href="{% url 'ageis_app:about_us_backend' %}" class="nav-link">
-              <span><img src="{% static 'dist/img/icon/stars.gif' %}" class="nav-icon"></span>
-              <p>
-                Aboutus Add
-              </p>
-            </a>
-          </li>
-         
-          
-      
-              
-          
-      
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
+        
+    
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->

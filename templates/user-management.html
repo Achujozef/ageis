@@ -128,7 +128,7 @@
                   <p>Job Types</p>
                   </a>
               </li>
-             
+              
              
             </ul>
           </li>
@@ -162,13 +162,26 @@
 
           <li class="nav-item">
             <a href="{% url 'ageis_app:about_us_backend' %}" class="nav-link">
-              <span><img src="{% static 'dist/img/icon/stars.gif' %}" class="nav-icon"></span>
+              <span><img src="{% static 'dist/img/icon/share.gif' %}" class="nav-icon"></span>
               <p>
                 Aboutus Add
               </p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="{% url 'ageis_app:shortlisted_jobs'%}" class="nav-link">
+              <span><img src="{% static 'dist/img/icon/absence.gif' %}" class="nav-icon"></span>
+              <p>
+                Shortlist
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'ageis_app:filter_results'%}" class="nav-link">
+              <span><img src="{% static 'dist/img/icon/complete.gif' %}" class="nav-icon"></span>
+              <p>Completed</p>
+              </a>
+          </li>
           
       
               
