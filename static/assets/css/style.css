@@ -1170,6 +1170,9 @@ h3 {
   -webkit-transition:.5s;
   transition:.5s
 }
+.footer-social{
+ padding-bottom: 15%;
+}
 .footer-area .footer-widget .footer-social a i:hover {
   background:#c10101;
   color:#fff
