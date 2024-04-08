@@ -2,10 +2,9 @@ FROM python:3.10-slim
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV TZ=Asia/Kolkata
-RUN 1n -snf -/usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ-> /etc/timezone
-RUN apt update
-RUN pip install pytest
-RUN apt install -y libmagic-dev
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get update
+RUN apt-get install -y libmagic-dev
 RUN groupadd -r deepuser && useradd -r -g deepuser deepuser
 WORKDIR /app
 COPY ./requirements.txt /app/
