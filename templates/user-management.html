@@ -400,7 +400,9 @@
                                           <td>{{i.user.email}}</td>
                                           <td>{{i.phone}}</td>
                                           <td>{{i.location}}</td>
+                                          {% if i.cv %}
                                           <td><a href="{{i.cv.url}}" download>Download Resume</a></td>
+                                          {% endif %}
                                         </tr>
                                         {% endfor%}
                                         
