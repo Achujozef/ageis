@@ -676,7 +676,6 @@ def applied_jobs(request):
 def shortlist_candidate(request, job_id):
     applied_job = get_object_or_404(AppliedJobs, id=job_id)
     applied_job.is_shortlisted = True
-    applied_job.request.user.username
     applied_job.save()
 
     # Get the candidate's email address from the User model
