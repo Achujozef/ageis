@@ -183,7 +183,7 @@ class Leads(models.Model):
     dateassigned = models.DateField(null=True)
     last_status_change = models.DateTimeField(null=True)
     addedfrom = models.IntegerField(default=0)
-    email = models.CharField(max_length=100, null=True)
+    email = models.CharField(max_length=100, null=True) #####
     website = models.CharField(max_length=150, null=True)
     leadorder = models.IntegerField(default=1, null=True)
     phonenumber = models.CharField(max_length=50, null=True)
