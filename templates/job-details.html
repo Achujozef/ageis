@@ -348,7 +348,9 @@
                                     <div class="row align-items-center">
                                         <div class="col-md-2">
                                             <div class="company-logo">
+                                                {% if details.company.company_logo %}
                                                 <img src="{{details.company.company_logo.url}}" alt="logo">
+                                                {% endif%}
                                             </div>
                                         </div>
                                         <div class="col-md-10">

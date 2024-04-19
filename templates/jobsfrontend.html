@@ -380,7 +380,9 @@
                             <div class="col-lg-3">
                                 <div class="thumb-img">
                                     <a href="{% url 'ageis_app:jobs_details' i.id %}">
+                                        {% if i.company.company_logo%}
                                         <img src="{{i.company.company_logo.url}}" alt="company logo">
+                                        {% endif%}
                                     </a>
                                 </div>
                             </div>
