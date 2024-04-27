@@ -124,9 +124,9 @@ class Jobs(models.Model):
     job_des = models.TextField()
     skills = models.CharField(max_length=100)
     experience = models.IntegerField()
-    salary = models.CharField(max_length=25)
+    salary = models.CharField(max_length=100)
     languages = models.CharField(max_length=100)
-    website_link = models.URLField()
+    website_link = models.CharField(max_length=25)
 
     
 

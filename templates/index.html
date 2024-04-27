@@ -843,7 +843,7 @@
                         {% for i in testimonial %}
                         <div class="card swiper-slide">
                             <div class="profile-img">
-                                {%if i.customer_img.url%}
+                                {%if i.customer_img%}
                               <img class="client-image" src="{{i.customer_img.url}}" alt="Client 1">
                               {% endif %}
                             </div>
