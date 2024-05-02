@@ -123,7 +123,7 @@ class Jobs(models.Model):
     end_date = models.DateField()
     job_des = models.TextField()
     skills = models.CharField(max_length=100)
-    experience = models.IntegerField()
+    experience = models.CharField(max_length=100)
     salary = models.CharField(max_length=100)
     languages = models.CharField(max_length=100)
     website_link = models.CharField(max_length=25)
