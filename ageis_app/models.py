@@ -126,8 +126,7 @@ class Jobs(models.Model):
     experience = models.CharField(max_length=100)
     salary = models.CharField(max_length=100)
     languages = models.CharField(max_length=100)
-    website_link = models.CharField(max_length=25)
-
+    website_link = models.CharField(max_length=100)
     
 
 class AppliedJobs(models.Model):
