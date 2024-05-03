@@ -653,18 +653,18 @@ def apply_job(request,job_id):
         applied_job = jobs
 
     ).save()
-    Leads.objects.create(name = full_name,
-                         title = jobs.job_title,
-                         company = jobs.company.company_name,
-                         description = jobs.job_des,
-                         country = jobs.country.id,
-                         city = jobs.district.name,
-                         state = jobs.state.name,
-                         address = jobs.company.address,
-                         email = request.user.email,
-                         website = jobs.website_link ,
-                         phonenumber = request.user.extenedusermodel.phone,
-                         ).save()
+    # Leads.objects.create(name = full_name,
+    #                      title = jobs.job_title,
+    #                      company = jobs.company.company_name,
+    #                      description = jobs.job_des,
+    #                      country = jobs.country.id,
+    #                      city = jobs.district.name,
+    #                      state = jobs.state.name,
+    #                      address = jobs.company.address,
+    #                      email = request.user.email,
+    #                      website = jobs.website_link ,
+    #                      phonenumber = request.user.extenedusermodel.phone,
+    #                      ).save()
     messages.success(request,'Job Applied..')
     return redirect('ageis_app:jobs_frontend')
 
@@ -676,7 +676,6 @@ def applied_jobs(request):
 def shortlist_candidate(request, job_id):
     applied_job = get_object_or_404(AppliedJobs, id=job_id)
     applied_job.is_shortlisted = True
-    applied_job.request.user.username
     applied_job.save()
 
     # Get the candidate's email address from the User model

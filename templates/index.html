@@ -223,7 +223,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'ageis_app:clients' %}">Clients</a>
                     </li>
-                    {% if not user.is_authenticated %}
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'ageis_app:user_profile' %}">My Profile</a>
                     </li>
@@ -764,7 +764,9 @@
                                 <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                                     <div class="card card-com" id="companycard">
                                         <div class="company-img-div">
+                                            {% if i.company_logo%}
                                             <img class=" companies-img" src="{{i.company_logo.url}}">
+                                            {% endif%}
                                         </div>
                                         <div class="company-detail-div">
                                             <h5 class="companies-h5">{{i.company_name}}</h5>
@@ -841,7 +843,7 @@
                         {% for i in testimonial %}
                         <div class="card swiper-slide">
                             <div class="profile-img">
-                                {%if i.customer_img.url%}
+                                {%if i.customer_img%}
                               <img class="client-image" src="{{i.customer_img.url}}" alt="Client 1">
                               {% endif %}
                             </div>

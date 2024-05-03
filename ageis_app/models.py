@@ -6,7 +6,7 @@ class ExtendedUserModel(models.Model):
     def __str__(self):
         return self.user.username
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='extenedusermodel',blank=True,null=True)
-    phone = models.CharField(max_length=10,blank=True,null=True)
+    phone = models.CharField(max_length=20,blank=True,null=True)
     cv = models.FileField(upload_to='CV',blank=True,null=True)
     #####################################
     location = models.CharField(max_length=255, blank=True, null=True)
@@ -123,11 +123,10 @@ class Jobs(models.Model):
     end_date = models.DateField()
     job_des = models.TextField()
     skills = models.CharField(max_length=100)
-    experience = models.IntegerField()
-    salary = models.CharField(max_length=25)
+    experience = models.CharField(max_length=100)
+    salary = models.CharField(max_length=100)
     languages = models.CharField(max_length=100)
-    website_link = models.URLField()
-
+    website_link = models.CharField(max_length=100)
     
 
 class AppliedJobs(models.Model):
@@ -183,7 +182,7 @@ class Leads(models.Model):
     dateassigned = models.DateField(null=True)
     last_status_change = models.DateTimeField(null=True)
     addedfrom = models.IntegerField(default=0)
-    email = models.CharField(max_length=100, null=True)
+    email = models.CharField(max_length=100, null=True) #####
     website = models.CharField(max_length=150, null=True)
     leadorder = models.IntegerField(default=1, null=True)
     phonenumber = models.CharField(max_length=50, null=True)

@@ -289,9 +289,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'ageis_app:clients' %}">Clients</a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'ageis_app:user_profile' %}">My Profile</a>
                         </li>
+                        {% else %}
+                    <p></p>
+                    {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -348,7 +352,9 @@
                                     <div class="row align-items-center">
                                         <div class="col-md-2">
                                             <div class="company-logo">
+                                                {% if details.company.company_logo %}
                                                 <img src="{{details.company.company_logo.url}}" alt="logo">
+                                                {% endif%}
                                             </div>
                                         </div>
                                         <div class="col-md-10">
@@ -408,10 +414,10 @@
                                                         <td>Full Time</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><span class="me-2">Email:</span></td>
+                                                        {% comment %} <td><span class="me-2">Email:</span></td>
                                                         <td>
                                                             {{details.company.company_email}}
-                                                        </td>
+                                                        </td> {% endcomment %}
                                                     </tr>
                                                 </tbody>
                                             </table>

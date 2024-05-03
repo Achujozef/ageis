@@ -85,7 +85,7 @@ class JobsAddForm(forms.ModelForm):
             'end_date': forms.DateInput(attrs={'class':'form-control w-75','type':'date','placeholder':"Enter  END Date",'required':'required'}),
             'job_des': forms.Textarea(attrs={'class':'form-control w-75','rows':3,'placeholder':"Enter The Job Description",'required':'required'}),
             'skills': forms.TextInput(attrs={'class':'form-control w-75','placeholder':"Enter The Skills",'required':'required'}),
-            'experience': forms.NumberInput(attrs={'class':'form-control w-75', 'placeholder':"Enter The Experience",'required':'required'}),
+            'experience': forms.TextInput(attrs={'class':'form-control w-75', 'placeholder':"Enter The Experience",'required':'required'}),
             'salary': forms.TextInput(attrs={'class':'form-control w-75','placeholder':"Enter The Salary"}),
             'languages': forms.TextInput(attrs={'class':'form-control w-75','placeholder':"Enter The Language",'required':'required'}),
             'website_link': forms.URLInput(attrs={'class':'form-control w-75','placeholder':"Enter The Website Link",'required':'required'}),
