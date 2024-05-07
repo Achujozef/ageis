@@ -410,7 +410,12 @@
                                         {% for i in clients %}
                                           <tr>
                                             {% if i.company_logo %}
-                                            <td><img src="{{i.company_logo.url}}" id="table-profilePic"></td>
+                                            <td>
+                                              <div class="company-logo-container-client">
+                                                <img src="{{i.company_logo.url}}" id="table-profilePic">
+                                              </div>
+                                              
+                                            </td>
                                             {% else %}
                                             <td>Nill</td>
                                             {% endif %}

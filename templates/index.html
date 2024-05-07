@@ -75,6 +75,26 @@
     <!-- Google Fonts Suranna -->
     <link href="https://fonts.googleapis.com/css2?family=Suranna&display=swap" rel="stylesheet">
     <style>
+        .custom-carousel-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.custom-carousel {
+    display: flex;
+    animation: slide 10s linear infinite; /* Adjust the duration as needed */
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
         /* Add your custom styles here */
         .carousel-container-testimonial {
             max-width: 800px;
@@ -687,19 +707,23 @@
             <div class="row">
                 {% for i in jobs %}
                 <div class="col-md-6 col-lg-6 col-12 col-xl-3 col-xxl-3 col-xm-12">
+                    <a href="{% url 'ageis_app:jobs_details' i.id %}">
                     <div class="job-card-two">
                         <div class="row align-items-center">
                             <div class="">
                                 <div class="job-info">
-                                    <div>
-                                        <div class="company-logo">
+                                    <div class="my-custom-outer-container">
+                                        
                                             <a href="{% url 'ageis_app:jobs_details' i.id %}">
                                                 {% if i.company %}
-                                                <img class="class-company" src="{{i.company.company_logo.url}}"
+                                                <div class="my-custom-container">
+                                                    <img class="class-company" src="{{i.company.company_logo.url}}"
                                                     alt="logo">
+                                                </div>
+                                                
                                                 {% endif %}
                                             </a>
-                                        </div>
+                                    
                                     </div>
 
                                     <h6 class="job-h3-cls">
@@ -736,6 +760,7 @@
                                 </div> -->
                         </div>
                     </div>
+                    </a>
                 </div>
                 {% endfor %}
             </div>
@@ -754,42 +779,40 @@
                 <p>"A Proven Track Record of Placement in Reputed Companies"</p>
             </div>
             <div>
-                <div id="myCarousel" class="carousel slide " data-bs-ride="carousel">
-                    <div class="carousel-inner">
+                
 
-                        <div class="carousel-item active">
 
                             <div class="row">
+                                <div class="custom-carousel-container">
+                                    <div class="custom-carousel">
                                 {% for i in companies %}
                                 <div class="col-md-4 col-lg-4 col-4 col-xl-4 col-xxl-4 col-xm-4">
                                     <div class="card card-com" id="companycard">
-                                        <div class="company-img-div">
+                                        <div class="my-custom-company-logo-container">
                                             {% if i.company_logo%}
-                                            <img class=" companies-img" src="{{i.company_logo.url}}">
+                                            <img class=" companies-img" style="width: 100% !important;" src="{{i.company_logo.url}}">
                                             {% endif%}
                                         </div>
                                         <div class="company-detail-div">
                                             <h5 class="companies-h5">{{i.company_name}}</h5>
                                             <p class="companies-p"><i class="bi bi-geo-alt"></i>{{i.address}}</p>
-                                            <!-- <a class="companies-a" href="">click me</a> -->
                                         </div>
 
                                     </div>
                                 </div>
+
+
+                                
+                                       
+                                    
+                                
                                 {% endfor %}
                             </div>
-
                         </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only text-dark"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only text-dark"></span>
-                    </a>
-                </div>
+                            </div>
+
+                    
+
             </div>
         </div>
     </section>
@@ -987,13 +1010,13 @@
                         <p class="text-dark brand-quoete text-center"><i>We make Recruitment enjoyable,
                                 efficient,enagaging! Let’s create
                                 “Success Together"</i></p>
-                        <div class="footer-social">
-                            <a href="#" target="_blank"><i class="bx bxl-facebook footer-social-icon-face"></i></a>
-                            <a href="#" target="_blank"><i class="bx bxl-instagram footer-social-icon-insta "></i></a>
-                            <a href="#" target="_blank"><i class="bx bxl-linkedin footer-social-icon-linked"></i></a>
-                            <a href="https://wa.link/sws14o" target="_blank"><i
-                                    class="bx bxl-whatsapp footer-social-icon-whatsapp "></i></a>
-                        </div>
+                                <div class="footer-social">
+                                    <a href="https://www.facebook.com/profile.php?id=61558492872249" target="_blank"><i class="bx bxl-facebook footer-social-icon-face"></i></a>
+                                    <a href="#" target="_blank"><i class="bx bxl-instagram footer-social-icon-insta "></i></a>
+                                    <a href="https://www.linkedin.com/in/ageis-recruitment-and-hr-consultancy-7b5574305/" target="_blank"><i class="bx bxl-linkedin footer-social-icon-linked"></i></a>
+                                    <a href="https://wa.link/sws14o" target="_blank"><i
+                                            class="bx bxl-whatsapp footer-social-icon-whatsapp "></i></a>
+                                </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12">
@@ -1077,8 +1100,8 @@
                         <ul>
                             <li>
                                 <span class="text-dark contact-detail"><i class="bx bxs-phone"></i>Phone:</span><a
-                                    class="text-dark contact-detail" href="tel:+91918848686147">+91 88 48 68 61
-                                    47</a><br>
+                                    class="text-dark contact-detail" href="tel:+916238657528">+91 62 38 65 75 28
+                                    </a><br>
                                 <a class="text-dark contact-detail" href="tel:+919346738016">+91 93 46 73 80 16</a>
                             </li>
                             <li>

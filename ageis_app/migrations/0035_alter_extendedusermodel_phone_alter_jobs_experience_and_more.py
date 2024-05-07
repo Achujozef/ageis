@@ -27,6 +27,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="jobs",
             name="website_link",
-            field=models.CharField(max_length=25),
+            field=models.CharField(max_length=100),
         ),
     ]
