@@ -70,6 +70,7 @@
     flex-direction: column;
     border-radius: 10px;
     border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
     background-color: #fff;
     padding-left: 10px;
     padding-right: 10px;

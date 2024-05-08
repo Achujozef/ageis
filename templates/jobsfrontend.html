@@ -379,35 +379,31 @@
             <div class="row">
                 {% for i in jobs %}
                 <div class="col-md-6">
-                    <div class="job-card">
+                    <div class="job-card clickable" data-url="{% url 'ageis_app:jobs_details' i.id %}">
                         <div class="row align-items-center">
                             <div class="col-lg-3">
                                 <div class="thumb-img">
-                                    <a href="{% url 'ageis_app:jobs_details' i.id %}">
-                                        {% if i.company.company_logo%}
-                                        <img src="{{i.company.company_logo.url}}" alt="company logo">
-                                        {% endif%}
-                                    </a>
+                                    {% if i.company.company_logo %}
+                                    <img src="{{ i.company.company_logo.url }}" alt="company logo">
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="job-info">
-                                    <h3>
-                                        <a href="{% url 'ageis_app:jobs_details' i.id %}">{{i.job_title}}</a>
-                                    </h3>
+                                    <h3>{{ i.job_title }}</h3>
                                     <ul>
-                                        <li><a href="#">{{i.company.company_name}}</a></li>
+                                        <li><a href="#">{{ i.company.company_name }}</a></li>
                                         <li>
                                             <i class="bx bx-location-plus"></i>
-                                            {{i.country}}, {{i.state}}, {{i.district}}
+                                            {{ i.country }}, {{ i.state }}, {{ i.district }}
                                         </li>
                                         <li>
                                             <i class="bx bx-filter-alt"></i>
-                                            {{i.job_category}}
+                                            {{ i.job_category }}
                                         </li>
                                         <li>
                                             <i class="bx bx-briefcase"></i>
-                                            {{i.job_type}}
+                                            {{ i.job_type }}
                                         </li>
                                     </ul>
                                 </div>
@@ -415,9 +411,6 @@
                             <div class="col-lg-3">
                                 <div class="job-save">
                                     <span>Full Time</span>
-                                    {% comment %} <a href="#">
-                                        <i class="bx bx-heart"></i>
-                                    </a> {% endcomment %}
                                     <p>
                                         <i class="bx bx-calendar"></i>
                                         <p>{{ i.job_post_date }}</p>
@@ -425,7 +418,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                 </div>
                 {% endfor %}
                 <nav aria-label="Page navigation example">
@@ -479,9 +472,9 @@
                         <p class="text-dark brand-quoete text-center"><i>We make Recruitment enjoyable, efficient,enagaging! Let’s create
                             “Success Together"</i></p>
                             <div class="footer-social">
-                                <a href="https://www.facebook.com/profile.php?id=61558492872249" target="_blank"><i class="bx bxl-facebook footer-social-icon-face"></i></a>
-                                <a href="#" target="_blank"><i class="bx bxl-instagram footer-social-icon-insta "></i></a>
-                                <a href="https://www.linkedin.com/in/ageis-recruitment-and-hr-consultancy-7b5574305/" target="_blank"><i class="bx bxl-linkedin footer-social-icon-linked"></i></a>
+                                <a href="https://www.facebook.com/profile.php?id=61558775116418" target="_blank"><i class="bx bxl-facebook footer-social-icon-face"></i></a>
+                                <a href="https://www.instagram.com/ageis_recruitment_consultancy_?utm_source=qr&igsh=azRoNml4MGd0cG8x" target="_blank"><i class="bx bxl-instagram footer-social-icon-insta "></i></a>
+                                <a href="https://www.linkedin.com/company/ageis-recruitment-and-hr-consultancy/" target="_blank"><i class="bx bxl-linkedin footer-social-icon-linked"></i></a>
                                 <a href="https://wa.link/sws14o" target="_blank"><i
                                         class="bx bxl-whatsapp footer-social-icon-whatsapp "></i></a>
                             </div>
@@ -685,6 +678,18 @@
     {% endif %}
     {% endfor %}
     {% comment %} <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script> {% endcomment %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.job-card.clickable').forEach(function(element) {
+                element.addEventListener('click', function() {
+                    var url = this.getAttribute('data-url');
+                    if (url) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
+    </script>
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
 
     <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>

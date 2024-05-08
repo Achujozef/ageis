@@ -470,7 +470,7 @@ margin-bottom: 10px !important;
   }
 
   .testimonial-text {
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     overflow-y: scroll;
   }
@@ -759,10 +759,11 @@ font-weight: 200;
   animation: colorChange 2s infinite;
   transition: ease-in-out;
 }
-#companycard{
-  height: 25vh;
+#companycard {
+  height: 27vh;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow:#0000002c 2px 10px 15px 0px !important; 
+  box-shadow: #0000002c 2px 10px 15px 0px !important;
   margin-bottom: 10%;
   margin-left: 10px;
   margin-right: 10px;

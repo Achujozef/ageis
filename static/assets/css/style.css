@@ -30,6 +30,29 @@ p {
   line-height:1.8;
   font-family: 'Poppins',sans-serif !important;
 }
+#job-detail-logo{
+  height: 120px;
+  width: 120px;
+  overflow: hidden;
+}
+#client-testmonial-paragraph{
+    text-align: justify;
+    font-size: small;
+    color: #707070;
+    font-style: italic;
+    line-height: 1.8;
+    font-family: 'Poppins',sans-serif !important;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+#client-testimonial-detail-container{
+  overflow: scroll;
+  margin-bottom: 25px;
+  margin-top: -7%;
+}
+#job-detail-logo-img{
+height: 100%;
+}
 button {
   -webkit-box-shadow:none;
   box-shadow:none;
