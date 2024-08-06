@@ -708,13 +708,14 @@
                 {% for i in jobs %}
                 <div class="col-md-6 col-lg-6 col-12 col-xl-3 col-xxl-3 col-xm-12">
                     <a href="{% url 'ageis_app:jobs_details' i.id %}">
-                    <div class="job-card-two">
-                        <div class="row align-items-center">
-                            <div class="">
-                                <div class="job-info">
+                    <div class="job-card-two" style="background-color:red">
+                        <div class="row align-items-center" >
+                            <div class="" >
+                               
+                                <div class="job-info" >
                                     <div class="my-custom-outer-container">
                                         
-                                            <a href="{% url 'ageis_app:jobs_details' i.id %}">
+                                           
                                                 {% if i.company %}
                                                 <div class="my-custom-container">
                                                     <img class="class-company" src="{{i.company.company_logo.url}}"
@@ -722,7 +723,7 @@
                                                 </div>
                                                 
                                                 {% endif %}
-                                            </a>
+                                           
                                     
                                     </div>
 
@@ -750,7 +751,8 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                              
+                        </div>
                             <!-- <div>
                                     <div class="theme-btn">
                                         <a href="{% url 'ageis_app:jobs_details' i.id %}" class="default-btn">
@@ -760,7 +762,7 @@
                                 </div> -->
                         </div>
                     </div>
-                    </a>
+                </a>
                 </div>
                 {% endfor %}
             </div>

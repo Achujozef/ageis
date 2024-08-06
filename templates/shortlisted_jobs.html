@@ -53,6 +53,7 @@
       padding: 20px;
       border: 1px solid #888;
       width: 80%;
+      margin-left:23%;
     }
 
     .close {
@@ -349,7 +350,7 @@
           <div class="popup-content">
             <span class="close" onclick="closeOfferLetterPopup()">&times;</span>
             <h2 class="mb-4">Send Offer Letter</h2>
-            <form id="offerLetterForm" onsubmit="sendOfferLetter(); return false;" class="mb-4" enctype="multipart/form-data">
+            <form id="offerLetterForm" onsubmit="sendOfferLetter('{{ applied_job_id }}'); return false;" class="mb-4" enctype="multipart/form-data">
               {% csrf_token %}
               <input type="hidden" id="applied_job_id" name="applied_job_id">
               <div class="form-group">
@@ -365,6 +366,7 @@
                 <textarea id="email_body" name="email_body" class="form-control" rows="5">Dear Candidate,\n\nWe are pleased to offer you the position...\n\nSincerely,\nThe Recruitment Team</textarea>
               </div>
               <button type="submit" onclick="sendOfferLetter('{{ applied_job_id }}')" class="btn btn-primary" id="sendOfferLetterBtn">Send Offer Letter</button>
+              <button id="openPopupButton" data-job-id="{{ applied_job_id }}">Send Offer Letter</button>
             </form>
           </div>
         </div>
@@ -489,29 +491,33 @@ let x= 0
     });
 
     function sendOfferLetter(jobId) {
-      jobId = document.getElementById('applied_job_id').value 
+      // Retrieve the jobId from the function parameter
+      let x = x
       var form = $('#offerLetterForm')[0];
       var formData = new FormData(form);
-      // Append the jobId to the formData
-      formData.append('applied_job_id', jobId);
-
+      console.log(x,"xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+      formData.append('applied_job_id',x );
+      console.log('formData', formData);
       $.ajax({
-        url: `/send-offer-letter/`,
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(response) {
-          if (response.success) {
-            alert('Offer letter sent successfully.');
-            location.reload();
-          } else {
-            alert('Failed to send offer letter.');
+          url: `/send-offer-letter/`,
+          type: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+              if (response.success) {
+                  alert('Offer letter sent successfully.');
+                  location.reload();
+              } else {
+                  alert('Failed to send offer letter.');
+              }
+          },
+          error: function (xhr, status, error) {
+              console.error(xhr.responseText);
+              alert('Error sending offer letter.');
           }
-        },
-
       });
-    }
+  }
 
     $(function () {
     $("#example1").DataTable({

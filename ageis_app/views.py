@@ -759,55 +759,61 @@ def schedule_interview(request):
     
 
 from django.core.mail import EmailMessage
+import logging
+
+logger = logging.getLogger(__name__)
+
 def send_offer_letter(request):
     if request.method == 'POST':
         applied_job_id = request.POST.get('applied_job_id')
-        print("Sending offer letter")
-        print("applied_job_id:",applied_job_id)
-        if applied_job_id:
-            try:
-                applied_job = AppliedJobs.objects.get(pk=applied_job_id)
-            except AppliedJobs.DoesNotExist:
-                return JsonResponse({'success': False, 'error': 'Applied job does not exist'})
-            candidate_email = applied_job.applied_user.user.email
-
-            # Retrieve offer letter file and other details from the form
-            offer_letter_file = request.FILES.get('offer_letter_file')
-            email_subject = request.POST.get('email_subject')
-            email_body = request.POST.get('email_body')
-
-            # Save offer letter file if provided
-            if offer_letter_file:
-                applied_job.offer_letter = offer_letter_file
-                applied_job.save()
-
-            # Compose and send the email with offer letter attachment
-            email = EmailMessage(
-                email_subject,
-                email_body,
-                settings.EMAIL_HOST_USER,
-                [candidate_email],
-                reply_to=[settings.EMAIL_HOST_USER],  # Optionally set a reply-to address
-            )
-            if offer_letter_file:
-                email.attach(offer_letter_file.name, offer_letter_file.read(), offer_letter_file.content_type)
-            
-            try:
-                email.send(fail_silently=False)
-            except Exception as e:
-                # Handle any exceptions that occur during email sending
-                print("Error sending email:", e)
-                return JsonResponse({'success': False, 'error': str(e)})
-            else:
-                # Update the result field
-                applied_job.result = 'offerletter_sent'
-                applied_job.save()
-                return JsonResponse({'success': True})
-        else:
+        logger.debug(f'Received applied_job_id: {applied_job_id}')
+        if not applied_job_id:
+            logger.error('Applied job ID is empty')
             return JsonResponse({'success': False, 'error': 'Applied job ID is empty'})
 
-    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+        try:
+            applied_job_id = int(applied_job_id)
+            applied_job = AppliedJobs.objects.get(pk=applied_job_id)
+        except ValueError:
+            logger.error(f'Invalid job ID: {applied_job_id}')
+            return JsonResponse({'success': False, 'error': 'Invalid job ID'})
+        except AppliedJobs.DoesNotExist:
+            logger.error(f'Applied job does not exist: {applied_job_id}')
+            return JsonResponse({'success': False, 'error': 'Applied job does not exist'})
 
+        candidate_email = applied_job.applied_user.user.email
+        logger.debug(f'Candidate email: {candidate_email}')
+
+        offer_letter_file = request.FILES.get('offer_letter_file')
+        email_subject = request.POST.get('email_subject')
+        email_body = request.POST.get('email_body')
+
+        if offer_letter_file:
+            applied_job.offer_letter = offer_letter_file
+            applied_job.save()
+
+        email = EmailMessage(
+            email_subject,
+            email_body,
+            settings.EMAIL_HOST_USER,
+            [candidate_email],
+            reply_to=[settings.EMAIL_HOST_USER]
+        )
+        if offer_letter_file:
+            email.attach(offer_letter_file.name, offer_letter_file.read(), offer_letter_file.content_type)
+
+        try:
+            email.send(fail_silently=False)
+        except Exception as e:
+            logger.error(f'Error sending email: {e}')
+            return JsonResponse({'success': False, 'error': str(e)})
+
+        applied_job.result = 'offerletter_sent'
+        applied_job.save()
+        return JsonResponse({'success': True})
+
+    logger.error('Invalid request method')
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
 
 
 
